@@ -28,5 +28,11 @@ func GetCalorieList(input []string) []int {
 }
 
 func GetMaxCalories(input []int) int {
-	return 0
+	maxCals := 0
+	for _, value := range input {
+		if value > maxCals {
+			maxCals = value
+		}
+	}
+	return maxCals
 }
