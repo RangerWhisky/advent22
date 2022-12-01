@@ -2,6 +2,7 @@ package day1
 
 import (
 	file_input "localhost/advent22/utils"
+	"sort"
 	"strconv"
 )
 
@@ -13,6 +14,12 @@ func Easy(filepath string) int {
 	elfInput := file_input.Read_file(filepath)
 	caloriesList := GetCalorieList(elfInput)
 	return GetMaxCalories(caloriesList)
+}
+
+func Bonus(filepath string) int {
+	elfInput := file_input.Read_file(filepath)
+	caloriesList := GetCalorieList(elfInput)
+	return GetTopCalorieTotal(caloriesList, 3)
 }
 
 func GetCalorieList(input []string) []int {
@@ -29,15 +36,22 @@ func GetCalorieList(input []string) []int {
 		}
 	}
 	calories = append(calories, running_total)
+
 	return calories
 }
 
 func GetMaxCalories(input []int) int {
-	maxCals := 0
-	for _, value := range input {
-		if value > maxCals {
-			maxCals = value
-		}
+	// sort before checking
+	sort.Ints(input[:])
+
+	return input[len(input)-1]
+}
+
+func GetTopCalorieTotal(input []int, count int) int {
+	sort.Ints(input[:])
+	total := 0
+	for i := 1; i <= count; i++ {
+		total += input[len(input)-i]
 	}
-	return maxCals
+	return 0
 }

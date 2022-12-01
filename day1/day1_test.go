@@ -45,9 +45,26 @@ func TestGetMaxCalorieLoad(t *testing.T) {
 	}
 }
 
+func TestTopOneTotal(t *testing.T) {
+	elfInput := file_input.Read_file("../utils/file_input_sample.txt")
+	caloriesList := GetCalorieList(elfInput)
+	total := GetTopCalorieTotal(caloriesList, 1)
+
+	if total != 24000 {
+		t.Errorf("Max Calories calculated as %d but should be %d", total, 24000)
+	}
+}
+
 func TestEasySolution(t *testing.T) {
 	solution := Easy("../utils/file_input_sample.txt")
 	if solution != 24000 {
 		t.Errorf("Sample solution Calories calculated as %d but should be %d", solution, 24000)
+	}
+}
+
+func TestBonusSolution(t *testing.T) {
+	solution := Bonus("../utils/file_input_sample.txt")
+	if solution != 45000 {
+		t.Errorf("Sample solution Calories calculated as %d but should be %d", solution, 45000)
 	}
 }
