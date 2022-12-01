@@ -9,7 +9,7 @@ func Meaning() int {
 	return 6 * 7
 }
 
-func GetCalories(input []string) []int {
+func GetCalorieList(input []string) []int {
 	var calories []int
 	running_total := 0
 	for i := 0; i < len(input); i++ {
