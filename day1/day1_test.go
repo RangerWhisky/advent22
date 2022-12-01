@@ -34,3 +34,13 @@ func TestAllElfCalorieTotals(t *testing.T) {
 		}
 	}
 }
+
+func TestGetMaxCalorieLoad(t *testing.T) {
+	elfInput := file_input.Read_file("../utils/file_input_sample.txt")
+	caloriesList := GetCalorieList(elfInput)
+	maxCalorieLoad := GetMaxCalories(caloriesList)
+
+	if maxCalorieLoad != 24000 {
+		t.Errorf("Max Calories calculated as %d but should be %d", maxCalorieLoad, 24000)
+	}
+}

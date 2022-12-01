@@ -26,3 +26,7 @@ func GetCalorieList(input []string) []int {
 	calories = append(calories, running_total)
 	return calories
 }
+
+func GetMaxCalories(input []int) int {
+	return 0
+}
