@@ -18,9 +18,11 @@ func GetCalorieList(input []string) []int {
 		if err != nil || item_val == 0 {
 			// push the value and move on
 			calories = append(calories, running_total)
+			running_total = 0
 		} else {
 			running_total += item_val
 		}
 	}
+	calories = append(calories, running_total)
 	return calories
 }
