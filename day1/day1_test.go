@@ -14,7 +14,7 @@ func TestHello(t *testing.T) {
 }
 
 func TestElfCalorieTotal(t *testing.T) {
-	elfInput := file_input.Read_file("../test/file_input_sample")
+	elfInput := file_input.Read_file("../utils/file_input_sample.txt")
 	caloriesList := GetCalories(elfInput)
 	if caloriesList[0] != 6000 {
 		t.Errorf("Calories listed as %d but should be 6000", caloriesList[0])
