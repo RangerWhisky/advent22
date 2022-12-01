@@ -41,10 +41,7 @@ func GetCalorieList(input []string) []int {
 }
 
 func GetMaxCalories(input []int) int {
-	// sort before checking
-	sort.Ints(input[:])
-
-	return input[len(input)-1]
+	return GetTopCalorieTotal(input, 1)
 }
 
 func GetTopCalorieTotal(input []int, count int) int {
@@ -53,5 +50,5 @@ func GetTopCalorieTotal(input []int, count int) int {
 	for i := 1; i <= count; i++ {
 		total += input[len(input)-i]
 	}
-	return 0
+	return total
 }
