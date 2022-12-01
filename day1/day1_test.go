@@ -44,3 +44,10 @@ func TestGetMaxCalorieLoad(t *testing.T) {
 		t.Errorf("Max Calories calculated as %d but should be %d", maxCalorieLoad, 24000)
 	}
 }
+
+func TestEasySolution(t *testing.T) {
+	solution := Easy("../utils/file_input_sample.txt")
+	if solution != 24000 {
+		t.Errorf("Sample solution Calories calculated as %d but should be %d", solution, 24000)
+	}
+}
