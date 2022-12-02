@@ -61,6 +61,13 @@ func TestSimpleGetRoundScore(t *testing.T) {
 func TestEasySolution(t *testing.T) {
 	solution := Easy("./simplified_example.txt")
 	if solution != 15 {
-		t.Errorf("Sample solution Calories calculated as %d but should be %d", solution, 15)
+		t.Errorf("Sample solution Score calculated as %d but should be %d", solution, 15)
+	}
+}
+
+func TestBonusSolution(t *testing.T) {
+	solution := Bonus("./simplified_example.txt")
+	if solution != 12 {
+		t.Errorf("Sample solution Score calculated as %d but should be %d", solution, 12)
 	}
 }

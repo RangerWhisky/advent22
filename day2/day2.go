@@ -13,6 +13,15 @@ func Easy(filepath string) int {
 	return runningTotal
 }
 
+func Bonus(filepath string) int {
+	runningTotal := 0
+	elfInput := file_input.Read_file(filepath)
+	for i := 0; i < len(elfInput); i++ {
+		runningTotal += GetRoundScore(elfInput[i])
+	}
+	return runningTotal
+}
+
 func GetRoundScore(input string) int {
 	return GetResponseScore(input) + GetResultScore(input)
 }
