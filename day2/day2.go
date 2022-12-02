@@ -17,7 +17,13 @@ func Bonus(filepath string) int {
 	runningTotal := 0
 	elfInput := file_input.Read_file(filepath)
 	for i := 0; i < len(elfInput); i++ {
-		runningTotal += GetRoundScore(elfInput[i])
+		strategy := elfInput[i]
+		action := GetActionForIntendedResult(elfInput[i])
+
+		// Appending the new action to the end does the job purely because it becomes the last character
+		// bit hacky, but if the behaviour doesn't change then the tests won't fail
+		strategy = strategy + string(action)
+		runningTotal += GetRoundScore(strategy)
 	}
 	return runningTotal
 }
