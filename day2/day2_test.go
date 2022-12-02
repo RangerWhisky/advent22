@@ -33,3 +33,19 @@ func TestGetLossResultScore(t *testing.T) {
 		t.Errorf("Response score is = %d, need 0", score)
 	}
 }
+
+func TestGetDrawResultScore(t *testing.T) {
+	testInput := "A X"
+	score := GetResultScore(testInput)
+	if score != 3 {
+		t.Errorf("Response score is = %d, need 3", score)
+	}
+}
+
+func TestGetWinResultScore(t *testing.T) {
+	testInput := "A Y"
+	score := GetResultScore(testInput)
+	if score != 6 {
+		t.Errorf("Response score is = %d, need 6", score)
+	}
+}
