@@ -17,15 +17,8 @@ func GetResultScore(input string) int {
 		score = 3
 	}
 
-	// check for win
-	if challenge == 3 {
-		if response == 1 {
-			score = 6
-		}
-	} else {
-		if response == challenge+1 {
-			score = 6
-		}
+	if response == GetWinRequirement(challenge) {
+		score = 6
 	}
 
 	return score

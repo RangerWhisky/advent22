@@ -1,9 +1,6 @@
 package day2
 
-import "fmt"
-
 func Decode(character byte) int {
-	fmt.Printf("%q", character)
 	value := 0
 	switch character {
 	case 'X', 'A':
@@ -15,4 +12,13 @@ func Decode(character byte) int {
 	}
 
 	return value
+}
+
+func GetWinRequirement(challenge int) int {
+	requirement := challenge + 1
+	// check for win
+	if challenge == 3 {
+		requirement = 1
+	}
+	return requirement
 }
