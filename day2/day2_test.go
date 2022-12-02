@@ -49,3 +49,18 @@ func TestGetWinResultScore(t *testing.T) {
 		t.Errorf("Response score is = %d, need 6", score)
 	}
 }
+
+func TestSimpleGetRoundScore(t *testing.T) {
+	testInput := "A Y"
+	score := GetRoundScore(testInput)
+	if score != 8 {
+		t.Errorf("Response score is = %d, need 8", score)
+	}
+}
+
+func TestEasySolution(t *testing.T) {
+	solution := Easy("./simplified_example.txt")
+	if solution != 15 {
+		t.Errorf("Sample solution Calories calculated as %d but should be %d", solution, 15)
+	}
+}

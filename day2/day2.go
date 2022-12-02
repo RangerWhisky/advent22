@@ -1,5 +1,22 @@
 package day2
 
+import (
+	file_input "localhost/advent22/utils"
+)
+
+func Easy(filepath string) int {
+	runningTotal := 0
+	elfInput := file_input.Read_file(filepath)
+	for i := 0; i < len(elfInput); i++ {
+		runningTotal += GetRoundScore(elfInput[i])
+	}
+	return runningTotal
+}
+
+func GetRoundScore(input string) int {
+	return GetResponseScore(input) + GetResultScore(input)
+}
+
 func GetResponseScore(input string) int {
 	response := input[len(input)-1]
 	value := Decode(response)
