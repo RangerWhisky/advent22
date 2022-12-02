@@ -58,11 +58,27 @@ func TestSimpleGetRoundScore(t *testing.T) {
 	}
 }
 
-func TestGetActionForIntendedResult(t *testing.T) {
+func TestGetActionForDrawResult(t *testing.T) {
 	testInput := "A Y"
 	action := GetActionForIntendedResult(testInput)
 	if action != 'X' {
 		t.Errorf("Asked for a draw with Rock (X), but got %q", action)
+	}
+}
+
+func TestGetActionForWin(t *testing.T) {
+	testInput := "A Z"
+	action := GetActionForIntendedResult(testInput)
+	if action != 'Y' {
+		t.Errorf("Asked for a win with Rock (X), but got %q", action)
+	}
+}
+
+func TestGetActionForLoss(t *testing.T) {
+	testInput := "A X"
+	action := GetActionForIntendedResult(testInput)
+	if action != 'Z' {
+		t.Errorf("Asked for a loss with Rock (X), but got %q", action)
 	}
 }
 

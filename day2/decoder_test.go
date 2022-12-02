@@ -17,13 +17,13 @@ func TestResultDecode(t *testing.T) {
 }
 
 func TestResponseEncode(t *testing.T) {
-	if EncodeResponse('X') != 1 {
+	if EncodeResponse(1) != 'X' {
 		t.Error()
 	}
-	if EncodeResponse('Y') != 2 {
+	if EncodeResponse(2) != 'Y' {
 		t.Error()
 	}
-	if EncodeResponse('Z') != 3 {
+	if EncodeResponse(3) != 'Z' {
 		t.Error()
 	}
 }
