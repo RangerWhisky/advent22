@@ -25,3 +25,11 @@ func TestGetScissorsResponseScore(t *testing.T) {
 		t.Errorf("Response score is = %d, need 1", score)
 	}
 }
+
+func TestGetLossResultScore(t *testing.T) {
+	testInput := "A Z"
+	score := GetResultScore(testInput)
+	if score != 0 {
+		t.Errorf("Response score is = %d, need 0", score)
+	}
+}

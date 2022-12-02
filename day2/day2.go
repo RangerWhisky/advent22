@@ -13,3 +13,7 @@ func GetResponseScore(input string) int {
 	}
 	return value
 }
+
+func GetResultScore(input string) int {
+	return 1
+}
