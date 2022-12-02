@@ -58,8 +58,10 @@ func GetChallengeAndResponse(input string) (int, int) {
 }
 
 func GetActionForIntendedResult(input string) byte {
-	response := input[len(input)-1]
+	// initialise response to meet the needs of a draw
+	response := EncodeResponse(Decode(input[0]))
 	challengeValue := Decode(input[0])
+	// Check what we need and fix up our response
 	switch input[len(input)-1] {
 	case 'X':
 		// need to lose, so get the loss requirement
