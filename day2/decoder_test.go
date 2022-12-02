@@ -27,3 +27,15 @@ func TestGetWinRequirements(t *testing.T) {
 		t.Error()
 	}
 }
+
+func TestGetLossRequirements(t *testing.T) {
+	if GetLossRequirement(3) != 2 {
+		t.Error()
+	}
+	if GetLossRequirement(1) != 3 {
+		t.Error()
+	}
+	if GetLossRequirement(2) != 1 {
+		t.Error()
+	}
+}

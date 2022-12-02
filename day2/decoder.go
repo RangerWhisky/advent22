@@ -22,3 +22,12 @@ func GetWinRequirement(challenge int) int {
 	}
 	return requirement
 }
+
+func GetLossRequirement(challenge int) int {
+	requirement := challenge - 1
+	// check for win
+	if challenge == 1 {
+		requirement = 3
+	}
+	return requirement
+}
