@@ -16,6 +16,18 @@ func TestResultDecode(t *testing.T) {
 	}
 }
 
+func TestResponseEncode(t *testing.T) {
+	if EncodeResponse('X') != 1 {
+		t.Error()
+	}
+	if EncodeResponse('Y') != 2 {
+		t.Error()
+	}
+	if EncodeResponse('Z') != 3 {
+		t.Error()
+	}
+}
+
 func TestGetWinRequirements(t *testing.T) {
 	if GetWinRequirement(1) != 2 {
 		t.Error()

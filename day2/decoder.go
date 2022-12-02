@@ -14,6 +14,19 @@ func Decode(character byte) int {
 	return value
 }
 
+func EncodeResponse(code int) byte {
+	value := byte('X')
+	switch code {
+	case 1:
+		value = 'X'
+	case 2:
+		value = 'Y'
+	case 3:
+		value = 'Z'
+	}
+	return value
+}
+
 func GetWinRequirement(challenge int) int {
 	requirement := challenge + 1
 	// check for win

@@ -56,3 +56,16 @@ func GetChallengeAndResponse(input string) (int, int) {
 
 	return challenge, response
 }
+
+func GetActionForIntendedResult(input string) byte {
+	response := input[len(input)-1]
+	challengeValue := Decode(input[0])
+	switch input[len(input)-1] {
+	case 'X':
+		// need to lose, so get the loss requirement
+		response = EncodeResponse(GetLossRequirement(challengeValue))
+	case 'Z':
+		response = EncodeResponse(GetWinRequirement(challengeValue))
+	}
+	return response
+}

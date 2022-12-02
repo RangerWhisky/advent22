@@ -58,6 +58,14 @@ func TestSimpleGetRoundScore(t *testing.T) {
 	}
 }
 
+func TestGetActionForIntendedResult(t *testing.T) {
+	testInput := "A Y"
+	action := GetActionForIntendedResult(testInput)
+	if action != 'X' {
+		t.Errorf("Asked for a draw with Rock (X), but got %q", action)
+	}
+}
+
 func TestEasySolution(t *testing.T) {
 	solution := Easy("./simplified_example.txt")
 	if solution != 15 {
