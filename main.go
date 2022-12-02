@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"localhost/advent22/day1"
+	"localhost/advent22/day2"
 )
 
 func main() {
@@ -10,4 +11,9 @@ func main() {
 
 	fmt.Printf("Biggest pack is %d ", day1.Easy("day1/input"))
 	fmt.Printf("Total of biggest 3 packs is %d ", day1.Bonus("day1/input"))
+
+	fmt.Println("\nDay 2")
+	fmt.Printf("Score for strategy card is %d", day2.Easy("day2/input"))
+
+	fmt.Println("\nDone!")
 }
