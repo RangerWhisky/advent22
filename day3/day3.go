@@ -1,5 +1,9 @@
 package day3
 
+func PartOne(filepath string) int {
+	return 0
+}
+
 func GetIncorrectItemPriority(backpack string) int {
 	incorrectItem := GetDuplicatedLetters(backpack)
 	return GetItemPriority(incorrectItem)

@@ -21,3 +21,11 @@ func TestGetIncorrectItemPriority(t *testing.T) {
 		t.Errorf("Expected 22 for 'v' but got %d", priority)
 	}
 }
+
+func TestGetSampleResult(t *testing.T) {
+	solution := PartOne("./simplified_example.txt")
+
+	if solution != 157 {
+		t.Errorf("Should be 157 but is %d", solution)
+	}
+}
