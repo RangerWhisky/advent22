@@ -16,12 +16,24 @@ func PartOne(filepath string) int {
 }
 
 func PartTwo(filepath string) int {
-	return 0
+	runningTotal := 0
+	elfInput := file_input.Read_file(filepath)
+
+	for i := 0; i < len(elfInput); i += 3 {
+		runningTotal++
+	}
+	return runningTotal
 }
 
 func GetIncorrectItemPriority(backpack string) int {
 	incorrectItem := GetCompartmentDuplicate(backpack)
 	return GetItemPriority(incorrectItem)
+}
+
+func GetBadgePriority(backpacks []string) int {
+	badgeLetter := GetBadgeLetter(backpacks)
+
+	return int(badgeLetter)
 }
 
 func GetBadgeLetter(backpacks []string) byte {

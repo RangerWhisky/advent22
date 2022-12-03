@@ -39,6 +39,15 @@ func TestGetBadgeLetter(t *testing.T) {
 	}
 }
 
+func TestGetBadgePriority(t *testing.T) {
+	var backpacks = []string{"vrvF", "frgf", "prgFrp"}
+	badge := GetBadgePriority(backpacks)
+
+	if badge != 18 {
+		t.Errorf("Expected 18 (for r) but got %q", badge)
+	}
+}
+
 func TestPartTwoExample(t *testing.T) {
 	solution := PartTwo("./simplified_example.txt")
 
