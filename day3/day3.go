@@ -37,3 +37,7 @@ func GetDuplicatedLetters(backpack string) byte {
 func getCompartmentSize(backpack string) int {
 	return len(backpack) / 2
 }
+
+func GetBadgeLetter(backpacks []string) byte {
+	return 'a'
+}

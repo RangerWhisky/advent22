@@ -29,3 +29,12 @@ func TestGetSampleResult(t *testing.T) {
 		t.Errorf("Should be 157 but is %d", solution)
 	}
 }
+
+func TestGetBadgeLetter(t *testing.T) {
+	var backpacks = []string{"vrvF", "frgf", "prgFrp"}
+	badge := GetBadgeLetter(backpacks)
+
+	if badge != byte('r') {
+		t.Errorf("Expected r but got %q", badge)
+	}
+}
