@@ -11,3 +11,13 @@ func TestGetDuplicatedLetters(t *testing.T) {
 		t.Errorf("Expected 'v' but got %q", dupeLetter)
 	}
 }
+
+func TestGetIncorrectItemPriority(t *testing.T) {
+	backpackContents := "vJrv"
+
+	priority := GetIncorrectItemPriority(backpackContents)
+
+	if priority != 22 {
+		t.Errorf("Expected 22 for 'v' but got %d", priority)
+	}
+}

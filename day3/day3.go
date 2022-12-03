@@ -1,5 +1,9 @@
 package day3
 
+func GetIncorrectItemPriority(backpack string) int {
+	return 0
+}
+
 func GetDuplicatedLetters(backpack string) byte {
 	dupeLetter := byte('a')
 	comparmentSize := getCompartmentSize(backpack)
