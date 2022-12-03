@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"localhost/advent22/day1"
 	"localhost/advent22/day2"
+	"localhost/advent22/day3"
 )
 
 func main() {
@@ -15,6 +16,9 @@ func main() {
 	fmt.Println("\nDay 2")
 	fmt.Printf("Score for strategy card is %d\n", day2.Easy("day2/input"))
 	fmt.Printf("Score for strategy card with target result %d\n", day2.Bonus("day2/input"))
+
+	fmt.Println("\nDay 3")
+	fmt.Printf("Total priority for incorrect packing is %d\n", day3.PartOne("day3/input"))
 
 	fmt.Println("\nDone!")
 }
