@@ -33,7 +33,7 @@ func GetIncorrectItemPriority(backpack string) int {
 func GetBadgePriority(backpacks []string) int {
 	badgeLetter := GetBadgeLetter(backpacks)
 
-	return int(badgeLetter)
+	return GetItemPriority(badgeLetter)
 }
 
 func GetBadgeLetter(backpacks []string) byte {
