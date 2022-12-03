@@ -1,7 +1,8 @@
 package day3
 
 func GetIncorrectItemPriority(backpack string) int {
-	return 0
+	incorrectItem := GetDuplicatedLetters(backpack)
+	return GetItemPriority(incorrectItem)
 }
 
 func GetDuplicatedLetters(backpack string) byte {
