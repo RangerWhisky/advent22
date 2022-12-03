@@ -1,7 +1,16 @@
 package day3
 
+import file_input "localhost/advent22/utils"
+
 func PartOne(filepath string) int {
-	return 0
+	runningTotal := 0
+	elfInput := file_input.Read_file(filepath)
+
+	for i := 0; i < len(elfInput); i++ {
+		runningTotal += GetIncorrectItemPriority(elfInput[i])
+	}
+
+	return runningTotal
 }
 
 func GetIncorrectItemPriority(backpack string) int {
