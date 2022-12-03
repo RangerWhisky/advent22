@@ -2,10 +2,10 @@ package day3
 
 import "testing"
 
-func TestGetDuplicatedLetters(t *testing.T) {
+func TestGetCompartmentDuplicate(t *testing.T) {
 	backpackContents := "vJvr"
 
-	dupeLetter := GetDuplicatedLetters(backpackContents)
+	dupeLetter := GetCompartmentDuplicate(backpackContents)
 
 	if dupeLetter != 'v' {
 		t.Errorf("Expected 'v' but got %q", dupeLetter)

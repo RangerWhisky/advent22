@@ -14,30 +14,37 @@ func PartOne(filepath string) int {
 }
 
 func GetIncorrectItemPriority(backpack string) int {
-	incorrectItem := GetDuplicatedLetters(backpack)
+	incorrectItem := GetCompartmentDuplicate(backpack)
 	return GetItemPriority(incorrectItem)
 }
 
-func GetDuplicatedLetters(backpack string) byte {
-	dupeLetter := byte('a')
+func GetCompartmentDuplicate(backpack string) byte {
 	comparmentSize := getCompartmentSize(backpack)
-
-	for i := 0; i < getCompartmentSize(backpack); i++ {
-		matchCharacter := byte(backpack[i])
-		for j := comparmentSize; j < len(backpack); j++ {
-			if matchCharacter == byte(backpack[j]) {
-				dupeLetter = matchCharacter
-			}
-		}
-	}
-
-	return dupeLetter
+	dupeLetters := getDuplicatedLetters(string(backpack[:comparmentSize]), string(backpack[comparmentSize:]))
+	return dupeLetters[0]
 }
 
 func getCompartmentSize(backpack string) int {
 	return len(backpack) / 2
 }
 
+func getDuplicatedLetters(left string, right string) []byte {
+	var dupeLetters []byte
+
+	for i := 0; i < len(left); i++ {
+		matchCharacter := byte(left[i])
+		for j := 0; j < len(right); j++ {
+			if matchCharacter == byte(right[j]) {
+				dupeLetters = append(dupeLetters, matchCharacter)
+			}
+		}
+	}
+	return dupeLetters
+}
+
 func GetBadgeLetter(backpacks []string) byte {
-	return 'a'
+	firstSet := getDuplicatedLetters(backpacks[0], backpacks[1])
+	finalSet := getDuplicatedLetters(string(firstSet), backpacks[2])
+
+	return finalSet[0]
 }
