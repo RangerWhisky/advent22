@@ -1,6 +1,8 @@
 package day3
 
-import file_input "localhost/advent22/utils"
+import (
+	file_input "localhost/advent22/utils"
+)
 
 func PartOne(filepath string) int {
 	runningTotal := 0
@@ -13,9 +15,20 @@ func PartOne(filepath string) int {
 	return runningTotal
 }
 
+func PartTwo(filepath string) int {
+	return 0
+}
+
 func GetIncorrectItemPriority(backpack string) int {
 	incorrectItem := GetCompartmentDuplicate(backpack)
 	return GetItemPriority(incorrectItem)
+}
+
+func GetBadgeLetter(backpacks []string) byte {
+	firstSet := getDuplicatedLetters(backpacks[0], backpacks[1])
+	finalSet := getDuplicatedLetters(string(firstSet), backpacks[2])
+
+	return finalSet[0]
 }
 
 func GetCompartmentDuplicate(backpack string) byte {
@@ -40,11 +53,4 @@ func getDuplicatedLetters(left string, right string) []byte {
 		}
 	}
 	return dupeLetters
-}
-
-func GetBadgeLetter(backpacks []string) byte {
-	firstSet := getDuplicatedLetters(backpacks[0], backpacks[1])
-	finalSet := getDuplicatedLetters(string(firstSet), backpacks[2])
-
-	return finalSet[0]
 }

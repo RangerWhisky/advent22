@@ -38,3 +38,11 @@ func TestGetBadgeLetter(t *testing.T) {
 		t.Errorf("Expected r but got %q", badge)
 	}
 }
+
+func TestPartTwoExample(t *testing.T) {
+	solution := PartTwo("./simplified_example.txt")
+
+	if solution != 70 {
+		t.Errorf("Should be 70 but is %d", solution)
+	}
+}
