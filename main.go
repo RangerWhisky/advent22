@@ -19,6 +19,7 @@ func main() {
 
 	fmt.Println("\nDay 3")
 	fmt.Printf("Total priority for incorrect packing is %d\n", day3.PartOne("day3/input"))
+	fmt.Printf("Total badge priority for groups is %d\n", day3.PartTwo("day3/input"))
 
 	fmt.Println("\nDone!")
 }
