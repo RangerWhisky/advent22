@@ -6,17 +6,13 @@ import (
 	"strconv"
 )
 
-func Meaning() int {
-	return 6 * 7
-}
-
-func Easy(filepath string) int {
+func PartOne(filepath string) int {
 	elfInput := file_input.Read_file(filepath)
 	caloriesList := GetCalorieList(elfInput)
 	return GetMaxCalories(caloriesList)
 }
 
-func Bonus(filepath string) int {
+func PartTwo(filepath string) int {
 	elfInput := file_input.Read_file(filepath)
 	caloriesList := GetCalorieList(elfInput)
 	return GetTopCalorieTotal(caloriesList, 3)

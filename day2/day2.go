@@ -4,7 +4,7 @@ import (
 	file_input "localhost/advent22/utils"
 )
 
-func Easy(filepath string) int {
+func PartOne(filepath string) int {
 	runningTotal := 0
 	elfInput := file_input.Read_file(filepath)
 	for i := 0; i < len(elfInput); i++ {
@@ -13,7 +13,7 @@ func Easy(filepath string) int {
 	return runningTotal
 }
 
-func Bonus(filepath string) int {
+func PartTwo(filepath string) int {
 	runningTotal := 0
 	elfInput := file_input.Read_file(filepath)
 	for i := 0; i < len(elfInput); i++ {
