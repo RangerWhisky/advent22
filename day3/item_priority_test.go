@@ -25,3 +25,11 @@ func TestGetCapitalItemPriority(t *testing.T) {
 		t.Errorf("Item Priority should be 27 for A but is %d", itemPriority)
 	}
 }
+
+func TestGetCapitalItemPriorityEndRange(t *testing.T) {
+	itemPriority := GetItemPriority('Z')
+
+	if itemPriority != 52 {
+		t.Errorf("Item Priority should be 52 for Z but is %d", itemPriority)
+	}
+}
