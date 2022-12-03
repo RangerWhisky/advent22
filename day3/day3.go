@@ -20,7 +20,7 @@ func PartTwo(filepath string) int {
 	elfInput := file_input.Read_file(filepath)
 
 	for i := 0; i < len(elfInput); i += 3 {
-		runningTotal++
+		runningTotal += GetBadgePriority(elfInput[i : i+3])
 	}
 	return runningTotal
 }
