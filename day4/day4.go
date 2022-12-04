@@ -21,7 +21,9 @@ func GetSectionOverlap(sectionDescription string) bool {
 
 	fullOverlap := false
 
-	if leftStart <= rightStart {
+	if leftStart == rightStart {
+		fullOverlap = true
+	} else if leftStart <= rightStart {
 		fullOverlap = rightEnd <= leftEnd
 	} else {
 		fullOverlap = leftEnd <= rightEnd
