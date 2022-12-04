@@ -22,3 +22,48 @@ func TestConfirmNoOverlap(t *testing.T) {
 		t.Errorf("No overlap on this test but returned True")
 	}
 }
+
+func TestConfirmNoOverlapReverse(t *testing.T) {
+	sectionList := "6-8,2-4"
+	overlap := GetSectionOverlap(sectionList)
+
+	if overlap != false {
+		t.Errorf("No overlap on this test but returned True")
+	}
+}
+
+func TestSectionIdentical(t *testing.T) {
+	sectionList := "2-4,2-4"
+	overlap := GetSectionOverlap(sectionList)
+
+	if overlap != true {
+		t.Errorf("Overlap on this test but returned False")
+	}
+}
+
+func TestSectionLowerBoundary(t *testing.T) {
+	sectionList := "2-4,2-2"
+	overlap := GetSectionOverlap(sectionList)
+
+	if overlap != true {
+		t.Errorf("Overlap on this test but returned False")
+	}
+}
+
+func TestSectionUpperBoundary(t *testing.T) {
+	sectionList := "2-4,4-4"
+	overlap := GetSectionOverlap(sectionList)
+
+	if overlap != true {
+		t.Errorf("Overlap on this test but returned False")
+	}
+}
+
+func TestSectionLowerBoundaryReverse(t *testing.T) {
+	sectionList := "2-2,2-4"
+	overlap := GetSectionOverlap(sectionList)
+
+	if overlap != true {
+		t.Errorf("Overlap on this test but returned False")
+	}
+}
