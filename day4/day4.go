@@ -48,5 +48,18 @@ func IsSectionSuperset(sectionDescription string) bool {
 }
 
 func IsOverlapping(sectionDescription string) bool {
-	return false
+	sections := strings.Split(sectionDescription, ",")
+	leftStart, leftEnd := GetSectionRange(sections[0])
+	rightStart, rightEnd := GetSectionRange(sections[1])
+
+	overlap := false
+
+	if leftEnd >= rightStart {
+		overlap = true
+	}
+	if rightEnd >= leftStart {
+		overlap = true
+	}
+
+	return overlap
 }
