@@ -30,7 +30,7 @@ func PartTwo(filepath string) int {
 		}
 	}
 
-	return 0
+	return runningTotal
 }
 
 func GetSectionRange(rangeString string) (int, int) {
