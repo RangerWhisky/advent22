@@ -1,12 +1,23 @@
 package day4
 
 import (
+	file_input "localhost/advent22/utils"
 	"strconv"
 	"strings"
 )
 
 func PartOne(filepath string) int {
-	return 0
+
+	runningTotal := 0
+	elfInput := file_input.Read_file(filepath)
+
+	for i := 0; i < len(elfInput); i++ {
+		if GetSectionOverlap(elfInput[i]) {
+			runningTotal++
+		}
+	}
+
+	return runningTotal
 }
 
 func GetSectionRange(rangeString string) (int, int) {
