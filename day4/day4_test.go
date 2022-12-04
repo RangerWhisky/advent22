@@ -13,3 +13,12 @@ func TestGetSectionRange(t *testing.T) {
 		t.Errorf("End of range is %d, should be 4", rangeEnd)
 	}
 }
+
+func TestConfirmNoOverlap(t *testing.T) {
+	sectionList := "2-4,6-8"
+	overlap := GetSectionOverlap(sectionList)
+
+	if overlap != false {
+		t.Errorf("No overlap on this test but returned True")
+	}
+}

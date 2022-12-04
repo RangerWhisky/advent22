@@ -13,3 +13,7 @@ func GetSectionRange(rangeString string) (int, int) {
 
 	return start, end
 }
+
+func GetSectionOverlap(sectionDescription string) bool {
+	return true
+}
