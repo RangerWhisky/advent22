@@ -67,3 +67,12 @@ func TestSectionLowerBoundaryReverse(t *testing.T) {
 		t.Errorf("Overlap on this test but returned False")
 	}
 }
+
+func TestSectionUpperBoundaryReverse(t *testing.T) {
+	sectionList := "4-4,2-4"
+	overlap := GetSectionOverlap(sectionList)
+
+	if overlap != true {
+		t.Errorf("Overlap on this test but returned False")
+	}
+}
