@@ -5,6 +5,7 @@ import (
 	"localhost/advent22/day1"
 	"localhost/advent22/day2"
 	"localhost/advent22/day3"
+	"localhost/advent22/day4"
 )
 
 func main() {
@@ -20,6 +21,9 @@ func main() {
 	fmt.Println("\nDay 3")
 	fmt.Printf("Total priority for incorrect packing is %d\n", day3.PartOne("day3/input"))
 	fmt.Printf("Total badge priority for groups is %d\n", day3.PartTwo("day3/input"))
+
+	fmt.Println("\nDay 4")
+	fmt.Printf("Count of overlapping sections is %d\n", day4.PartOne("day4/input"))
 
 	fmt.Println("\nDone!")
 }
