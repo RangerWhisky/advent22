@@ -32,6 +32,15 @@ func TestConfirmNoOverlapReverse(t *testing.T) {
 	}
 }
 
+func TestConfirmIncompleteOverlap(t *testing.T) {
+	sectionList := "6-8,7-9"
+	overlap := GetSectionOverlap(sectionList)
+
+	if overlap != false {
+		t.Errorf("No overlap on this test but returned True")
+	}
+}
+
 func TestSectionIdentical(t *testing.T) {
 	sectionList := "2-4,2-4"
 	overlap := GetSectionOverlap(sectionList)
@@ -74,5 +83,12 @@ func TestSectionUpperBoundaryReverse(t *testing.T) {
 
 	if overlap != true {
 		t.Errorf("Overlap on this test but returned False")
+	}
+}
+
+func TestPartOneSolution(t *testing.T) {
+	solution := PartOne("./simplified_example.txt")
+	if solution != 2 {
+		t.Errorf("Sample solution Score calculated as %d but should be %d", solution, 2)
 	}
 }

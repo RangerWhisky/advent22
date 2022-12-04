@@ -5,6 +5,10 @@ import (
 	"strings"
 )
 
+func PartOne(filepath string) int {
+	return 0
+}
+
 func GetSectionRange(rangeString string) (int, int) {
 	rangeValues := strings.Split(rangeString, "-")
 
