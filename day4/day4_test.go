@@ -16,7 +16,7 @@ func TestGetSectionRange(t *testing.T) {
 
 func TestConfirmNoOverlap(t *testing.T) {
 	sectionList := "2-4,6-8"
-	overlap := GetSectionOverlap(sectionList)
+	overlap := IsSectionSuperset(sectionList)
 
 	if overlap != false {
 		t.Errorf("No overlap on this test but returned True")
@@ -25,7 +25,7 @@ func TestConfirmNoOverlap(t *testing.T) {
 
 func TestConfirmNoOverlapReverse(t *testing.T) {
 	sectionList := "6-8,2-4"
-	overlap := GetSectionOverlap(sectionList)
+	overlap := IsSectionSuperset(sectionList)
 
 	if overlap != false {
 		t.Errorf("No overlap on this test but returned True")
@@ -34,7 +34,7 @@ func TestConfirmNoOverlapReverse(t *testing.T) {
 
 func TestConfirmIncompleteOverlap(t *testing.T) {
 	sectionList := "6-8,7-9"
-	overlap := GetSectionOverlap(sectionList)
+	overlap := IsSectionSuperset(sectionList)
 
 	if overlap != false {
 		t.Errorf("No overlap on this test but returned True")
@@ -43,7 +43,7 @@ func TestConfirmIncompleteOverlap(t *testing.T) {
 
 func TestSectionIdentical(t *testing.T) {
 	sectionList := "2-4,2-4"
-	overlap := GetSectionOverlap(sectionList)
+	overlap := IsSectionSuperset(sectionList)
 
 	if overlap != true {
 		t.Errorf("Overlap on this test but returned False")
@@ -52,7 +52,7 @@ func TestSectionIdentical(t *testing.T) {
 
 func TestSectionLowerBoundary(t *testing.T) {
 	sectionList := "2-4,2-2"
-	overlap := GetSectionOverlap(sectionList)
+	overlap := IsSectionSuperset(sectionList)
 
 	if overlap != true {
 		t.Errorf("Overlap on this test but returned False")
@@ -61,7 +61,7 @@ func TestSectionLowerBoundary(t *testing.T) {
 
 func TestSectionUpperBoundary(t *testing.T) {
 	sectionList := "2-4,4-4"
-	overlap := GetSectionOverlap(sectionList)
+	overlap := IsSectionSuperset(sectionList)
 
 	if overlap != true {
 		t.Errorf("Overlap on this test but returned False")
@@ -70,7 +70,7 @@ func TestSectionUpperBoundary(t *testing.T) {
 
 func TestSectionLowerBoundaryReverse(t *testing.T) {
 	sectionList := "2-2,2-4"
-	overlap := GetSectionOverlap(sectionList)
+	overlap := IsSectionSuperset(sectionList)
 
 	if overlap != true {
 		t.Errorf("Overlap on this test but returned False")
@@ -79,7 +79,7 @@ func TestSectionLowerBoundaryReverse(t *testing.T) {
 
 func TestSectionUpperBoundaryReverse(t *testing.T) {
 	sectionList := "4-4,2-4"
-	overlap := GetSectionOverlap(sectionList)
+	overlap := IsSectionSuperset(sectionList)
 
 	if overlap != true {
 		t.Errorf("Overlap on this test but returned False")

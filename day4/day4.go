@@ -12,7 +12,7 @@ func PartOne(filepath string) int {
 	elfInput := file_input.Read_file(filepath)
 
 	for i := 0; i < len(elfInput); i++ {
-		if GetSectionOverlap(elfInput[i]) {
+		if IsSectionSuperset(elfInput[i]) {
 			runningTotal++
 		}
 	}
@@ -29,7 +29,7 @@ func GetSectionRange(rangeString string) (int, int) {
 	return start, end
 }
 
-func GetSectionOverlap(sectionDescription string) bool {
+func IsSectionSuperset(sectionDescription string) bool {
 	sections := strings.Split(sectionDescription, ",")
 	leftStart, leftEnd := GetSectionRange(sections[0])
 	rightStart, rightEnd := GetSectionRange(sections[1])
