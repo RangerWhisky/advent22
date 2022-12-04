@@ -46,3 +46,7 @@ func IsSectionSuperset(sectionDescription string) bool {
 
 	return fullOverlap
 }
+
+func IsOverlapping(sectionDescription string) bool {
+	return false
+}
