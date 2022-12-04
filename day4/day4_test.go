@@ -119,3 +119,10 @@ func TestConfirmOverlap(t *testing.T) {
 		t.Errorf("Overlap on this test but returned False")
 	}
 }
+
+func TestPartTwo(t *testing.T) {
+	solution := PartTwo("./simplified_example.txt")
+	if solution != 4 {
+		t.Errorf("Sample solution Score calculated as %d but should be %d", solution, 2)
+	}
+}

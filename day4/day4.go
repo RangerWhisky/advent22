@@ -19,6 +19,19 @@ func PartOne(filepath string) int {
 
 	return runningTotal
 }
+func PartTwo(filepath string) int {
+
+	runningTotal := 0
+	elfInput := file_input.Read_file(filepath)
+
+	for i := 0; i < len(elfInput); i++ {
+		if IsOverlapping(elfInput[i]) {
+			runningTotal++
+		}
+	}
+
+	return 0
+}
 
 func GetSectionRange(rangeString string) (int, int) {
 	rangeValues := strings.Split(rangeString, "-")
