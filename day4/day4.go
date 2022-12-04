@@ -15,5 +15,17 @@ func GetSectionRange(rangeString string) (int, int) {
 }
 
 func GetSectionOverlap(sectionDescription string) bool {
-	return true
+	sections := strings.Split(sectionDescription, ",")
+	leftStart, leftEnd := GetSectionRange(sections[0])
+	rightStart, rightEnd := GetSectionRange(sections[1])
+
+	fullOverlap := false
+
+	if leftStart <= rightStart {
+		fullOverlap = rightEnd <= leftEnd
+	} else {
+		fullOverlap = leftEnd <= rightEnd
+	}
+
+	return fullOverlap
 }
