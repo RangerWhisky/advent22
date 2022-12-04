@@ -102,6 +102,15 @@ func TestConfirmNoOverlap(t *testing.T) {
 	}
 }
 
+func TestConfirmNoOverlapReverse(t *testing.T) {
+	sectionList := "2-4,6-8"
+	overlap := IsOverlapping(sectionList)
+
+	if overlap != false {
+		t.Errorf("No overlap on this test but returned True")
+	}
+}
+
 func TestConfirmOverlap(t *testing.T) {
 	sectionList := "6-8,7-9"
 	overlap := IsOverlapping(sectionList)

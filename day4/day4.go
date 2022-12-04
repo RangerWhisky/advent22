@@ -54,10 +54,10 @@ func IsOverlapping(sectionDescription string) bool {
 
 	overlap := false
 
-	if leftEnd >= rightStart {
+	if (leftStart <= rightStart) && (rightStart <= leftEnd) {
 		overlap = true
 	}
-	if rightEnd >= leftStart {
+	if (rightStart <= leftStart) && (leftStart <= rightEnd) {
 		overlap = true
 	}
 
