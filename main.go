@@ -23,7 +23,8 @@ func main() {
 	fmt.Printf("Total badge priority for groups is %d\n", day3.PartTwo("day3/input"))
 
 	fmt.Println("\nDay 4")
-	fmt.Printf("Count of overlapping sections is %d\n", day4.PartOne("day4/input"))
+	fmt.Printf("Count of superset sections is %d\n", day4.PartOne("day4/input"))
+	fmt.Printf("Count of overlapping sections is %d\n", day4.PartTwo("day4/input"))
 
 	fmt.Println("\nDone!")
 }
