@@ -6,6 +6,14 @@ import (
 )
 
 func PartOne(filepath string) string {
+	return runCrateSimulation(filepath, false)
+}
+
+func PartTwo(filepath string) string {
+	return runCrateSimulation(filepath, true)
+}
+
+func runCrateSimulation(filepath string, is9001 bool) string {
 	crateStarterText := ""
 	elfInput := file_input.Read_file(filepath)
 	instructionStart := 0
@@ -30,7 +38,11 @@ func PartOne(filepath string) string {
 
 	for i := instructionStart; i < len(elfInput); i++ {
 		quantity, source, dest := GetInstruction(elfInput[i])
-		MoveCargo(&stacks[source-1], &stacks[dest-1], quantity)
+		if is9001 {
+			BulkMoveCargo(&stacks[source-1], &stacks[dest-1], quantity)
+		} else {
+			PiecemealMoveCargo(&stacks[source-1], &stacks[dest-1], quantity)
+		}
 	}
 
 	tops := []byte{}

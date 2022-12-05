@@ -84,7 +84,7 @@ func TestSimpleMove(t *testing.T) {
 	sourceStack := CreateCargoStack([]byte("MCD"))
 	destStack := CreateCargoStack([]byte("P"))
 
-	MoveCargo(&sourceStack, &destStack, 1)
+	PiecemealMoveCargo(&sourceStack, &destStack, 1)
 	if sourceStack.height != 2 {
 		t.Error()
 	}
@@ -94,7 +94,7 @@ func TestBigMove(t *testing.T) {
 	sourceStack := CreateCargoStack([]byte("MCD"))
 	destStack := CreateCargoStack([]byte("P"))
 
-	MoveCargo(&sourceStack, &destStack, 2)
+	PiecemealMoveCargo(&sourceStack, &destStack, 2)
 	if destStack.height != 3 {
 		t.Error()
 	}
@@ -122,26 +122,33 @@ func TestSampleMovesStepwise(t *testing.T) {
 		t.Errorf("Step zero failed %q", step)
 	}
 
-	MoveCargo(&stackInput[1], &stackInput[0], 1)
+	PiecemealMoveCargo(&stackInput[1], &stackInput[0], 1)
 	step = []byte{GetTop(stackInput[0]), GetTop(stackInput[1]), GetTop(stackInput[2])}
 	if string(step) != "DCP" {
 		t.Errorf("Step one failed %q", step)
 	}
 
-	MoveCargo(&stackInput[0], &stackInput[2], 3)
+	PiecemealMoveCargo(&stackInput[0], &stackInput[2], 3)
 	step = []byte{GetTop(stackInput[0]), GetTop(stackInput[1]), GetTop(stackInput[2])}
 	if string(step) != " CZ" {
 		t.Errorf("Step two failed %q", step)
 	}
 
-	MoveCargo(&stackInput[1], &stackInput[0], 2)
+	PiecemealMoveCargo(&stackInput[1], &stackInput[0], 2)
 	step = []byte{GetTop(stackInput[0]), GetTop(stackInput[1]), GetTop(stackInput[2])}
 	if string(step) != "M Z" {
 		t.Errorf("Step three failed %q", step)
 	}
 
-	MoveCargo(&stackInput[0], &stackInput[1], 1)
+	PiecemealMoveCargo(&stackInput[0], &stackInput[1], 1)
 	step = []byte{GetTop(stackInput[0]), GetTop(stackInput[1]), GetTop(stackInput[2])}
+	if string(step) != "CMZ" {
+		t.Errorf("Step four failed %q", step)
+	}
+}
+
+func TestPartOne(t *testing.T) {
+	step := PartOne("simplified_example.txt")
 	if string(step) != "CMZ" {
 		t.Errorf("Step four failed %q", step)
 	}

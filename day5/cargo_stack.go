@@ -81,16 +81,28 @@ func GetStackCount(cargoLine string) int {
 	return stackCount
 }
 
-func MoveCargo(source *CargoStack, dest *CargoStack, quantity int) {
+func BulkMoveCargo(source *CargoStack, dest *CargoStack, quantity int) {
+	MoveCargo(source, dest, quantity, true)
+}
+
+func PiecemealMoveCargo(source *CargoStack, dest *CargoStack, quantity int) {
+	MoveCargo(source, dest, quantity, false)
+}
+
+func MoveCargo(source *CargoStack, dest *CargoStack, quantity int, bulk bool) {
 	fmt.Printf("Move %d from %q to %q\n", quantity, source, dest)
 	if quantity > source.height {
 		quantity = source.height
 	}
 
-	for i := 0; i < quantity; i++ {
-		source.height--
-		dest.cargo = append(dest.cargo, source.cargo[source.height])
-		dest.height++
+	if bulk {
+
+	} else {
+		for i := 0; i < quantity; i++ {
+			source.height--
+			dest.cargo = append(dest.cargo, source.cargo[source.height])
+			dest.height++
+		}
+		source.cargo = source.cargo[:source.height]
 	}
-	source.cargo = source.cargo[:source.height]
 }

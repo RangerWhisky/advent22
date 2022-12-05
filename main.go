@@ -6,6 +6,7 @@ import (
 	"localhost/advent22/day2"
 	"localhost/advent22/day3"
 	"localhost/advent22/day4"
+	"localhost/advent22/day5"
 )
 
 func main() {
@@ -25,6 +26,9 @@ func main() {
 	fmt.Println("\nDay 4")
 	fmt.Printf("Count of superset sections is %d\n", day4.PartOne("day4/input"))
 	fmt.Printf("Count of overlapping sections is %d\n", day4.PartTwo("day4/input"))
+
+	fmt.Println("\nDay 5")
+	fmt.Printf("Top Level Containers are %s\n", day5.PartOne("day5/input"))
 
 	fmt.Println("\nDone!")
 }
