@@ -21,8 +21,8 @@ func CreateCargoStack(cargoList []byte) CargoStack {
 	return stack
 }
 
-func GetCargoStackInput(cargoDescription string) [][]byte {
-	var val [][]byte
+func GetCargoStackInput(cargoDescription string) []CargoStack {
+	var stacks []CargoStack
 	cargoLines := strings.Split(cargoDescription, "\n")
 	maxHeight := len(cargoLines) - 1
 
@@ -39,10 +39,10 @@ func GetCargoStackInput(cargoDescription string) [][]byte {
 			}
 
 		}
-		val = append(val, stackContents)
+		stacks = append(stacks, CreateCargoStack(stackContents))
 	}
 
-	return val
+	return stacks
 }
 
 func GetCargoValue(cargoLine string, index int) byte {
