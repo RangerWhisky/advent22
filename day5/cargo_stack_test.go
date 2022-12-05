@@ -48,4 +48,10 @@ func TestGetStackCount(t *testing.T) {
 	if stacks != 9 {
 		t.Errorf("Expected 9 stacks but got %d", stacks)
 	}
+
+	exampleLine = " 1   2   3 "
+	stacks = GetStackCount(exampleLine)
+	if stacks != 3 {
+		t.Errorf("Expected 3 stacks but got %d", stacks)
+	}
 }

@@ -33,5 +33,6 @@ func GetCargoValue(cargoLine string, index int) byte {
 }
 
 func GetStackCount(cargoLine string) int {
-	return 0
+	stackCount := (len(cargoLine) / 4) + 1
+	return stackCount
 }
