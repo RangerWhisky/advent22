@@ -1,6 +1,9 @@
 package day5
 
-import "strings"
+import (
+	"strconv"
+	"strings"
+)
 
 type CargoStack struct {
 	height int
@@ -53,6 +56,11 @@ func GetStackCountFromDescription(cargoDescription string) int {
 }
 
 func GetStackCount(cargoLine string) int {
-	stackCount := (len(cargoLine) / 4) + 1
+	inputAsBytes := []byte(cargoLine)
+	highestStack := cargoLine[len(inputAsBytes)-2]
+	stackCount, err := strconv.Atoi(string(highestStack))
+	if err != nil {
+		stackCount = 0
+	}
 	return stackCount
 }
