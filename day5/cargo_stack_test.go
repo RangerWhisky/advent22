@@ -31,19 +31,22 @@ func TestCreateStackFromBytes(t *testing.T) {
 
 func TestGetStackInputFromDescription(t *testing.T) {
 	exampleText := `    [D]    
-	[N] [C]    
-	[Z] [M] [P]
-	 1   2   3 `
+[N] [C]    
+[Z] [M] [P]
+ 1   2   3 `
 	stackInput := GetCargoStackInput(exampleText)
 
 	if len(stackInput) == 0 {
 		t.Error()
 	}
+	if GetTop(stackInput[0]) != byte('N') {
+		t.Errorf("Expected ZN, got %q", stackInput[0])
+	}
 }
 
 func TestGetStackValueOnLine(t *testing.T) {
 	exampleLine := `[Z] [M] [P]`
-	expectedValues := []byte{'0', 'Z', 'M', 'P', '0'}
+	expectedValues := []byte{' ', 'Z', 'M', 'P', ' '}
 	for i := 0; i <= 4; i++ {
 		value := GetCargoValue(exampleLine, i)
 		if value != expectedValues[i] {
@@ -68,9 +71,9 @@ func TestGetStackCount(t *testing.T) {
 
 func TestGetStackCountFromDescription(t *testing.T) {
 	exampleText := `    [D]    
-	[N] [C]    
-	[Z] [M] [P]
-	 1   2   3 `
+[N] [C]    
+[Z] [M] [P]
+ 1   2   3 `
 	stackCount := GetStackCountFromDescription(exampleText)
 	if stackCount != 3 {
 		t.Errorf("Stack count from full description is %d, should be 3", stackCount)
@@ -104,5 +107,42 @@ func TestBigMove(t *testing.T) {
 
 	if GetTop(destStack) != 'C' {
 		t.Error()
+	}
+}
+
+func TestSampleMovesStepwise(t *testing.T) {
+	exampleText := `    [D]    
+[N] [C]    
+[Z] [M] [P]
+ 1   2   3 `
+	stackInput := GetCargoStackInput(exampleText)
+
+	step := []byte{GetTop(stackInput[0]), GetTop(stackInput[1]), GetTop(stackInput[2])}
+	if string(step) != "NDP" {
+		t.Errorf("Step zero failed %q", step)
+	}
+
+	MoveCargo(&stackInput[1], &stackInput[0], 1)
+	step = []byte{GetTop(stackInput[0]), GetTop(stackInput[1]), GetTop(stackInput[2])}
+	if string(step) != "DCP" {
+		t.Errorf("Step one failed %q", step)
+	}
+
+	MoveCargo(&stackInput[0], &stackInput[2], 3)
+	step = []byte{GetTop(stackInput[0]), GetTop(stackInput[1]), GetTop(stackInput[2])}
+	if string(step) != " CZ" {
+		t.Errorf("Step two failed %q", step)
+	}
+
+	MoveCargo(&stackInput[1], &stackInput[0], 2)
+	step = []byte{GetTop(stackInput[0]), GetTop(stackInput[1]), GetTop(stackInput[2])}
+	if string(step) != "M Z" {
+		t.Errorf("Step three failed %q", step)
+	}
+
+	MoveCargo(&stackInput[0], &stackInput[1], 1)
+	step = []byte{GetTop(stackInput[0]), GetTop(stackInput[1]), GetTop(stackInput[2])}
+	if string(step) != "CMZ" {
+		t.Errorf("Step four failed %q", step)
 	}
 }
