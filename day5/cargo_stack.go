@@ -1,7 +1,6 @@
 package day5
 
 import (
-	"fmt"
 	"strconv"
 	"strings"
 )
@@ -90,7 +89,6 @@ func PiecemealMoveCargo(source *CargoStack, dest *CargoStack, quantity int) {
 }
 
 func MoveCargo(source *CargoStack, dest *CargoStack, quantity int, bulk bool) {
-	fmt.Printf("Move %d from %q to %q\n", quantity, source, dest)
 	if quantity > source.height {
 		quantity = source.height
 	}

@@ -29,6 +29,7 @@ func main() {
 
 	fmt.Println("\nDay 5")
 	fmt.Printf("Top Level Containers are %s\n", day5.PartOne("day5/input"))
+	fmt.Printf("Top Level Containers for 9001 version are %s\n", day5.PartTwo("day5/input"))
 
 	fmt.Println("\nDone!")
 }

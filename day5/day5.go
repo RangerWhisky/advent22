@@ -1,7 +1,6 @@
 package day5
 
 import (
-	"fmt"
 	file_input "localhost/advent22/utils"
 )
 
@@ -22,19 +21,15 @@ func runCrateSimulation(filepath string, is9001 bool) string {
 		if elfInput[i][1] != '1' {
 			array := []byte(elfInput[i])
 			crateStarterText = crateStarterText + string(array) + "\n"
-			fmt.Printf("line %q \n", string(array))
 		} else {
 			array := []byte(elfInput[i])
 			crateStarterText = crateStarterText + string(array)
-			fmt.Printf("numbers %q \n", string(array))
 			instructionStart = i + 2
 			break
 		}
 	}
 
 	stacks := GetCargoStackInput(crateStarterText)
-
-	fmt.Printf("whole string %q \n", crateStarterText)
 
 	for i := instructionStart; i < len(elfInput); i++ {
 		quantity, source, dest := GetInstruction(elfInput[i])
