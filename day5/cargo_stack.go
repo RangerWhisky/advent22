@@ -13,6 +13,10 @@ type CargoStack struct {
 
 const emptySpace byte = '0'
 
+func GetTop(CargoStack) byte {
+	return '0'
+}
+
 func CreateCargoStack(cargoList []byte) CargoStack {
 	stack := CargoStack{
 		height: (len(cargoList)),
@@ -86,4 +90,5 @@ func MoveCargo(source *CargoStack, dest *CargoStack, quantity int) {
 
 	dest.height += quantity
 	source.height -= quantity
+	source.cargo = source.cargo[:source.height]
 }

@@ -76,3 +76,21 @@ func TestSimpleMove(t *testing.T) {
 		t.Error()
 	}
 }
+
+func TestBigMove(t *testing.T) {
+	sourceStack := CreateCargoStack([]byte("MCD"))
+	destStack := CreateCargoStack([]byte("P"))
+
+	MoveCargo(&sourceStack, &destStack, 2)
+	if destStack.height != 3 {
+		t.Error()
+	}
+
+	if GetTop(sourceStack) != 'M' {
+		t.Error()
+	}
+
+	if GetTop(destStack) != 'C' {
+		t.Error()
+	}
+}
