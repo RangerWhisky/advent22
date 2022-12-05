@@ -153,3 +153,10 @@ func TestPartOne(t *testing.T) {
 		t.Errorf("Step four failed %q", step)
 	}
 }
+
+func TestPartTwo(t *testing.T) {
+	step := PartOne("simplified_example.txt")
+	if string(step) != "MCD" {
+		t.Errorf("Step four failed %q", step)
+	}
+}
