@@ -55,3 +55,14 @@ func TestGetStackCount(t *testing.T) {
 		t.Errorf("Expected 3 stacks but got %d", stacks)
 	}
 }
+
+func TestGetStackCountFromDescription(t *testing.T) {
+	exampleText := `    [D]    
+	[N] [C]    
+	[Z] [M] [P]
+	 1   2   3 `
+	stackCount := GetStackCountFromDescription(exampleText)
+	if stackCount != 3 {
+		t.Errorf("Stack count from full description is %d, should be 3", stackCount)
+	}
+}
