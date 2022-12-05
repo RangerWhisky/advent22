@@ -71,3 +71,9 @@ func GetStackCount(cargoLine string) int {
 	}
 	return stackCount
 }
+
+func MoveCargo(source *CargoStack, dest *CargoStack, quantity int) {
+	if quantity < source.height {
+		quantity = source.height
+	}
+}

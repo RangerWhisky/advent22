@@ -66,3 +66,13 @@ func TestGetStackCountFromDescription(t *testing.T) {
 		t.Errorf("Stack count from full description is %d, should be 3", stackCount)
 	}
 }
+
+func TestPop(t *testing.T) {
+	sourceStack := CreateCargoStack([]byte("MCD"))
+	destStack := CreateCargoStack([]byte("P"))
+
+	MoveCargo(&sourceStack, &destStack, 1)
+	if sourceStack.height != 2 {
+		t.Error()
+	}
+}
