@@ -23,6 +23,11 @@ func GetCargoStackInput(cargoDescription string) [][]byte {
 func GetCargoValue(cargoLine string, index int) byte {
 	// initialise to be empty
 	foundCargo := emptySpace
-
+	if index > 0 {
+		indexToRead := (index * 4) - 3
+		if indexToRead <= len(cargoLine) {
+			foundCargo = cargoLine[indexToRead]
+		}
+	}
 	return foundCargo
 }
