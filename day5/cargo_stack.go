@@ -1,6 +1,7 @@
 package day5
 
 import (
+	"fmt"
 	"strconv"
 	"strings"
 )
@@ -30,9 +31,15 @@ func GetCargoStackInput(cargoDescription string) [][]byte {
 	for stack := 1; stack <= stackCount; stack++ {
 		stackContents := []byte{}
 		for level := 1; level < maxHeight; level++ {
-			stackContents[level-1] = GetCargoValue(cargoLines[maxHeight-level], stack)
+			lineToRead := maxHeight - level
+			fmt.Printf("level %d, maxHeight %d, line to check %d\n", level, maxHeight, lineToRead)
+			cargo := GetCargoValue(cargoLines[maxHeight-level], stack)
+			if cargo != '0' {
+				stackContents = append(stackContents, cargo)
+			}
+
 		}
-		val[stack] = stackContents
+		val = append(val, stackContents)
 	}
 
 	return val
