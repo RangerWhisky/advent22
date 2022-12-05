@@ -10,7 +10,7 @@ func TestPartOneSolution(t *testing.T) {
 }
 
 func TestPartTwo(t *testing.T) {
-	step := PartOne("simplified_example.txt")
+	step := PartTwo("simplified_example.txt")
 	if string(step) != "MCD" {
 		t.Errorf("Step four failed %q", step)
 	}
