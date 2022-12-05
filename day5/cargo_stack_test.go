@@ -1,7 +1,6 @@
 package day5
 
 import (
-	"fmt"
 	"testing"
 )
 
@@ -98,8 +97,6 @@ func TestBigMove(t *testing.T) {
 	if destStack.height != 3 {
 		t.Error()
 	}
-
-	fmt.Printf("source %d, dest %d", sourceStack.height, destStack.height)
 
 	if GetTop(sourceStack) != 'M' {
 		t.Error()
