@@ -96,13 +96,16 @@ func MoveCargo(source *CargoStack, dest *CargoStack, quantity int, bulk bool) {
 	}
 
 	if bulk {
-
+		copyStart := source.height - quantity
+		dest.cargo = append(dest.cargo, source.cargo[copyStart:]...)
+		source.height -= quantity
+		dest.height += quantity
 	} else {
 		for i := 0; i < quantity; i++ {
 			source.height--
 			dest.cargo = append(dest.cargo, source.cargo[source.height])
 			dest.height++
 		}
-		source.cargo = source.cargo[:source.height]
 	}
+	source.cargo = source.cargo[:source.height]
 }
