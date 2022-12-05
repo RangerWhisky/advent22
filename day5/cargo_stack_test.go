@@ -18,3 +18,15 @@ func TestCreateStackFromBytes(t *testing.T) {
 		}
 	}
 }
+
+func TestGetStackInputFromDescription(t *testing.T) {
+	exampleText := `    [D]    
+	[N] [C]    
+	[Z] [M] [P]
+	 1   2   3 `
+	stackInput := GetCargoStackInput(exampleText)
+
+	if len(stackInput) == 0 {
+		t.Error()
+	}
+}

@@ -12,3 +12,8 @@ func CreateCargoStack(cargoList []byte) CargoStack {
 	}
 	return stack
 }
+
+func GetCargoStackInput(cargoDescription string) [][]byte {
+	var val [][]byte
+	return val
+}
