@@ -13,8 +13,8 @@ type CargoStack struct {
 
 const emptySpace byte = '0'
 
-func GetTop(CargoStack) byte {
-	return '0'
+func GetTop(stack CargoStack) byte {
+	return stack.cargo[stack.height-1]
 }
 
 func CreateCargoStack(cargoList []byte) CargoStack {
