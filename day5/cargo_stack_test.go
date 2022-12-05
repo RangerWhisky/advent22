@@ -2,6 +2,13 @@ package day5
 
 import "testing"
 
+func TestGetTop(t *testing.T) {
+	stack := CreateCargoStack([]byte("MCD"))
+	if GetTop(stack) != 'D' {
+		t.Error()
+	}
+}
+
 func TestCreateStackFromBytes(t *testing.T) {
 	testInput := []byte("MCD")
 
