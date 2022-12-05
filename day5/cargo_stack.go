@@ -1,7 +1,6 @@
 package day5
 
 import (
-	"fmt"
 	"strconv"
 	"strings"
 )
@@ -14,7 +13,12 @@ type CargoStack struct {
 const emptySpace byte = '0'
 
 func GetTop(stack CargoStack) byte {
-	return stack.cargo[stack.height-1]
+	top := byte('0')
+	if stack.height > 0 {
+		itemToCheck := stack.height - 1
+		top = stack.cargo[itemToCheck]
+	}
+	return byte(top)
 }
 
 func CreateCargoStack(cargoList []byte) CargoStack {
@@ -36,8 +40,7 @@ func GetCargoStackInput(cargoDescription string) []CargoStack {
 		stackContents := []byte{}
 		for level := 1; level < maxHeight; level++ {
 			lineToRead := maxHeight - level
-			fmt.Printf("level %d, maxHeight %d, line to check %d\n", level, maxHeight, lineToRead)
-			cargo := GetCargoValue(cargoLines[maxHeight-level], stack)
+			cargo := GetCargoValue(cargoLines[lineToRead], stack)
 			if cargo != '0' {
 				stackContents = append(stackContents, cargo)
 			}
@@ -81,14 +84,9 @@ func MoveCargo(source *CargoStack, dest *CargoStack, quantity int) {
 		quantity = source.height
 	}
 
-	fmt.Printf("Source height %d, dest heigh %d, quantity %d", source.height, dest.height, quantity)
-
-	for i := 1; i < quantity; i++ {
-		itemToMove := source.height - i
-		dest.cargo = append(dest.cargo, source.cargo[itemToMove])
+	for i := 1; i <= quantity; i++ {
+		source.height--
+		dest.cargo = append(dest.cargo, source.cargo[source.height])
+		dest.height++
 	}
-
-	dest.height += quantity
-	source.height -= quantity
-	source.cargo = source.cargo[:source.height]
 }

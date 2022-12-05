@@ -1,6 +1,9 @@
 package day5
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 func TestGetTop(t *testing.T) {
 	stack := CreateCargoStack([]byte("MCD"))
@@ -92,6 +95,8 @@ func TestBigMove(t *testing.T) {
 	if destStack.height != 3 {
 		t.Error()
 	}
+
+	fmt.Printf("source %d, dest %d", sourceStack.height, destStack.height)
 
 	if GetTop(sourceStack) != 'M' {
 		t.Error()
