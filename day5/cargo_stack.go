@@ -31,3 +31,7 @@ func GetCargoValue(cargoLine string, index int) byte {
 	}
 	return foundCargo
 }
+
+func GetStackCount(cargoLine string) int {
+	return 0
+}

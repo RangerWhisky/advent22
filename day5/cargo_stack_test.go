@@ -41,3 +41,11 @@ func TestGetStackValueOnLine(t *testing.T) {
 		}
 	}
 }
+
+func TestGetStackCount(t *testing.T) {
+	exampleLine := " 1   2   3   4   5   6   7   8   9 "
+	stacks := GetStackCount(exampleLine)
+	if stacks != 9 {
+		t.Errorf("Expected 9 stacks but got %d", stacks)
+	}
+}
