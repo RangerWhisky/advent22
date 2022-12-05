@@ -7,7 +7,7 @@ type CargoStack struct {
 
 func CreateCargoStack(cargoList []byte) CargoStack {
 	stack := CargoStack{
-		height: 0,
+		height: (len(cargoList)),
 		cargo:  cargoList,
 	}
 	return stack
