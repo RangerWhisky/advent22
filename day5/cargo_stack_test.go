@@ -30,3 +30,14 @@ func TestGetStackInputFromDescription(t *testing.T) {
 		t.Error()
 	}
 }
+
+func TestGetStackValueOnLine(t *testing.T) {
+	exampleLine := `[Z] [M] [P]`
+	expectedValues := []byte{'0', 'Z', 'M', 'P', '0'}
+	for i := 0; i <= 4; i++ {
+		value := GetCargoValue(exampleLine, i)
+		if value != expectedValues[i] {
+			t.Errorf("Got %q, expected %q", value, expectedValues[i])
+		}
+	}
+}

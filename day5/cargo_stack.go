@@ -5,6 +5,8 @@ type CargoStack struct {
 	cargo  []byte
 }
 
+const emptySpace byte = '0'
+
 func CreateCargoStack(cargoList []byte) CargoStack {
 	stack := CargoStack{
 		height: (len(cargoList)),
@@ -16,4 +18,11 @@ func CreateCargoStack(cargoList []byte) CargoStack {
 func GetCargoStackInput(cargoDescription string) [][]byte {
 	var val [][]byte
 	return val
+}
+
+func GetCargoValue(cargoLine string, index int) byte {
+	// initialise to be empty
+	foundCargo := emptySpace
+
+	return foundCargo
 }
