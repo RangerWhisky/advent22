@@ -8,3 +8,10 @@ func TestPartOneSolution(t *testing.T) {
 		t.Errorf("Sample solution calculated as %s but should be %s", solution, "CMZ")
 	}
 }
+
+func TestPartTwo(t *testing.T) {
+	step := PartOne("simplified_example.txt")
+	if string(step) != "MCD" {
+		t.Errorf("Step four failed %q", step)
+	}
+}
