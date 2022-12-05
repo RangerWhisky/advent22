@@ -67,7 +67,7 @@ func TestGetStackCountFromDescription(t *testing.T) {
 	}
 }
 
-func TestPop(t *testing.T) {
+func TestSimpleMove(t *testing.T) {
 	sourceStack := CreateCargoStack([]byte("MCD"))
 	destStack := CreateCargoStack([]byte("P"))
 

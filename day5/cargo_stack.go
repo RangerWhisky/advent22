@@ -73,7 +73,17 @@ func GetStackCount(cargoLine string) int {
 }
 
 func MoveCargo(source *CargoStack, dest *CargoStack, quantity int) {
-	if quantity < source.height {
+	if quantity > source.height {
 		quantity = source.height
 	}
+
+	fmt.Printf("Source height %d, dest heigh %d, quantity %d", source.height, dest.height, quantity)
+
+	for i := 1; i < quantity; i++ {
+		itemToMove := source.height - i
+		dest.cargo = append(dest.cargo, source.cargo[itemToMove])
+	}
+
+	dest.height += quantity
+	source.height -= quantity
 }
