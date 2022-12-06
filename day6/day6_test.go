@@ -41,6 +41,18 @@ func TestCornerCaseStartMarker(t *testing.T) {
 
 }
 
+func TestSampleMarker(t *testing.T) {
+	testData := []byte("nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg")
+
+	subsetToCheck := GetSlidingWindow(testData, 6)
+	startMarker := IsStartMarker(subsetToCheck)
+
+	if startMarker != true {
+		t.Errorf("Failed to find a valid start marker for %q", subsetToCheck)
+	}
+
+}
+
 func TestGetSlidingWindow(t *testing.T) {
 
 	testData := []byte("mjqjpqmgj")
