@@ -2,10 +2,25 @@ package day6
 
 import (
 	"bytes"
+	file_input "localhost/advent22/utils"
 )
 
+const slidingWindow int = 4
+
 func PartOne(filepath string) int {
-	return 0
+	elfInput := file_input.Read_file(filepath)
+	signal := []byte(elfInput[0])
+
+	signalStart := slidingWindow
+
+	for i := 0; i <= len(elfInput); i++ {
+		signalStart = i + slidingWindow
+		signalToCheck := signal[i:signalStart]
+		if IsStartMarker(signalToCheck) {
+			break
+		}
+	}
+	return signalStart
 }
 
 func IsStartMarker(signal []byte) bool {
