@@ -65,6 +65,18 @@ func TestGetSlidingWindow(t *testing.T) {
 	}
 }
 
+func TestGetMessageSlidingWindow(t *testing.T) {
+
+	testData := []byte("nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg")
+
+	subsetToCheck := GetMessageSlidingWindow(testData, 0)
+	expectedSlice := testData[0:14]
+
+	if bytes.Compare(expectedSlice, subsetToCheck) != 0 {
+		t.Errorf("Requested subsets not equal.  Got %q expected %q", subsetToCheck, expectedSlice)
+	}
+}
+
 func TestPartOneSolution(t *testing.T) {
 	solution := PartOne("./simplified_example.txt")
 	if solution != 10 {

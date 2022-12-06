@@ -6,6 +6,7 @@ import (
 )
 
 const slidingWindow int = 4
+const messageSlidingWindow int = 14
 
 func PartOne(filepath string) int {
 	elfInput := file_input.Read_file(filepath)
@@ -38,5 +39,10 @@ func IsStartMarker(signal []byte) bool {
 
 func GetSlidingWindow(signal []byte, start int) []byte {
 	end := start + slidingWindow
+	return signal[start:end]
+}
+
+func GetMessageSlidingWindow(signal []byte, start int) []byte {
+	end := start + messageSlidingWindow
 	return signal[start:end]
 }
