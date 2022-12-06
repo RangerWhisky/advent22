@@ -13,10 +13,11 @@ func PartOne(filepath string) int {
 
 	signalStart := 0
 
-	for markerIndex := 0; markerIndex <= len(elfInput); markerIndex++ {
+	for markerIndex := 0; markerIndex <= len(signal); markerIndex++ {
 		signalToCheck := GetSlidingWindow(signal, markerIndex)
 		if IsStartMarker(signalToCheck) {
 			signalStart = markerIndex + slidingWindow
+			break
 		}
 	}
 	return signalStart
