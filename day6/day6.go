@@ -25,7 +25,19 @@ func PartOne(filepath string) int {
 }
 
 func PartTwo(filepath string) int {
-	return 0
+	elfInput := file_input.Read_file(filepath)
+	signal := []byte(elfInput[0])
+
+	signalStart := 0
+
+	for markerIndex := 0; markerIndex <= len(signal); markerIndex++ {
+		signalToCheck := GetMessageSlidingWindow(signal, markerIndex)
+		if IsStartMarker(signalToCheck) {
+			signalStart = markerIndex + messageSlidingWindow
+			break
+		}
+	}
+	return signalStart
 }
 
 func IsStartMarker(signal []byte) bool {
