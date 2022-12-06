@@ -7,6 +7,7 @@ import (
 	"localhost/advent22/day3"
 	"localhost/advent22/day4"
 	"localhost/advent22/day5"
+	"localhost/advent22/day6"
 )
 
 func main() {
@@ -30,6 +31,9 @@ func main() {
 	fmt.Println("\nDay 5")
 	fmt.Printf("Top Level Containers are %s\n", day5.PartOne("day5/input"))
 	fmt.Printf("Top Level Containers for 9001 version are %s\n", day5.PartTwo("day5/input"))
+
+	fmt.Println("\nDay 6")
+	fmt.Printf("Signal starts at %d\n", day6.PartOne("day6/input"))
 
 	fmt.Println("\nDone!")
 }
