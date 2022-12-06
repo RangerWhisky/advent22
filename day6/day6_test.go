@@ -1,6 +1,7 @@
 package day6
 
 import (
+	"bytes"
 	"testing"
 )
 
@@ -38,6 +39,18 @@ func TestCornerCaseStartMarker(t *testing.T) {
 		t.Errorf("Failed to find a valid start marker for %q", subsetToCheck)
 	}
 
+}
+
+func TestGetSlidingWindow(t *testing.T) {
+
+	testData := []byte("mjqjpqmgj")
+
+	subsetToCheck := GetSlidingWindow(testData)
+	expectedSlice := testData[0:4]
+
+	if bytes.Compare(expectedSlice, subsetToCheck) != 0 {
+		t.Errorf("Requested subsets not equal.  Got %q expected %q", subsetToCheck, expectedSlice)
+	}
 }
 
 func TestPartOneSolution(t *testing.T) {

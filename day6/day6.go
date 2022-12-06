@@ -35,3 +35,7 @@ func IsStartMarker(signal []byte) bool {
 	}
 	return isSignal
 }
+
+func GetSlidingWindow(signal []byte) []byte {
+	return []byte{}
+}
