@@ -24,6 +24,10 @@ func PartOne(filepath string) int {
 	return signalStart
 }
 
+func PartTwo(filepath string) int {
+	return 0
+}
+
 func IsStartMarker(signal []byte) bool {
 	isSignal := true
 

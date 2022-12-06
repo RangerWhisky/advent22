@@ -83,3 +83,10 @@ func TestPartOneSolution(t *testing.T) {
 		t.Errorf("Start of packet marker complete after %d characters but should be %d", solution, 10)
 	}
 }
+
+func TestPartTwoSolution(t *testing.T) {
+	solution := PartTwo("./simplified_example.txt")
+	if solution != 29 {
+		t.Errorf("Start of packet marker complete after %d characters but should be %d", solution, 29)
+	}
+}
