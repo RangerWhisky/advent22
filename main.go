@@ -34,6 +34,7 @@ func main() {
 
 	fmt.Println("\nDay 6")
 	fmt.Printf("Signal starts at %d\n", day6.PartOne("day6/input"))
+	fmt.Printf("Message starts at %d\n", day6.PartTwo("day6/input"))
 
 	fmt.Println("\nDone!")
 }
