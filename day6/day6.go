@@ -2,8 +2,11 @@ package day6
 
 import (
 	"bytes"
-	"fmt"
 )
+
+func PartOne(filepath string) int {
+	return 0
+}
 
 func IsStartMarker(signal []byte) bool {
 	isSignal := true
@@ -12,7 +15,6 @@ func IsStartMarker(signal []byte) bool {
 		var subset []byte = signal[:i]
 		var itemToCheck []byte = signal[i : i+1]
 		if bytes.Contains(subset, itemToCheck) {
-			fmt.Printf("Is %q in %q", itemToCheck, subset)
 			isSignal = false
 		}
 	}
