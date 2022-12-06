@@ -11,13 +11,12 @@ func PartOne(filepath string) int {
 	elfInput := file_input.Read_file(filepath)
 	signal := []byte(elfInput[0])
 
-	signalStart := slidingWindow
+	signalStart := 0
 
-	for i := 0; i <= len(elfInput); i++ {
-		signalStart = i + slidingWindow
-		signalToCheck := signal[i:signalStart]
+	for markerIndex := 0; markerIndex <= len(elfInput); markerIndex++ {
+		signalToCheck := GetSlidingWindow(signal, markerIndex)
 		if IsStartMarker(signalToCheck) {
-			break
+			signalStart = markerIndex + slidingWindow
 		}
 	}
 	return signalStart
