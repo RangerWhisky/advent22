@@ -45,7 +45,7 @@ func TestGetSlidingWindow(t *testing.T) {
 
 	testData := []byte("mjqjpqmgj")
 
-	subsetToCheck := GetSlidingWindow(testData)
+	subsetToCheck := GetSlidingWindow(testData, 0)
 	expectedSlice := testData[0:4]
 
 	if bytes.Compare(expectedSlice, subsetToCheck) != 0 {

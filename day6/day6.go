@@ -36,6 +36,7 @@ func IsStartMarker(signal []byte) bool {
 	return isSignal
 }
 
-func GetSlidingWindow(signal []byte) []byte {
-	return []byte{}
+func GetSlidingWindow(signal []byte, start int) []byte {
+	end := start + slidingWindow
+	return signal[start:end]
 }
