@@ -12,3 +12,21 @@ func TestGetSimplestDirectorySize(t *testing.T) {
 		t.Error()
 	}
 }
+
+func TestParseDirectory(t *testing.T) {
+
+	sampleText := [][]byte{
+		[]byte("dir a"),
+		[]byte("14848514 b.txt"),
+	}
+
+	dir := ParseDirectory(sampleText)
+
+	if dir.size != 14848514 {
+		t.Error()
+	}
+
+	if dir.subdirs[0] != "a" {
+		t.Error()
+	}
+}
