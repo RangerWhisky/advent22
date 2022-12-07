@@ -33,3 +33,23 @@ func TestIsCmd(t *testing.T) {
 		t.Error()
 	}
 }
+
+func TestIsFile(t *testing.T) {
+	sampleText := getSampleText()
+
+	if IsFile(sampleText[0]) == true {
+		t.Error()
+	}
+
+	if IsFile(sampleText[1]) == true {
+		t.Error()
+	}
+
+	if IsFile(sampleText[2]) == true {
+		t.Error()
+	}
+
+	if IsFile(sampleText[3]) == false {
+		t.Error()
+	}
+}
