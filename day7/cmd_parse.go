@@ -8,3 +8,8 @@ func IsFile(cmd []byte) bool {
 	file := !(IsCmd(cmd)) && cmd[0] != byte('d')
 	return file
 }
+
+func IsDir(cmd []byte) bool {
+	file := !(IsCmd(cmd)) && cmd[0] == byte('d')
+	return file
+}

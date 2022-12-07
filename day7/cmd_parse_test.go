@@ -53,3 +53,23 @@ func TestIsFile(t *testing.T) {
 		t.Error()
 	}
 }
+
+func TestIsDir(t *testing.T) {
+	sampleText := getSampleText()
+
+	if IsDir(sampleText[0]) == true {
+		t.Error()
+	}
+
+	if IsDir(sampleText[1]) == true {
+		t.Error()
+	}
+
+	if IsDir(sampleText[2]) == false {
+		t.Error()
+	}
+
+	if IsDir(sampleText[3]) == true {
+		t.Error()
+	}
+}
