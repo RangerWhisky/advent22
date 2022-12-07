@@ -20,4 +20,16 @@ func TestIsCmd(t *testing.T) {
 	if IsCmd(sampleText[0]) == false {
 		t.Error()
 	}
+
+	if IsCmd(sampleText[1]) == false {
+		t.Error()
+	}
+
+	if IsCmd(sampleText[2]) == true {
+		t.Error()
+	}
+
+	if IsCmd(sampleText[3]) == true {
+		t.Error()
+	}
 }
