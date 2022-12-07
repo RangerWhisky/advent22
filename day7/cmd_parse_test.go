@@ -5,7 +5,7 @@ import "testing"
 func getSampleText() [][]byte {
 	sampleText := [][]byte{
 		[]byte("$ cd /"),
-		[]byte("$ cd /"),
+		[]byte("$ ls /"),
 		[]byte("dir a"),
 		[]byte("14848514 b.txt"),
 	}
