@@ -18,4 +18,13 @@ func TestNavigateFilesystem(t *testing.T) {
 	if currentDir != "a" {
 		t.Errorf("CurrentDir not changed, reporting %q", currentDir)
 	}
+
+	ChangeDir(&fs, "..")
+
+	currentDir = PrintWorkingDirectory(&fs)
+
+	if currentDir != "/" {
+		t.Errorf("CurrentDir not changed, reporting %q", currentDir)
+	}
+
 }
