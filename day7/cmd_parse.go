@@ -1,15 +1,15 @@
 package day7
 
-func IsCmd(cmd []byte) bool {
+func IsCmd(cmd string) bool {
 	return cmd[0] == byte('$')
 }
 
-func IsFile(cmd []byte) bool {
+func IsFile(cmd string) bool {
 	file := !(IsCmd(cmd)) && cmd[0] != byte('d')
 	return file
 }
 
-func IsDir(cmd []byte) bool {
+func IsDir(cmd string) bool {
 	file := !(IsCmd(cmd)) && cmd[0] == byte('d')
 	return file
 }

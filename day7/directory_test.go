@@ -4,7 +4,7 @@ import "testing"
 
 func TestGetSimplestDirectorySize(t *testing.T) {
 
-	sampleText := [][]byte{[]byte("14848514 b.txt")}
+	sampleText := []string{"14848514 b.txt"}
 	directory := ParseDirectory(sampleText)
 
 	size := GetSize(&directory)
@@ -16,9 +16,9 @@ func TestGetSimplestDirectorySize(t *testing.T) {
 
 func TestParseDirectory(t *testing.T) {
 
-	sampleText := [][]byte{
-		[]byte("dir a"),
-		[]byte("14848514 b.txt"),
+	sampleText := []string{
+		"dir a",
+		"14848514 b.txt",
 	}
 
 	dir := ParseDirectory(sampleText)

@@ -31,9 +31,9 @@ func TestNavigateFilesystem(t *testing.T) {
 
 func TestSaveDirectory(t *testing.T) {
 
-	sampleText := [][]byte{
-		[]byte("dir a"),
-		[]byte("14848514 b.txt"),
+	sampleText := []string{
+		"dir a",
+		"14848514 b.txt",
 	}
 
 	dir := ParseDirectory(sampleText)
@@ -50,9 +50,9 @@ func TestSaveDirectory(t *testing.T) {
 
 func TestRecursiveDirectorySize(t *testing.T) {
 
-	sampleRoot := [][]byte{
-		[]byte("dir a"),
-		[]byte("14848514 b.txt"),
+	sampleRoot := []string{
+		"dir a",
+		"14848514 b.txt",
 	}
 
 	dir := ParseDirectory(sampleRoot)
@@ -63,8 +63,8 @@ func TestRecursiveDirectorySize(t *testing.T) {
 
 	ChangeDir(&fs, "a")
 
-	sampleContents := [][]byte{
-		[]byte("11 c.txt"),
+	sampleContents := []string{
+		"11 c.txt",
 	}
 
 	a := ParseDirectory(sampleContents)

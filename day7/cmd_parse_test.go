@@ -2,12 +2,12 @@ package day7
 
 import "testing"
 
-func getSampleText() [][]byte {
-	sampleText := [][]byte{
-		[]byte("$ cd /"),
-		[]byte("$ ls /"),
-		[]byte("dir a"),
-		[]byte("14848514 b.txt"),
+func getSampleText() []string {
+	sampleText := []string{
+		"$ cd /",
+		"$ ls",
+		"dir a",
+		"14848514 b.txt",
 	}
 
 	return sampleText

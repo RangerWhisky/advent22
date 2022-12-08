@@ -14,7 +14,7 @@ func GetSize(dir *Directory) int {
 	return dir.size
 }
 
-func ParseDirectory(contents [][]byte) Directory {
+func ParseDirectory(contents []string) Directory {
 	var dir = new(Directory)
 
 	for i := 0; i < len(contents); i++ {
