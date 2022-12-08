@@ -25,11 +25,12 @@ func PartOne(filepath string) int {
 		}
 
 		if parts[1] == "ls" {
+			i++
 			// find the end of the directory list
-			for j := 0; j < len(elfInput); j++ {
+			for j := i; j < len(elfInput); j++ {
 				peekLineParts := strings.Split(elfInput[j], " ")
 				if peekLineParts[0] == "$" {
-					dir := ParseDirectory(elfInput[i+1 : j])
+					dir := ParseDirectory(elfInput[i:j])
 					SaveDirectory(&fs, dir)
 					i = j
 				}
