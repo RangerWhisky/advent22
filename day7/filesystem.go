@@ -21,5 +21,11 @@ func PrintWorkingDirectory(fs *Filesystem) string {
 }
 
 func ChangeDir(fs *Filesystem, newdir string) {
-
+	switch newdir {
+	case "..":
+		newDirectoryHead := len(fs.pwd) - 2
+		fs.pwd = fs.pwd[:newDirectoryHead]
+	default:
+		fs.pwd = append(fs.pwd, newdir)
+	}
 }
