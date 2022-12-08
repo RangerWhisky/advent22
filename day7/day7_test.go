@@ -6,7 +6,17 @@ import (
 
 func TestPartOneSolution(t *testing.T) {
 	solution := PartOne("./simplified_example.txt")
-	if solution != 10 {
-		t.Errorf("Start of packet marker complete after %d characters but should be %d", solution, 10)
+	if solution != 95437 {
+		t.Errorf("totalSize of cleanable directories is %d but should be %d", solution, 95437)
+	}
+}
+
+func TestGetFsFromFile(t *testing.T) {
+	fs := GetFsFromFile("./simplified_example.txt")
+
+	size := GetSizeOnDisk(&fs, "e")
+
+	if size != 584 {
+		t.Errorf("Size of simple folder e not correct - %d", size)
 	}
 }

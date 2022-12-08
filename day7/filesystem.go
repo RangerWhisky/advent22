@@ -13,7 +13,7 @@ func InitialiseFilesystem(elfInput []string) Filesystem {
 
 	fs := InitialiseEmptyFilesystem()
 
-	for i := 0; i < len(elfInput); i++ {
+	for i := 1; i < len(elfInput); i++ {
 		parts := strings.Split(elfInput[i], " ")
 
 		if parts[1] == "cd" {

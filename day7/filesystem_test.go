@@ -76,7 +76,7 @@ func TestRecursiveDirectorySize(t *testing.T) {
 	}
 }
 
-func TestInitialiseFilesSystem(t *testing.T) {
+func TestInitialiseFileSystem(t *testing.T) {
 	sample := []string{"$ cd /",
 		"$ ls",
 		"dir a",
@@ -92,6 +92,6 @@ func TestInitialiseFilesSystem(t *testing.T) {
 	size := GetSizeOnDisk(&fs, "a")
 
 	if size != (29116 + 2557 + 62596) {
-		t.Error()
+		t.Errorf("Size is %d for filesystem %q", size, fs)
 	}
 }

@@ -2,7 +2,6 @@ package day7
 
 import (
 	file_input "localhost/advent22/utils"
-	"strings"
 )
 
 func PartOne(filepath string) int {
@@ -12,30 +11,21 @@ func PartOne(filepath string) int {
 	//    fill out the directory details
 	//
 
-	fs := InitialiseEmptyFilesystem()
+	fs := GetFsFromFile(filepath)
 
-	elfInput := file_input.Read_file(filepath)
+	cleanableSize := 0
 
-	for i := 0; i < len(elfInput); i++ {
-		parts := strings.Split(elfInput[i], " ")
-
-		if parts[1] == "cd" {
-			ChangeDir(&fs, parts[2])
-			continue
-		}
-
-		if parts[1] == "ls" {
-			i++
-			// find the end of the directory list
-			for j := i; j < len(elfInput); j++ {
-				peekLineParts := strings.Split(elfInput[j], " ")
-				if peekLineParts[0] == "$" {
-					dir := ParseDirectory(elfInput[i:j])
-					SaveDirectory(&fs, dir)
-					i = j
-				}
-			}
+	for dirName, _ := range fs.directoryList {
+		recursiveSize := GetSizeOnDisk(&fs, dirName)
+		if recursiveSize <= 100000 {
+			cleanableSize += recursiveSize
 		}
 	}
-	return 0
+
+	return cleanableSize
+}
+
+func GetFsFromFile(filepath string) Filesystem {
+	elfInput := file_input.Read_file(filepath)
+	return InitialiseFilesystem(elfInput)
 }
