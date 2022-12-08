@@ -47,3 +47,31 @@ func TestSaveDirectory(t *testing.T) {
 		t.Errorf("savedDir %q", savedDir)
 	}
 }
+
+func TestRecursiveDirectorySize(t *testing.T) {
+
+	sampleRoot := [][]byte{
+		[]byte("dir a"),
+		[]byte("14848514 b.txt"),
+	}
+
+	dir := ParseDirectory(sampleRoot)
+
+	fs := InitialiseFilesystem()
+
+	SaveDirectory(&fs, dir)
+
+	ChangeDir(&fs, "a")
+
+	sampleContents := [][]byte{
+		[]byte("11 c.txt"),
+	}
+
+	a := ParseDirectory(sampleContents)
+	SaveDirectory(&fs, a)
+
+	size := GetSizeOnDisk(&fs, "/")
+	if size != 14848525 {
+		t.Errorf("size, %d, should be %d", size, 14848525)
+	}
+}

@@ -40,3 +40,15 @@ func GetDirectory(fs *Filesystem, path string) Directory {
 
 	return dir
 }
+
+func GetSizeOnDisk(fs *Filesystem, dirname string) int {
+
+	dir := fs.directoryList[dirname]
+
+	runningSize := dir.size
+
+	for i := 0; i < len(dir.subdirs); i++ {
+		runningSize += GetSizeOnDisk(fs, dir.subdirs[i])
+	}
+	return runningSize
+}
