@@ -1,11 +1,44 @@
 package day7
 
+import (
+	"strings"
+)
+
 type Filesystem struct {
 	directoryList map[string]Directory
 	pwd           []string
 }
 
-func InitialiseFilesystem() Filesystem {
+func InitialiseFilesystem(elfInput []string) Filesystem {
+
+	fs := InitialiseEmptyFilesystem()
+
+	for i := 0; i < len(elfInput); i++ {
+		parts := strings.Split(elfInput[i], " ")
+
+		if parts[1] == "cd" {
+			ChangeDir(&fs, parts[2])
+			continue
+		}
+
+		if parts[1] == "ls" {
+			i++
+			// find the end of the directory list
+			for j := i; j < len(elfInput); j++ {
+				peekLineParts := strings.Split(elfInput[j], " ")
+				if peekLineParts[0] == "$" {
+					dir := ParseDirectory(elfInput[i:j])
+					SaveDirectory(&fs, dir)
+					i = j
+				}
+			}
+		}
+	}
+
+	return fs
+}
+
+func InitialiseEmptyFilesystem() Filesystem {
 	fs_map := make(map[string]Directory)
 
 	fs := Filesystem{

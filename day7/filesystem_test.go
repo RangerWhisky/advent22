@@ -3,7 +3,7 @@ package day7
 import "testing"
 
 func TestNavigateFilesystem(t *testing.T) {
-	fs := InitialiseFilesystem()
+	fs := InitialiseEmptyFilesystem()
 
 	currentDir := PrintWorkingDirectory(&fs)
 
@@ -38,7 +38,7 @@ func TestSaveDirectory(t *testing.T) {
 
 	dir := ParseDirectory(sampleText)
 
-	fs := InitialiseFilesystem()
+	fs := InitialiseEmptyFilesystem()
 
 	SaveDirectory(&fs, dir)
 
@@ -57,7 +57,7 @@ func TestRecursiveDirectorySize(t *testing.T) {
 
 	dir := ParseDirectory(sampleRoot)
 
-	fs := InitialiseFilesystem()
+	fs := InitialiseEmptyFilesystem()
 
 	SaveDirectory(&fs, dir)
 
@@ -73,5 +73,25 @@ func TestRecursiveDirectorySize(t *testing.T) {
 	size := GetSizeOnDisk(&fs, "/")
 	if size != 14848525 {
 		t.Errorf("size, %d, should be %d", size, 14848525)
+	}
+}
+
+func TestInitialiseFilesSystem(t *testing.T) {
+	sample := []string{"$ cd /",
+		"$ ls",
+		"dir a",
+		"14848514 b.txt",
+		"8504156 c.dat",
+		"$ cd a",
+		"$ ls",
+		"29116 f",
+		"2557 g",
+		"62596 h.lst"}
+
+	fs := InitialiseFilesystem(sample)
+	size := GetSizeOnDisk(&fs, "a")
+
+	if size != (29116 + 2557 + 62596) {
+		t.Error()
 	}
 }

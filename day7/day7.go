@@ -12,7 +12,7 @@ func PartOne(filepath string) int {
 	//    fill out the directory details
 	//
 
-	fs := InitialiseFilesystem()
+	fs := InitialiseEmptyFilesystem()
 
 	elfInput := file_input.Read_file(filepath)
 
