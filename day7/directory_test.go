@@ -5,8 +5,9 @@ import "testing"
 func TestGetSimplestDirectorySize(t *testing.T) {
 
 	sampleText := [][]byte{[]byte("14848514 b.txt")}
+	directory := ParseDirectory(sampleText)
 
-	size := GetDirectorySize(sampleText)
+	size := GetSize(&directory)
 
 	if size != 14848514 {
 		t.Error()

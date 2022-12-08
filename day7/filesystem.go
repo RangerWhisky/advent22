@@ -29,3 +29,14 @@ func ChangeDir(fs *Filesystem, newdir string) {
 		fs.pwd = append(fs.pwd, newdir)
 	}
 }
+
+func SaveDirectory(fs *Filesystem, dir Directory) {
+	currentDir := PrintWorkingDirectory(fs)
+	fs.directoryList[currentDir] = dir
+}
+
+func GetDirectory(fs *Filesystem, path string) Directory {
+	dir := fs.directoryList[path]
+
+	return dir
+}

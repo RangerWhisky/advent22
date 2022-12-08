@@ -10,8 +10,7 @@ type Directory struct {
 	size    int
 }
 
-func GetDirectorySize(contents [][]byte) int {
-	dir := ParseDirectory(contents)
+func GetSize(dir *Directory) int {
 	return dir.size
 }
 

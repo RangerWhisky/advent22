@@ -28,3 +28,22 @@ func TestNavigateFilesystem(t *testing.T) {
 	}
 
 }
+
+func TestSaveDirectory(t *testing.T) {
+
+	sampleText := [][]byte{
+		[]byte("dir a"),
+		[]byte("14848514 b.txt"),
+	}
+
+	dir := ParseDirectory(sampleText)
+
+	fs := InitialiseFilesystem()
+
+	SaveDirectory(&fs, dir)
+
+	savedDir := GetDirectory(&fs, "/")
+	if GetSize(&savedDir) != 14848514 {
+		t.Errorf("savedDir %q", savedDir)
+	}
+}
