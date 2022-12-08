@@ -7,7 +7,15 @@ func TestNavigateFilesystem(t *testing.T) {
 
 	currentDir := PrintWorkingDirectory(&fs)
 
-	if currentDir != '/' {
+	if currentDir != "/" {
 		t.Errorf("CurrentDir not properly initialised, reporting %q", currentDir)
+	}
+
+	ChangeDir(&fs, "a")
+
+	currentDir = PrintWorkingDirectory(&fs)
+
+	if currentDir != "a" {
+		t.Errorf("CurrentDir not changed, reporting %q", currentDir)
 	}
 }

@@ -2,7 +2,7 @@ package day7
 
 type Filesystem struct {
 	directoryList map[string]Directory
-	pwd           []byte
+	pwd           []string
 }
 
 func InitialiseFilesystem() Filesystem {
@@ -10,12 +10,16 @@ func InitialiseFilesystem() Filesystem {
 
 	fs := Filesystem{
 		directoryList: fs_map,
-		pwd:           []byte{},
+		pwd:           []string{},
 	}
 
 	return fs
 }
 
-func PrintWorkingDirectory(fs *Filesystem) byte {
-	return '/'
+func PrintWorkingDirectory(fs *Filesystem) string {
+	return "/"
+}
+
+func ChangeDir(fs *Filesystem, newdir string) {
+
 }
