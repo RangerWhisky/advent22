@@ -10,14 +10,14 @@ func InitialiseFilesystem() Filesystem {
 
 	fs := Filesystem{
 		directoryList: fs_map,
-		pwd:           []string{},
+		pwd:           []string{"/"},
 	}
 
 	return fs
 }
 
 func PrintWorkingDirectory(fs *Filesystem) string {
-	return "/"
+	return fs.pwd[len(fs.pwd)-1]
 }
 
 func ChangeDir(fs *Filesystem, newdir string) {
