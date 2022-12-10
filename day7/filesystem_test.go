@@ -76,6 +76,28 @@ func TestRecursiveDirectorySize(t *testing.T) {
 	}
 }
 
+func TestGetDirContentIndices(t *testing.T) {
+	sample := []string{"$ cd /",
+		"$ ls",
+		"dir a",
+		"14848514 b.txt",
+		"8504156 c.dat",
+		"$ cd a",
+		"$ ls",
+		"29116 f",
+		"2557 g",
+		"62596 h.lst"}
+
+	start, end := GetDirContentIndices(sample, 1)
+
+	if start != 2 {
+		t.Errorf("Start is wrong - %d", start)
+	}
+	if end != 5 {
+		t.Errorf("End is wrong - %d", end)
+	}
+}
+
 func TestInitialiseFileSystem(t *testing.T) {
 	sample := []string{"$ cd /",
 		"$ ls",

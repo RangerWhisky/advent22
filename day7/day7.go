@@ -15,7 +15,7 @@ func PartOne(filepath string) int {
 
 	cleanableSize := 0
 
-	for dirName, _ := range fs.directoryList {
+	for dirName := range fs.directoryList {
 		recursiveSize := GetSizeOnDisk(&fs, dirName)
 		if recursiveSize <= 100000 {
 			cleanableSize += recursiveSize

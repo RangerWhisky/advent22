@@ -39,6 +39,22 @@ func InitialiseFilesystem(elfInput []string) Filesystem {
 	return fs
 }
 
+func GetDirContentIndices(sample []string, ls_line int) (int, int) {
+	content_start := ls_line + 1
+	content_end := len(sample)
+	// find the end of the directory list
+	for j := content_start; j < len(sample); j++ {
+		fmt.Printf("inner loop " + sample[j] + "\n")
+		peekLineParts := strings.Split(sample[j], " ")
+		if IsCmd(peekLineParts[0]) {
+			content_end = j
+			break
+		}
+	}
+
+	return content_start, content_end
+}
+
 func InitialiseEmptyFilesystem() Filesystem {
 	fs_map := make(map[string]Directory)
 
