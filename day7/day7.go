@@ -1,7 +1,6 @@
 package day7
 
 import (
-	"fmt"
 	file_input "localhost/advent22/utils"
 )
 
@@ -14,15 +13,10 @@ func PartOne(filepath string) int {
 
 	fs := GetFsFromFile(filepath)
 
-	PrintFilesystem(&fs, "/", "")
-
-	fmt.Println("***")
-
 	cleanableSize := 0
 
 	for dirName := range fs.directoryList {
 		recursiveSize := GetSizeOnDisk(&fs, dirName)
-		fmt.Printf("%s (%d)\n", dirName, recursiveSize)
 		if recursiveSize <= 100000 {
 			cleanableSize += recursiveSize
 		}

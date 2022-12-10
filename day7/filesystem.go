@@ -79,7 +79,6 @@ func ChangeDir(fs *Filesystem, newdir string) {
 
 func SaveDirectory(fs *Filesystem, dir Directory) {
 	currentDir := PrintPath(fs)
-	fmt.Println(currentDir)
 	fs.directoryList[currentDir] = dir
 }
 
