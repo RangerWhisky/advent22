@@ -15,7 +15,7 @@ func InitialiseFilesystem(elfInput []string) Filesystem {
 	fs := InitialiseEmptyFilesystem()
 
 	for i := 1; i < len(elfInput); i++ {
-		fmt.Printf("\n i " + elfInput[i])
+		fmt.Println(elfInput[i])
 		parts := strings.Split(elfInput[i], " ")
 
 		if parts[1] == "ls" {
@@ -24,7 +24,7 @@ func InitialiseFilesystem(elfInput []string) Filesystem {
 
 			dir := ParseDirectory(elfInput[start:end])
 			SaveDirectory(&fs, dir)
-			i = end
+			i = end - 1
 		} else if parts[1] == "cd" {
 			ChangeDir(&fs, parts[2])
 		}
@@ -38,7 +38,6 @@ func GetDirContentIndices(sample []string, ls_line int) (int, int) {
 	content_end := len(sample)
 	// find the end of the directory list
 	for j := content_start; j < len(sample); j++ {
-		fmt.Printf("inner loop " + sample[j] + "\n")
 		peekLineParts := strings.Split(sample[j], " ")
 		if IsCmd(peekLineParts[0]) {
 			content_end = j
