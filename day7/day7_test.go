@@ -14,7 +14,7 @@ func TestPartOneSolution(t *testing.T) {
 func TestGetFsFromFile(t *testing.T) {
 	fs := GetFsFromFile("./simplified_example.txt")
 
-	size := GetSizeOnDisk(&fs, "e")
+	size := GetSizeOnDisk(&fs, "/a/e")
 
 	if size != 584 {
 		t.Errorf("Size of simple folder e not correct - %d", size)

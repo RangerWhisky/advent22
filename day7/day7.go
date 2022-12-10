@@ -14,11 +14,15 @@ func PartOne(filepath string) int {
 
 	fs := GetFsFromFile(filepath)
 
+	PrintFilesystem(&fs, "/", "")
+
+	fmt.Println("***")
+
 	cleanableSize := 0
 
 	for dirName := range fs.directoryList {
 		recursiveSize := GetSizeOnDisk(&fs, dirName)
-		fmt.Printf("Dir %s, size %d \n", dirName, recursiveSize)
+		fmt.Printf("%s (%d)\n", dirName, recursiveSize)
 		if recursiveSize <= 100000 {
 			cleanableSize += recursiveSize
 		}

@@ -1,6 +1,8 @@
 package day7
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestNavigateFilesystem(t *testing.T) {
 	fs := InitialiseEmptyFilesystem()
@@ -48,34 +50,6 @@ func TestSaveDirectory(t *testing.T) {
 	}
 }
 
-func TestRecursiveDirectorySize(t *testing.T) {
-
-	sampleRoot := []string{
-		"dir a",
-		"14848514 b.txt",
-	}
-
-	dir := ParseDirectory(sampleRoot)
-
-	fs := InitialiseEmptyFilesystem()
-
-	SaveDirectory(&fs, dir)
-
-	ChangeDir(&fs, "a")
-
-	sampleContents := []string{
-		"11 c.txt",
-	}
-
-	a := ParseDirectory(sampleContents)
-	SaveDirectory(&fs, a)
-
-	size := GetSizeOnDisk(&fs, "/")
-	if size != 14848525 {
-		t.Errorf("size, %d, should be %d", size, 14848525)
-	}
-}
-
 func TestGetDeepRecursiveSize(t *testing.T) {
 	sample := []string{"$ cd /",
 		"$ ls",
@@ -98,12 +72,12 @@ func TestGetDeepRecursiveSize(t *testing.T) {
 
 	fs := InitialiseFilesystem(sample)
 
-	bottomDir := GetSizeOnDisk(&fs, "ae")
+	bottomDir := GetSizeOnDisk(&fs, "/ab/ac/ae")
 	if bottomDir != 13 {
 		t.Errorf("Deepest directory size incorrect - %d\n", bottomDir)
 	}
 
-	midDir := GetSizeOnDisk(&fs, "ab")
+	midDir := GetSizeOnDisk(&fs, "/ab")
 	if midDir != (5 + 7 + 11 + 13) {
 		t.Errorf("recursive directory size incorrect - %d\n", midDir)
 	}
@@ -166,7 +140,7 @@ func TestInitialiseFileSystem(t *testing.T) {
 		"62596 h.lst"}
 
 	fs := InitialiseFilesystem(sample)
-	size := GetSizeOnDisk(&fs, "a")
+	size := GetSizeOnDisk(&fs, "/a")
 
 	if size != (29116 + 2557 + 62596) {
 		t.Errorf("Size is %d for filesystem %q", size, fs)

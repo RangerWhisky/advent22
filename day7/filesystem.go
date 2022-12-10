@@ -1,6 +1,7 @@
 package day7
 
 import (
+	"fmt"
 	"strings"
 )
 
@@ -61,6 +62,11 @@ func PrintWorkingDirectory(fs *Filesystem) string {
 	return fs.pwd[len(fs.pwd)-1]
 }
 
+func PrintPath(fs *Filesystem) string {
+	path := "/" + strings.Join(fs.pwd[1:], "/")
+	return path
+}
+
 func ChangeDir(fs *Filesystem, newdir string) {
 	switch newdir {
 	case "..":
@@ -72,7 +78,8 @@ func ChangeDir(fs *Filesystem, newdir string) {
 }
 
 func SaveDirectory(fs *Filesystem, dir Directory) {
-	currentDir := PrintWorkingDirectory(fs)
+	currentDir := PrintPath(fs)
+	fmt.Println(currentDir)
 	fs.directoryList[currentDir] = dir
 }
 
@@ -88,8 +95,18 @@ func GetSizeOnDisk(fs *Filesystem, dirname string) int {
 
 	runningSize := dir.size
 
-	for i := 0; i < len(dir.subdirs); i++ {
-		runningSize += GetSizeOnDisk(fs, dir.subdirs[i])
+	for _, subdir := range dir.subdirs {
+		subdirPath := dirname + "/" + subdir
+		runningSize += GetSizeOnDisk(fs, subdirPath)
 	}
 	return runningSize
+}
+
+func PrintFilesystem(fs *Filesystem, directoryName string, indent string) {
+	dir := fs.directoryList[directoryName]
+	size := GetSizeOnDisk(fs, directoryName)
+	fmt.Printf("%s%s (%d)\n", indent, directoryName, size)
+	for _, subdir := range dir.subdirs {
+		PrintFilesystem(fs, subdir, indent+"  ")
+	}
 }
