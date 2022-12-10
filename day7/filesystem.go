@@ -19,18 +19,12 @@ func InitialiseFilesystem(elfInput []string) Filesystem {
 		parts := strings.Split(elfInput[i], " ")
 
 		if parts[1] == "ls" {
-			i++
 			// find the end of the directory list
-			for j := i; j < len(elfInput); j++ {
-				fmt.Printf("inner loop " + elfInput[j] + "\n")
-				peekLineParts := strings.Split(elfInput[j], " ")
-				if peekLineParts[0] == "$" {
-					dir := ParseDirectory(elfInput[i:j])
-					SaveDirectory(&fs, dir)
-					i = j - 1
-					j = len(elfInput)
-				}
-			}
+			start, end := GetDirContentIndices(elfInput, i)
+
+			dir := ParseDirectory(elfInput[start:end])
+			SaveDirectory(&fs, dir)
+			i = end
 		} else if parts[1] == "cd" {
 			ChangeDir(&fs, parts[2])
 		}
