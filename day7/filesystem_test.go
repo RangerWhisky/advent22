@@ -76,6 +76,39 @@ func TestRecursiveDirectorySize(t *testing.T) {
 	}
 }
 
+func TestGetDeepRecursiveSize(t *testing.T) {
+	sample := []string{"$ cd /",
+		"$ ls",
+		"dir ab",
+		"2 b.txt",
+		"3 c.dat",
+		"$ cd ab",
+		"$ ls",
+		"dir ac",
+		"5 ad",
+		"7 h.lst",
+		"$ cd ac",
+		"$ ls",
+		"dir ae",
+		"11 h.lst",
+		"$ cd ae",
+		"$ ls",
+		"dir af",
+		"13 g.lst"}
+
+	fs := InitialiseFilesystem(sample)
+
+	bottomDir := GetSizeOnDisk(&fs, "ae")
+	if bottomDir != 13 {
+		t.Errorf("Deepest directory size incorrect - %d\n", bottomDir)
+	}
+
+	midDir := GetSizeOnDisk(&fs, "ab")
+	if midDir != (5 + 7 + 11 + 13) {
+		t.Errorf("recursive directory size incorrect - %d\n", midDir)
+	}
+}
+
 func TestGetDirContentIndices(t *testing.T) {
 	sample := []string{"$ cd /",
 		"$ ls",
