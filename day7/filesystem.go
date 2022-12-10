@@ -1,7 +1,6 @@
 package day7
 
 import (
-	"fmt"
 	"strings"
 )
 
@@ -15,7 +14,6 @@ func InitialiseFilesystem(elfInput []string) Filesystem {
 	fs := InitialiseEmptyFilesystem()
 
 	for i := 1; i < len(elfInput); i++ {
-		fmt.Println(elfInput[i])
 		parts := strings.Split(elfInput[i], " ")
 
 		if parts[1] == "ls" {

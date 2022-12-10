@@ -8,6 +8,7 @@ import (
 	"localhost/advent22/day4"
 	"localhost/advent22/day5"
 	"localhost/advent22/day6"
+	"localhost/advent22/day7"
 )
 
 func main() {
@@ -35,6 +36,9 @@ func main() {
 	fmt.Println("\nDay 6")
 	fmt.Printf("Signal starts at %d\n", day6.PartOne("day6/input"))
 	fmt.Printf("Message starts at %d\n", day6.PartTwo("day6/input"))
+
+	fmt.Println("\nDay 7")
+	fmt.Printf("Cleanable file total size is %d\n", day7.PartOne("day7/input"))
 
 	fmt.Println("\nDone!")
 }
