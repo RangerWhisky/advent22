@@ -27,7 +27,19 @@ func PartOne(filepath string) int {
 }
 
 func PartTwo(filepath string) int {
-	return 0
+	fs := GetFsFromFile(filepath)
+	usedSpace := GetSizeOnDisk(&fs, "/")
+	targetDirectorySize := GetTargetSize(usedSpace)
+
+	bestCandidateSize := usedSpace
+
+	for dirName := range fs.directoryList {
+		recursiveSize := GetSizeOnDisk(&fs, dirName)
+		if (recursiveSize >= targetDirectorySize) && (recursiveSize < bestCandidateSize) {
+			bestCandidateSize = recursiveSize
+		}
+	}
+	return bestCandidateSize
 }
 
 func GetFsFromFile(filepath string) Filesystem {
