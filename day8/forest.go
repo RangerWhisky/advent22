@@ -1,12 +1,14 @@
 package day8
 
 import (
+	"fmt"
 	utils "localhost/advent22/utils"
 )
 
 type Forest struct {
-	mapData    utils.IntMap
-	visibility [][]bool
+	mapData      utils.IntMap
+	visibility   [][]bool
+	visibleCount int
 }
 
 func InitialiseForestFromFile(filepath string) Forest {
@@ -16,6 +18,7 @@ func InitialiseForestFromFile(filepath string) Forest {
 	file := utils.Read_file("./simplified_example.txt")
 
 	forest.mapData = utils.InitialiseMap(file)
+	forest.visibleCount = 0
 
 	return forest
 }
@@ -29,18 +32,28 @@ func AssessVisibility(forest *Forest) {
 
 	height := utils.GetHeight(&forest.mapData)
 	width := utils.GetHeight(&forest.mapData)
+	visibleCount := 0
 
 	var visibilityMap [][]bool
 
 	for i := 0; i < height; i++ {
 		var boolArray []bool
 		for j := 0; j < width; j++ {
-			boolArray = append(boolArray, IsTreeVisible(forest, i, j))
+			visible := IsTreeVisible(forest, i, j)
+			boolArray = append(boolArray, visible)
+			if visible {
+				visibleCount++
+			}
 		}
 		visibilityMap = append(visibilityMap, boolArray)
 	}
 
 	forest.visibility = visibilityMap
+	forest.visibleCount = visibleCount
+}
+
+func GetVisibleTreeCount(forest *Forest) int {
+	return forest.visibleCount
 }
 
 func IsTreeVisible(forest *Forest, height int, width int) bool {
@@ -99,4 +112,20 @@ func IsVisibleFromEast(forest *Forest, height int, width int, treeHeight int) bo
 
 func getTreeCount(forest *Forest) int {
 	return utils.GetHeight(&forest.mapData) * utils.GetWidth(&forest.mapData)
+}
+
+func PrintVisibilityMap(forest *Forest) {
+	maxHeight := utils.GetHeight(&forest.mapData)
+	maxWidth := utils.GetWidth(&forest.mapData)
+
+	for i := 0; i < maxHeight; i++ {
+		for j := 0; j < maxWidth; j++ {
+			if forest.visibility[i][j] {
+				fmt.Print("X")
+			} else {
+				fmt.Print(".")
+			}
+		}
+		fmt.Println()
+	}
 }

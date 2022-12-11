@@ -18,6 +18,11 @@ func TestAssessVisibility(t *testing.T) {
 	forest := InitialiseForestFromFile("./simplified_example.txt")
 
 	AssessVisibility(&forest)
+	output := GetVisibleTreeCount(&forest)
+	if output != 21 {
+		PrintVisibilityMap(&forest)
+		t.Errorf("Should be 21 visible trees, instead get %d", output)
+	}
 }
 
 func TestVisibleFromNorth(t *testing.T) {
