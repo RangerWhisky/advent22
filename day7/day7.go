@@ -25,6 +25,10 @@ func PartOne(filepath string) int {
 	return cleanableSize
 }
 
+func PartTwo(filepath string) int {
+	return 0
+}
+
 func GetFsFromFile(filepath string) Filesystem {
 	elfInput := file_input.Read_file(filepath)
 	return InitialiseFilesystem(elfInput)

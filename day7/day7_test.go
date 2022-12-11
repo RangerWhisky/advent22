@@ -11,6 +11,14 @@ func TestPartOneSolution(t *testing.T) {
 	}
 }
 
+func TestPartTwoSolution(t *testing.T) {
+
+	solution := PartTwo("./simplified_example.txt")
+	if solution != 24933642 {
+		t.Errorf("Directory to delete is size %d, should be 24933642", solution)
+	}
+}
+
 func TestGetFsFromFile(t *testing.T) {
 	fs := GetFsFromFile("./simplified_example.txt")
 
