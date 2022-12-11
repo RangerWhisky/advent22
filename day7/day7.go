@@ -1,6 +1,7 @@
 package day7
 
 import (
+	"fmt"
 	file_input "localhost/advent22/utils"
 	"math"
 )
@@ -33,6 +34,8 @@ func PartTwo(filepath string) int {
 	fs := GetFsFromFile(filepath)
 	usedSpace := GetSizeOnDisk(&fs, "/")
 	targetDirectorySize := GetTargetSize(usedSpace)
+
+	fmt.Printf("targetsize %d\n", targetDirectorySize)
 
 	bestCandidateSize := DiskSize
 

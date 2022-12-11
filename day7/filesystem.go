@@ -94,10 +94,21 @@ func GetSizeOnDisk(fs *Filesystem, dirname string) int {
 
 	runningSize := dir.size
 
+	// solve an annoying thing where the root is referred to with / and then / get's appended in joins
+	if dirname == "/" {
+		dirname = ""
+	}
+
 	for _, subdir := range dir.subdirs {
+
 		subdirPath := dirname + "/" + subdir
 		runningSize += GetSizeOnDisk(fs, subdirPath)
+		if dirname == "/" {
+			fmt.Printf("Dir %q", subdirPath)
+			fmt.Printf("dirsize %d \n", runningSize)
+		}
 	}
+
 	return runningSize
 }
 
