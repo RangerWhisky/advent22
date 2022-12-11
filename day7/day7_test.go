@@ -28,3 +28,10 @@ func TestGetFsFromFile(t *testing.T) {
 		t.Errorf("Size of simple folder e not correct - %d", size)
 	}
 }
+
+func TestGetTargetSize(t *testing.T) {
+	targetDeletionSize := GetTargetSize(48381165)
+	if targetDeletionSize != 8381165 {
+		t.Errorf("Size of target deletion not correct - %d", targetDeletionSize)
+	}
+}
