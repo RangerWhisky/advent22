@@ -5,6 +5,9 @@ import (
 	"math"
 )
 
+const DiskSize int = 70000000
+const RequiredSpace int = 30000000
+
 func PartOne(filepath string) int {
 	// get file contents
 	// when cd command is found
@@ -31,7 +34,7 @@ func PartTwo(filepath string) int {
 	usedSpace := GetSizeOnDisk(&fs, "/")
 	targetDirectorySize := GetTargetSize(usedSpace)
 
-	bestCandidateSize := usedSpace
+	bestCandidateSize := DiskSize
 
 	for dirName := range fs.directoryList {
 		recursiveSize := GetSizeOnDisk(&fs, dirName)
@@ -48,8 +51,8 @@ func GetFsFromFile(filepath string) Filesystem {
 }
 
 func GetTargetSize(usedSpace int) int {
-	freeSpace := 70000000 - usedSpace
-	required := 30000000 - freeSpace
+	freeSpace := DiskSize - usedSpace
+	required := RequiredSpace - freeSpace
 
 	return int(math.Max(float64(required), 0))
 }
