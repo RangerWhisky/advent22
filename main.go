@@ -39,6 +39,7 @@ func main() {
 
 	fmt.Println("\nDay 7")
 	fmt.Printf("Cleanable file total size is %d\n", day7.PartOne("day7/input"))
+	fmt.Printf("Dir size to remove is %d\n", day7.PartTwo("day7/input"))
 
 	fmt.Println("\nDone!")
 }
