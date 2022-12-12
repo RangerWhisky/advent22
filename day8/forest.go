@@ -140,6 +140,20 @@ func GetViewToSouth(forest *Forest, height int, width int, treeHeight int) int {
 	return visibleTreeCount
 }
 
+func GetViewToWest(forest *Forest, height int, width int, treeHeight int) int {
+	treeBlocksView := false
+	visibleTreeCount := 0
+
+	for i := 1; i <= width && !treeBlocksView; i++ {
+		visibleTreeCount = i
+		treeToCheck := width - i
+		if utils.GetValue(&forest.mapData, height, treeToCheck) >= treeHeight {
+			treeBlocksView = true
+		}
+	}
+	return visibleTreeCount
+}
+
 func getTreeCount(forest *Forest) int {
 	return utils.GetHeight(&forest.mapData) * utils.GetWidth(&forest.mapData)
 }
