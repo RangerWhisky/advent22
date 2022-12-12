@@ -111,7 +111,7 @@ func IsVisibleFromEast(forest *Forest, height int, width int, treeHeight int) bo
 }
 
 func GetScenicScore(forest *Forest, height int, width int) int {
-	treeHeight := utils.GetValue(&forest.mapData, width, height)
+	treeHeight := utils.GetValue(&forest.mapData, height, width)
 	scenicScore := GetViewToNorth(forest, height, width, treeHeight) *
 		GetViewToSouth(forest, height, width, treeHeight) *
 		GetViewToEast(forest, height, width, treeHeight) *
