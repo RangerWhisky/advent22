@@ -9,6 +9,7 @@ import (
 	"localhost/advent22/day5"
 	"localhost/advent22/day6"
 	"localhost/advent22/day7"
+	"localhost/advent22/day8"
 )
 
 func main() {
@@ -40,6 +41,9 @@ func main() {
 	fmt.Println("\nDay 7")
 	fmt.Printf("Cleanable file total size is %d\n", day7.PartOne("day7/input"))
 	fmt.Printf("Dir size to remove is %d\n", day7.PartTwo("day7/input"))
+
+	fmt.Println("\nDay 8")
+	fmt.Printf("Number of visible trees is %d\n", day8.PartOne("day8/input"))
 
 	fmt.Println("\nDone!")
 }
