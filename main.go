@@ -44,6 +44,7 @@ func main() {
 
 	fmt.Println("\nDay 8")
 	fmt.Printf("Number of visible trees is %d\n", day8.PartOne("day8/input"))
+	fmt.Printf("Best Scenic Score is %d\n", day8.PartTwo("day8/input"))
 
 	fmt.Println("\nDone!")
 }
