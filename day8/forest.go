@@ -110,6 +110,16 @@ func IsVisibleFromEast(forest *Forest, height int, width int, treeHeight int) bo
 	return visibleFromDirection
 }
 
+func GetScenicScore(forest *Forest, height int, width int) int {
+	treeHeight := utils.GetValue(&forest.mapData, width, height)
+	scenicScore := GetViewToNorth(forest, height, width, treeHeight) *
+		GetViewToSouth(forest, height, width, treeHeight) *
+		GetViewToEast(forest, height, width, treeHeight) *
+		GetViewToWest(forest, height, width, treeHeight)
+
+	return scenicScore
+}
+
 func GetViewToNorth(forest *Forest, height int, width int, treeHeight int) int {
 	treeBlocksView := false
 	visibleTreeCount := 0
@@ -173,7 +183,6 @@ func GetViewToEast(forest *Forest, height int, width int, treeHeight int) int {
 func getTreeCount(forest *Forest) int {
 	return utils.GetHeight(&forest.mapData) * utils.GetWidth(&forest.mapData)
 }
-
 func PrintVisibilityMap(forest *Forest) {
 	maxHeight := utils.GetHeight(&forest.mapData)
 	maxWidth := utils.GetWidth(&forest.mapData)

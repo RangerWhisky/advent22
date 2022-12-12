@@ -91,7 +91,6 @@ func TestViewToNorth(t *testing.T) {
 	if viewDistance != 2 {
 		t.Errorf("Incorrect view distance north - %d", viewDistance)
 	}
-
 }
 
 func TestViewToSouth(t *testing.T) {
@@ -145,5 +144,19 @@ func TestViewToEast(t *testing.T) {
 
 	if viewDistance != 3 {
 		t.Errorf("Incorrect view distance west - %d", viewDistance)
+	}
+}
+
+func TestGetScenicScore(t *testing.T) {
+	forest := InitialiseForestFromFile("./simplified_example.txt")
+
+	scenicScore := GetScenicScore(&forest, 1, 2)
+	if scenicScore != 4 {
+		t.Errorf("ScenicScore is %d but should be %d", scenicScore, 4)
+	}
+
+	scenicScore = GetScenicScore(&forest, 3, 2)
+	if scenicScore != 8 {
+		t.Errorf("ScenicScore is %d but should be %d", scenicScore, 8)
 	}
 }
