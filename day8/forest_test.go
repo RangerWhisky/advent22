@@ -77,15 +77,19 @@ func TestVisibleFromEast(t *testing.T) {
 func TestViewToNorth(t *testing.T) {
 	forest := InitialiseForestFromFile("./simplified_example.txt")
 
+	if GetViewToNorth(&forest, 0, 1, 5) != 0 {
+		t.Error("Bad error handling for top line")
+	}
+
 	viewDistance := GetViewToNorth(&forest, 1, 1, 5)
 
 	if viewDistance != 1 {
-		t.Error("Incorrect view distance north")
+		t.Errorf("Incorrect view distance north - %d", viewDistance)
 	}
 
 	viewDistance = GetViewToNorth(&forest, 3, 2, 5)
 	if viewDistance != 2 {
-		t.Error("Incorrect view distance north")
+		t.Errorf("Incorrect view distance north - %d", viewDistance)
 	}
 
 }
@@ -93,9 +97,9 @@ func TestViewToNorth(t *testing.T) {
 func TestViewToSouth(t *testing.T) {
 	forest := InitialiseForestFromFile("./simplified_example.txt")
 
-	viewDistance := GetViewToSouth(&forest, 1, 1, 5)
+	viewDistance := GetViewToSouth(&forest, 2, 1, 5)
 
 	if viewDistance != 2 {
-		t.Error("Incorrect view distance south")
+		t.Errorf("Incorrect view distance south - %d", viewDistance)
 	}
 }

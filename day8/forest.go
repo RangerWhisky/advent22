@@ -111,36 +111,30 @@ func IsVisibleFromEast(forest *Forest, height int, width int, treeHeight int) bo
 }
 
 func GetViewToNorth(forest *Forest, height int, width int, treeHeight int) int {
-	if height == 0 {
-		return 0
-	}
-
 	treeBlocksView := false
-	visibleTreeCount := 1
+	visibleTreeCount := 0
 
-	for i := 1; i < height && !treeBlocksView; i++ {
+	for i := 1; i <= height && !treeBlocksView; i++ {
+		visibleTreeCount = i
 		treeToCheck := height - i
 		if utils.GetValue(&forest.mapData, treeToCheck, width) >= treeHeight {
 			treeBlocksView = true
-			visibleTreeCount = i
 		}
 	}
 	return visibleTreeCount
 }
 
 func GetViewToSouth(forest *Forest, height int, width int, treeHeight int) int {
-	if height == 0 {
-		return 0
-	}
-
 	treeBlocksView := false
-	visibleTreeCount := 1
+	visibleTreeCount := 0
 
-	for i := 1; i < height && !treeBlocksView; i++ {
-		treeToCheck := height - i
+	maxCheckDistance := utils.GetHeight(&forest.mapData) - height
+
+	for i := 1; i <= maxCheckDistance && !treeBlocksView; i++ {
+		visibleTreeCount = i
+		treeToCheck := height + i
 		if utils.GetValue(&forest.mapData, treeToCheck, width) >= treeHeight {
 			treeBlocksView = true
-			visibleTreeCount = i
 		}
 	}
 	return visibleTreeCount
