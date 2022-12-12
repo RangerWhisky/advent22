@@ -22,5 +22,5 @@ func PartTwo(filepath string) int {
 		}
 	}
 
-	return 0
+	return bestScenicScore
 }
