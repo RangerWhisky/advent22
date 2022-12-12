@@ -15,7 +15,7 @@ func InitialiseForestFromFile(filepath string) Forest {
 
 	var forest Forest
 
-	file := utils.Read_file("./simplified_example.txt")
+	file := utils.Read_file(filepath)
 
 	forest.mapData = utils.InitialiseMap(file)
 	forest.visibleCount = 0

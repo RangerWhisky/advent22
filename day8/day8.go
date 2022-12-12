@@ -1,7 +1,7 @@
 package day8
 
 func PartOne(filepath string) int {
-	forest := InitialiseForestFromFile("./simplified_example.txt")
+	forest := InitialiseForestFromFile(filepath)
 	AssessVisibility(&forest)
 
 	return GetVisibleTreeCount(&forest)
