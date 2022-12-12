@@ -127,3 +127,23 @@ func TestViewToWest(t *testing.T) {
 		t.Errorf("Incorrect view distance west - %d", viewDistance)
 	}
 }
+
+func TestViewToEast(t *testing.T) {
+	forest := InitialiseForestFromFile("./simplified_example.txt")
+
+	if GetViewToEast(&forest, 1, 4, 2) != 0 {
+		t.Error("Bad error handling for leftmost line")
+	}
+
+	viewDistance := GetViewToEast(&forest, 1, 1, 3)
+
+	if viewDistance != 1 {
+		t.Errorf("Incorrect view distance west - %d", viewDistance)
+	}
+
+	viewDistance = GetViewToEast(&forest, 1, 1, 6)
+
+	if viewDistance != 3 {
+		t.Errorf("Incorrect view distance west - %d", viewDistance)
+	}
+}
