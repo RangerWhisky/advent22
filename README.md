@@ -6,6 +6,8 @@ Intent/Focus
 
 Intent is to learn Golang while practising good clean code development techniques.  TDD and legibility are key, with many commits to git as failing tests are written and the code written to match the behaviour.
 
+If this was a "proper" project then all commit history would be nicely squashed down into a proper commit message before submitting, but I haven't worried about that for this repo.  
+
 
 About the code
 ==============
