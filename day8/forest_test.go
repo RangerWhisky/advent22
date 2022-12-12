@@ -7,10 +7,13 @@ import (
 func TestInitialiseForest(t *testing.T) {
 	forest := InitialiseForestFromFile("./simplified_example.txt")
 
-	treeCount := getTreeCount(&forest)
+	height, width := GetForestDimensions(&forest)
 
-	if treeCount != 25 {
-		t.Errorf("Got %d expected %d", treeCount, 25)
+	if height != 5 {
+		t.Errorf("Got height %d expected %d", height, 5)
+	}
+	if width != 5 {
+		t.Errorf("Got width %d expected %d", width, 5)
 	}
 }
 

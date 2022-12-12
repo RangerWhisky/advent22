@@ -23,6 +23,10 @@ func InitialiseForestFromFile(filepath string) Forest {
 	return forest
 }
 
+func GetForestDimensions(forest *Forest) (int, int) {
+	return utils.GetHeight(&forest.mapData), utils.GetWidth(&forest.mapData)
+}
+
 func AssessVisibility(forest *Forest) {
 	// trade off of memory usage vs performance
 	// for performance, store the top tree height observed from each direction, then iterate all
@@ -180,9 +184,6 @@ func GetViewToEast(forest *Forest, height int, width int, treeHeight int) int {
 	return visibleTreeCount
 }
 
-func getTreeCount(forest *Forest) int {
-	return utils.GetHeight(&forest.mapData) * utils.GetWidth(&forest.mapData)
-}
 func PrintVisibilityMap(forest *Forest) {
 	maxHeight := utils.GetHeight(&forest.mapData)
 	maxWidth := utils.GetWidth(&forest.mapData)
