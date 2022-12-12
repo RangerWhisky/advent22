@@ -73,3 +73,19 @@ func TestVisibleFromEast(t *testing.T) {
 		t.Errorf("False positive")
 	}
 }
+
+func TestViewToNorth(t *testing.T) {
+	forest := InitialiseForestFromFile("./simplified_example.txt")
+
+	viewDistance := GetViewToNorth(&forest, 1, 1, 5)
+
+	if viewDistance != 1 {
+		t.Error("Incorrect view distance north")
+	}
+
+	viewDistance = GetViewToNorth(&forest, 3, 2, 5)
+	if viewDistance != 2 {
+		t.Error("Incorrect view distance north")
+	}
+
+}

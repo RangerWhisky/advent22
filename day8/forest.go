@@ -110,6 +110,10 @@ func IsVisibleFromEast(forest *Forest, height int, width int, treeHeight int) bo
 	return visibleFromDirection
 }
 
+func GetViewToNorth(forest *Forest, height int, width int, treeHeight int) int {
+	return 0
+}
+
 func getTreeCount(forest *Forest) int {
 	return utils.GetHeight(&forest.mapData) * utils.GetWidth(&forest.mapData)
 }
