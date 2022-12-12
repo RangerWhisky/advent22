@@ -128,7 +128,7 @@ func GetViewToSouth(forest *Forest, height int, width int, treeHeight int) int {
 	treeBlocksView := false
 	visibleTreeCount := 0
 
-	maxCheckDistance := utils.GetHeight(&forest.mapData) - height
+	maxCheckDistance := utils.GetHeight(&forest.mapData) - height - 1
 
 	for i := 1; i <= maxCheckDistance && !treeBlocksView; i++ {
 		visibleTreeCount = i
