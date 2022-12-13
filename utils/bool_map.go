@@ -18,3 +18,7 @@ func InitialiseBoolMap(height int, width int) BoolMap {
 
 	return *boolMap
 }
+
+func MarkMap(boolmap *BoolMap, height int, width int) {
+
+}
