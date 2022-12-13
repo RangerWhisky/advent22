@@ -26,3 +26,7 @@ func Decode(instruction string) (int, int) {
 
 	return heightDiff, widthDiff
 }
+
+func GetMapRequirements(filepath string) (int, int) {
+	return 0, 0
+}

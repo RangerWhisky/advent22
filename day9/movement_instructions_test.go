@@ -1,6 +1,8 @@
 package day9
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestDecodeRight(t *testing.T) {
 	heightDiff, widthDiff := Decode("R 4")
@@ -38,6 +40,18 @@ func TestDecodeDown(t *testing.T) {
 		t.Error()
 	}
 	if widthDiff != 0 {
+		t.Error()
+	}
+}
+
+func TestGetMapRequirements(t *testing.T) {
+	filepath := "./simplified_example.txt"
+
+	height, width := GetMapRequirements(filepath)
+	if height != 5 {
+		t.Error()
+	}
+	if width != 5 {
 		t.Error()
 	}
 }
