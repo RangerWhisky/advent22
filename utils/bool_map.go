@@ -1,5 +1,7 @@
 package utils
 
+import "fmt"
+
 type BoolMap struct {
 	dataPoints [][]bool
 	countTrue  int
@@ -23,5 +25,24 @@ func MarkMap(boolmap *BoolMap, height int, width int) {
 	if !boolmap.dataPoints[height][width] {
 		boolmap.dataPoints[height][width] = true
 		boolmap.countTrue++
+	}
+}
+
+func GetMarkedSpaces(boolmap *BoolMap) int {
+	return boolmap.countTrue
+}
+
+func PrintBoolMap(boolmap *BoolMap) {
+	height := len(boolmap.dataPoints)
+	width := len(boolmap.dataPoints[0])
+	for line := 0; line < height; line++ {
+		for i := 0; i < width; i++ {
+			if boolmap.dataPoints[line][i] {
+				fmt.Printf("#")
+			} else {
+				fmt.Printf(".")
+			}
+		}
+		fmt.Println()
 	}
 }
