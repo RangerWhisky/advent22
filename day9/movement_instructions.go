@@ -40,22 +40,14 @@ func GetMapRequirements(filepath string) (int, int) {
 		currentHeight += height
 		currentWidth += width
 
-		if intAbs(currentHeight) > maxHeight {
-			maxHeight = intAbs(currentHeight)
+		if currentHeight > maxHeight {
+			maxHeight = currentHeight
 		}
 
-		if intAbs(currentWidth) > maxWidth {
-			maxWidth = intAbs(currentWidth)
+		if currentWidth > maxWidth {
+			maxWidth = currentWidth
 		}
 	}
 
 	return maxHeight, maxWidth
-}
-
-func intAbs(val int) int {
-	if val < 0 {
-		val = -val
-	}
-
-	return val
 }
