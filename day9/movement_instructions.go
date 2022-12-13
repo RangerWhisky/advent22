@@ -20,9 +20,9 @@ func Decode(instruction string) (int, int) {
 	case "L":
 		widthDiff = -magnitude
 	case "U":
-		heightDiff = -magnitude
-	case "D":
 		heightDiff = magnitude
+	case "D":
+		heightDiff = -magnitude
 	}
 
 	return heightDiff, widthDiff
@@ -31,8 +31,8 @@ func Decode(instruction string) (int, int) {
 func GetMapRequirements(filepath string) (int, int) {
 	instructions := utils.Read_file(filepath)
 
-	// instructions start in the bottom left so expect a right and/or up first
-	currentHeight, currentWidth, maxHeight, maxWidth := -1, 1, 1, 1
+	// assume instructions start in the bottom left so expect a right and/or up first
+	currentHeight, currentWidth, maxHeight, maxWidth := 1, 1, 1, 1
 
 	for _, line := range instructions {
 		height, width := Decode(line)
