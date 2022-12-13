@@ -49,9 +49,9 @@ func TestGetMapRequirements(t *testing.T) {
 
 	height, width := GetMapRequirements(filepath)
 	if height != 5 {
-		t.Error()
+		t.Errorf("Need height %d but got %d", 5, height)
 	}
-	if width != 5 {
-		t.Error()
+	if width != 6 {
+		t.Errorf("Need width %d but got %d", 6, width)
 	}
 }

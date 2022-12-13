@@ -1,6 +1,7 @@
 package day9
 
 import (
+	"localhost/advent22/utils"
 	"strconv"
 	"strings"
 )
@@ -28,5 +29,33 @@ func Decode(instruction string) (int, int) {
 }
 
 func GetMapRequirements(filepath string) (int, int) {
-	return 0, 0
+	instructions := utils.Read_file(filepath)
+
+	// instructions start in the bottom left so expect a right and/or up first
+	currentHeight, currentWidth, maxHeight, maxWidth := -1, 1, 1, 1
+
+	for _, line := range instructions {
+		height, width := Decode(line)
+
+		currentHeight += height
+		currentWidth += width
+
+		if intAbs(currentHeight) > maxHeight {
+			maxHeight = intAbs(currentHeight)
+		}
+
+		if intAbs(currentWidth) > maxWidth {
+			maxWidth = intAbs(currentWidth)
+		}
+	}
+
+	return maxHeight, maxWidth
+}
+
+func intAbs(val int) int {
+	if val < 0 {
+		val = -val
+	}
+
+	return val
 }
