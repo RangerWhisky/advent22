@@ -23,4 +23,11 @@ func TestSetTrue(t *testing.T) {
 		t.Error()
 	}
 
+	// now try and mark the same point again and check that we dont' count twice
+	MarkMap(&boolmap, 5, 5)
+
+	if boolmap.countTrue != 1 {
+		t.Error()
+	}
+
 }

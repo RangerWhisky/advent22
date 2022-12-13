@@ -20,5 +20,8 @@ func InitialiseBoolMap(height int, width int) BoolMap {
 }
 
 func MarkMap(boolmap *BoolMap, height int, width int) {
-
+	if !boolmap.dataPoints[height][width] {
+		boolmap.dataPoints[height][width] = true
+		boolmap.countTrue++
+	}
 }
