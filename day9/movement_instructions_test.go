@@ -21,3 +21,13 @@ func TestDecodeLeft(t *testing.T) {
 		t.Error()
 	}
 }
+
+func TestDecodeUp(t *testing.T) {
+	heightDiff, widthDiff := Decode("U 3")
+	if heightDiff != -3 {
+		t.Error()
+	}
+	if widthDiff != 0 {
+		t.Error()
+	}
+}

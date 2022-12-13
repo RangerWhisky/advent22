@@ -18,6 +18,8 @@ func Decode(instruction string) (int, int) {
 		widthDiff = magnitude
 	case "L":
 		widthDiff = -magnitude
+	case "U":
+		heightDiff = -magnitude
 	}
 
 	return heightDiff, widthDiff
