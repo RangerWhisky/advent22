@@ -10,6 +10,7 @@ import (
 	"localhost/advent22/day6"
 	"localhost/advent22/day7"
 	"localhost/advent22/day8"
+	"localhost/advent22/day9"
 )
 
 func main() {
@@ -45,6 +46,9 @@ func main() {
 	fmt.Println("\nDay 8")
 	fmt.Printf("Number of visible trees is %d\n", day8.PartOne("day8/input"))
 	fmt.Printf("Best Scenic Score is %d\n", day8.PartTwo("day8/input"))
+
+	fmt.Println("\nDay 9")
+	fmt.Printf("Number of visited squares is %d\n", day9.PartOne("day9/input"))
 
 	fmt.Println("\nDone!")
 }

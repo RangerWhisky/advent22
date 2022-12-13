@@ -9,7 +9,7 @@ type Coordinate struct {
 	height, width int
 }
 
-func DayOne(filepath string) int {
+func PartOne(filepath string) int {
 	maxHeight, maxWidth := GetMapRequirements(filepath)
 	visitMap := utils.InitialiseBoolMap(maxHeight, maxWidth)
 

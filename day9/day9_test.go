@@ -3,7 +3,7 @@ package day9
 import "testing"
 
 func TestDayOne(t *testing.T) {
-	solution := DayOne("./simplified_example.txt")
+	solution := PartOne("./simplified_example.txt")
 
 	if solution != 13 {
 		t.Errorf("Expecting %d, got %d", 13, solution)
