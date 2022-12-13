@@ -5,7 +5,9 @@ import "testing"
 func TestDayOne(t *testing.T) {
 	solution := DayOne("./simplified_example.txt")
 
-	t.Errorf("Expecting %d, got %d", 13, solution)
+	if solution != 13 {
+		t.Errorf("Expecting %d, got %d", 13, solution)
+	}
 }
 
 func TestGetTailPositionsWithoutChange(t *testing.T) {
@@ -81,6 +83,28 @@ func TestBigNegativeDiagonalChange(t *testing.T) {
 
 	for i, position := range positions {
 		expectedCoordinate := Coordinate{2 + i, 3}
+		if position != expectedCoordinate {
+			t.Errorf("Expected %q, got %q at %d", expectedCoordinate, position, i)
+		}
+	}
+}
+
+func TestUp(t *testing.T) {
+
+	tail := Coordinate{1, 4}
+
+	head := Coordinate{5, 5}
+
+	positions := GetTailPositions(tail, head)
+
+	if len(positions) < 3 {
+		t.Errorf("Too few tail positions")
+	}
+
+	// count back from head to tail to check our positions
+
+	for i, position := range positions {
+		expectedCoordinate := Coordinate{4 - i, 5}
 		if position != expectedCoordinate {
 			t.Errorf("Expected %q, got %q at %d", expectedCoordinate, position, i)
 		}

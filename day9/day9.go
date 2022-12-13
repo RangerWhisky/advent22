@@ -25,6 +25,7 @@ func DayOne(filepath string) int {
 		positions := GetTailPositions(tailPosition, headPosition)
 		for _, p := range positions {
 			utils.MarkMap(&visitMap, maxHeight-p.height, p.width-1)
+			tailPosition = p
 		}
 		utils.PrintBoolMap(&visitMap)
 	}
