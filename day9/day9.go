@@ -26,7 +26,7 @@ func DayOne(filepath string) int {
 }
 
 func GetTailPositions(tail Coordinate, head Coordinate) []Coordinate {
-	positions := []Coordinate{tail}
+	var positions []Coordinate
 	diffH := head.height - tail.height
 	diffW := head.width - tail.width
 

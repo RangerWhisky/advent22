@@ -15,10 +15,10 @@ func TestGetTailPositionsWithoutChange(t *testing.T) {
 	head := Coordinate{1, 2}
 
 	positions := GetTailPositions(tail, head)
-
-	if positions[0] != tail {
+	if len(positions) != 0 {
 		t.Error()
 	}
+
 }
 
 func TestGetTailPositionsWithRightChange(t *testing.T) {
@@ -29,18 +29,16 @@ func TestGetTailPositionsWithRightChange(t *testing.T) {
 
 	positions := GetTailPositions(tail, head)
 
-	if positions[0] != tail {
-		t.Error()
-	}
-
-	if len(positions) < 3 {
+	if len(positions) < 2 {
 		t.Errorf("Too few tail positions")
 	}
 
-	for i := 1; i < 4 && i < len(positions); i++ {
-		coord := Coordinate{1, i}
-		if positions[i] != coord {
-			t.Error()
+	// count back from head to tail to check our positions
+
+	for i, position := range positions {
+		expectedCoordinate := Coordinate{1, 3 - i}
+		if position != expectedCoordinate {
+			t.Errorf("Expected %q, got %q at %d", expectedCoordinate, position, i)
 		}
 	}
 }
