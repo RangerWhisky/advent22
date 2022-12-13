@@ -3,21 +3,23 @@ package day9
 import "localhost/advent22/utils"
 
 type Coordinate struct {
-	x, y int
+	height, width int
 }
 
 func DayOne(filepath string) int {
-	// visitMap := utils.InitialiseBoolMap(GetMapRequirements(filepath))
+	visitMap := utils.InitialiseBoolMap(GetMapRequirements(filepath))
 
 	tailPosition := Coordinate{1, 1}
 	headPosition := Coordinate{1, 1}
 
 	for _, line := range utils.Read_file(filepath) {
 		moveH, moveW := Decode(line)
-		headPosition.x += moveH
-		headPosition.y += moveW
-		GetTailPositions(tailPosition, headPosition)
-
+		headPosition.height += moveH
+		headPosition.width += moveW
+		positions := GetTailPositions(tailPosition, headPosition)
+		for _, p := range positions {
+			utils.MarkMap(&visitMap, p.height, p.width)
+		}
 	}
 
 	return 0
