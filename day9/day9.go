@@ -15,7 +15,7 @@ func PartOne(filepath string) int {
 
 	tailPosition := startPosition
 	headPosition := startPosition
-	utils.MarkMap(&visitMap, maxHeight-tailPosition.height, tailPosition.width-1)
+	utils.MarkMap(&visitMap, maxHeight-tailPosition.height-1, tailPosition.width)
 
 	for _, line := range utils.Read_file(filepath) {
 		moveH, moveW := Decode(line)
@@ -24,7 +24,7 @@ func PartOne(filepath string) int {
 		headPosition.width += moveW
 		positions := GetTailPositions(tailPosition, headPosition)
 		for _, p := range positions {
-			utils.MarkMap(&visitMap, maxHeight-p.height, p.width-1)
+			utils.MarkMap(&visitMap, maxHeight-p.height-1, p.width)
 			tailPosition = p
 		}
 		utils.PrintBoolMap(&visitMap)

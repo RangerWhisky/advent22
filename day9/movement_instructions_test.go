@@ -66,7 +66,7 @@ func TestGetMapRequirementsWithCoordCheck(t *testing.T) {
 	if width != 6 {
 		t.Errorf("Need width %d but got %d", 6, width)
 	}
-	expectedCoordinate := Coordinate{1, 1}
+	expectedCoordinate := Coordinate{0, 0}
 	if startPoint != expectedCoordinate {
 		t.Errorf("StartPoint not as expected - (%d,%d)", startPoint.height, startPoint.width)
 	}
