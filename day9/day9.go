@@ -18,15 +18,15 @@ func PartOne(filepath string) int {
 
 	for _, line := range utils.Read_file(filepath) {
 		moveH, moveW := Decode(line)
-		// fmt.Printf("\n%s\n", line)
 		headPosition.height += moveH
 		headPosition.width += moveW
 		positions := GetTailPositions(tailPosition, headPosition)
+		if len(positions) != 0 {
+			tailPosition = positions[0]
+		}
 		for _, p := range positions {
 			utils.MarkMap(&visitMap, maxHeight-p.height-1, p.width)
-			tailPosition = p
 		}
-		// utils.PrintBoolMap(&visitMap)
 	}
 	return utils.GetMarkedSpaces(&visitMap)
 }

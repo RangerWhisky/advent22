@@ -75,7 +75,7 @@ func TestBigNegativeDiagonalChange(t *testing.T) {
 
 	positions := GetTailPositions(tail, head)
 
-	if len(positions) < 1 {
+	if len(positions) < 2 {
 		t.Errorf("Too few tail positions")
 	}
 
