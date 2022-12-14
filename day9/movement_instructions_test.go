@@ -47,11 +47,27 @@ func TestDecodeDown(t *testing.T) {
 func TestGetMapRequirements(t *testing.T) {
 	filepath := "./simplified_example.txt"
 
-	height, width := GetMapRequirements(filepath)
+	height, width, _ := GetMapRequirements(filepath)
 	if height != 5 {
 		t.Errorf("Need height %d but got %d", 5, height)
 	}
 	if width != 6 {
 		t.Errorf("Need width %d but got %d", 6, width)
+	}
+}
+
+func TestGetMapRequirementsWithCoordCheck(t *testing.T) {
+	filepath := "./simplified_example.txt"
+
+	height, width, startPoint := GetMapRequirements(filepath)
+	if height != 5 {
+		t.Errorf("Need height %d but got %d", 5, height)
+	}
+	if width != 6 {
+		t.Errorf("Need width %d but got %d", 6, width)
+	}
+	expectedCoordinate := Coordinate{1, 1}
+	if startPoint != expectedCoordinate {
+		t.Errorf("StartPoint not as expected - (%d,%d)", startPoint.height, startPoint.width)
 	}
 }

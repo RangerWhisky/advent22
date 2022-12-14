@@ -28,11 +28,11 @@ func Decode(instruction string) (int, int) {
 	return heightDiff, widthDiff
 }
 
-func GetMapRequirements(filepath string) (int, int) {
+func GetMapRequirements(filepath string) (int, int, Coordinate) {
 	instructions := utils.Read_file(filepath)
 
 	// assume instructions start in the bottom left so expect a right and/or up first
-	currentHeight, currentWidth, maxHeight, maxWidth := 1, 1, 1, 1
+	currentHeight, currentWidth, maxHeight, maxWidth, minHeight, minWidth := 1, 1, 1, 1, 1, 1
 
 	for _, line := range instructions {
 		height, width := Decode(line)
@@ -44,10 +44,25 @@ func GetMapRequirements(filepath string) (int, int) {
 			maxHeight = currentHeight
 		}
 
+		if currentHeight < minHeight {
+			minHeight = currentHeight
+		}
+
 		if currentWidth > maxWidth {
 			maxWidth = currentWidth
 		}
+
+		if currentWidth < minWidth {
+			minWidth = currentWidth
+		}
 	}
 
-	return maxHeight, maxWidth
+	// need to shift starting point to 0,0 and adapt our dimensions
+
+	startingCoords := Coordinate{1 - minHeight, 1 - minWidth}
+
+	maxHeight = maxHeight - minHeight + 1
+	maxWidth = maxWidth - minWidth + 1
+
+	return maxHeight, maxWidth, startingCoords
 }

@@ -10,11 +10,11 @@ type Coordinate struct {
 }
 
 func PartOne(filepath string) int {
-	maxHeight, maxWidth := GetMapRequirements(filepath)
+	maxHeight, maxWidth, startPosition := GetMapRequirements(filepath)
 	visitMap := utils.InitialiseBoolMap(maxHeight, maxWidth)
 
-	tailPosition := Coordinate{1, 1}
-	headPosition := Coordinate{1, 1}
+	tailPosition := startPosition
+	headPosition := startPosition
 	utils.MarkMap(&visitMap, maxHeight-tailPosition.height, tailPosition.width-1)
 
 	for _, line := range utils.Read_file(filepath) {
