@@ -1,7 +1,6 @@
 package day9
 
 import (
-	"fmt"
 	"localhost/advent22/utils"
 )
 
@@ -19,7 +18,7 @@ func PartOne(filepath string) int {
 
 	for _, line := range utils.Read_file(filepath) {
 		moveH, moveW := Decode(line)
-		fmt.Printf("\n%s\n", line)
+		// fmt.Printf("\n%s\n", line)
 		headPosition.height += moveH
 		headPosition.width += moveW
 		positions := GetTailPositions(tailPosition, headPosition)
@@ -27,7 +26,7 @@ func PartOne(filepath string) int {
 			utils.MarkMap(&visitMap, maxHeight-p.height-1, p.width)
 			tailPosition = p
 		}
-		utils.PrintBoolMap(&visitMap)
+		// utils.PrintBoolMap(&visitMap)
 	}
 	return utils.GetMarkedSpaces(&visitMap)
 }
