@@ -12,6 +12,10 @@ func PartOne(filepath string) int {
 	return ModelRopeMovement(filepath, 2)
 }
 
+func PartTwo(filepath string) int {
+	return ModelRopeMovement(filepath, 10)
+}
+
 func ModelRopeMovement(filepath string, length int) int {
 	maxHeight, maxWidth, startPosition := GetMapRequirements(filepath)
 	visitMap := utils.InitialiseBoolMap(maxHeight, maxWidth)

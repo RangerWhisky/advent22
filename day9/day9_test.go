@@ -2,11 +2,19 @@ package day9
 
 import "testing"
 
-func TestDayOne(t *testing.T) {
+func TestPartOne(t *testing.T) {
 	solution := PartOne("./simplified_example.txt")
 
 	if solution != 13 {
 		t.Errorf("Expecting %d, got %d", 13, solution)
+	}
+}
+
+func TestPartTwo(t *testing.T) {
+	solution := PartTwo("long_example.txt")
+
+	if solution != 36 {
+		t.Errorf("Expecting %d, got %d", 36, solution)
 	}
 }
 
