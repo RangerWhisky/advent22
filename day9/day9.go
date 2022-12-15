@@ -9,23 +9,31 @@ type Coordinate struct {
 }
 
 func PartOne(filepath string) int {
+	return ModelRopeMovement(filepath, 2)
+}
+
+func ModelRopeMovement(filepath string, length int) int {
 	maxHeight, maxWidth, startPosition := GetMapRequirements(filepath)
 	visitMap := utils.InitialiseBoolMap(maxHeight, maxWidth)
 
-	tailPosition := startPosition
-	headPosition := startPosition
-	utils.MarkMap(&visitMap, maxHeight-tailPosition.height-1, tailPosition.width)
+	var rope []Coordinate
+	for i := 0; i < length; i++ {
+		rope = append(rope, startPosition)
+	}
+
+	MarkRopePosition(&visitMap, maxHeight, rope[1])
 
 	for _, line := range utils.Read_file(filepath) {
+		// for a rope greater than 2 points, this needs to be refactored into a loop
 		moveH, moveW := Decode(line)
-		headPosition.height += moveH
-		headPosition.width += moveW
-		positions := GetTailPositions(tailPosition, headPosition)
+		rope[0].height += moveH
+		rope[0].width += moveW
+		positions := GetTailPositions(rope[1], rope[0])
 		if len(positions) != 0 {
-			tailPosition = positions[0]
+			rope[1] = positions[0]
 		}
 		for _, p := range positions {
-			utils.MarkMap(&visitMap, maxHeight-p.height-1, p.width)
+			MarkRopePosition(&visitMap, maxHeight, p)
 		}
 	}
 	return utils.GetMarkedSpaces(&visitMap)
@@ -61,4 +69,8 @@ func GetTailPositions(tail Coordinate, head Coordinate) []Coordinate {
 	}
 
 	return positions
+}
+
+func MarkRopePosition(visitMap *utils.BoolMap, maxHeight int, p Coordinate) {
+	utils.MarkMap(visitMap, maxHeight-p.height-1, p.width)
 }
