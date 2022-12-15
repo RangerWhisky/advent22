@@ -25,7 +25,7 @@ func ModelRopeMovement(filepath string, length int) int {
 		rope = append(rope, startPosition)
 	}
 
-	MarkRopePosition(&visitMap, maxHeight, rope[1])
+	MarkRopePosition(&visitMap, maxHeight, rope[0])
 
 	for _, line := range utils.Read_file(filepath) {
 		moveH, moveW := Decode(line)
@@ -36,8 +36,6 @@ func ModelRopeMovement(filepath string, length int) int {
 			positions := GetTailPositions(rope[knot], rope[knot-1])
 			if len(positions) != 0 {
 				rope[knot] = positions[0]
-			} else {
-				break
 			}
 			if knot == length-1 {
 				// if the tail (len(rope) - 1) has moved
