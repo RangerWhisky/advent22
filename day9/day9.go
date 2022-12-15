@@ -28,17 +28,25 @@ func ModelRopeMovement(filepath string, length int) int {
 	MarkRopePosition(&visitMap, maxHeight, rope[1])
 
 	for _, line := range utils.Read_file(filepath) {
-		// for a rope greater than 2 points, this needs to be refactored into a loop
 		moveH, moveW := Decode(line)
 		rope[0].height += moveH
 		rope[0].width += moveW
-		positions := GetTailPositions(rope[1], rope[0])
-		if len(positions) != 0 {
-			rope[1] = positions[0]
+		// for a rope greater than 2 points, this needs to be refactored into a loop
+		for knot := 1; knot < length; knot++ {
+			positions := GetTailPositions(rope[knot], rope[knot-1])
+			if len(positions) != 0 {
+				rope[knot] = positions[0]
+			} else {
+				break
+			}
+			if knot == length-1 {
+				// if the tail (len(rope) - 1) has moved
+				for _, p := range positions {
+					MarkRopePosition(&visitMap, maxHeight, p)
+				}
+			}
 		}
-		for _, p := range positions {
-			MarkRopePosition(&visitMap, maxHeight, p)
-		}
+
 	}
 	return utils.GetMarkedSpaces(&visitMap)
 }
