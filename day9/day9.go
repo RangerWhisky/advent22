@@ -38,7 +38,7 @@ func ModelRopeMovement(filepath string, length int) int {
 				rope[knot] = positions[0]
 			}
 			if knot == length-1 {
-				// if the tail (len(rope) - 1) has moved
+				// if the tail (len(rope) - 1) has moved, mark all the remaining positions
 				for _, p := range positions {
 					MarkRopePosition(&visitMap, maxHeight, p)
 				}
