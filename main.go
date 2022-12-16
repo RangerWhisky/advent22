@@ -49,6 +49,7 @@ func main() {
 
 	fmt.Println("\nDay 9")
 	fmt.Printf("Number of visited squares is %d\n", day9.PartOne("day9/input"))
+	fmt.Printf("Number of visited squares with 10 long rope is %d\n", day9.PartTwo("day9/input"))
 
 	fmt.Println("\nDone!")
 }
