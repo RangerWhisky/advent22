@@ -29,20 +29,20 @@ func ModelRopeMovement(filepath string, length int) int {
 
 	for _, line := range utils.Read_file(filepath) {
 		moveH, moveW := Decode(line)
-		for incrementH := 1; incrementH < moveH; incrementH++ {
+		for incrementH := 1; incrementH <= moveH; incrementH++ {
 			rope[0].height++
 			rope = ResolveTail(rope, &visitMap, maxHeight)
 		}
-		for incrementH := -1; incrementH > moveH; incrementH-- {
+		for incrementH := -1; incrementH >= moveH; incrementH-- {
 			rope[0].height--
 			rope = ResolveTail(rope, &visitMap, maxHeight)
 		}
-		for incrementW := 1; incrementW < moveW; incrementW++ {
+		for incrementW := 1; incrementW <= moveW; incrementW++ {
 			rope[0].width++
 			rope = ResolveTail(rope, &visitMap, maxHeight)
 		}
 
-		for incrementW := -1; incrementW > moveW; incrementW-- {
+		for incrementW := -1; incrementW >= moveW; incrementW-- {
 			rope[0].width--
 			rope = ResolveTail(rope, &visitMap, maxHeight)
 		}
