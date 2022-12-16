@@ -29,24 +29,42 @@ func ModelRopeMovement(filepath string, length int) int {
 
 	for _, line := range utils.Read_file(filepath) {
 		moveH, moveW := Decode(line)
-		rope[0].height += moveH
-		rope[0].width += moveW
-		// for a rope greater than 2 points, this needs to be refactored into a loop
-		for knot := 1; knot < length; knot++ {
-			positions := GetTailPositions(rope[knot], rope[knot-1])
-			if len(positions) != 0 {
-				rope[knot] = positions[0]
-			}
-			if knot == length-1 {
-				// if the tail (len(rope) - 1) has moved, mark all the remaining positions
-				for _, p := range positions {
-					MarkRopePosition(&visitMap, maxHeight, p)
-				}
-			}
+		for incrementH := 1; incrementH < moveH; incrementH++ {
+			rope[0].height++
+			rope = ResolveTail(rope, &visitMap, maxHeight)
+		}
+		for incrementH := -1; incrementH > moveH; incrementH-- {
+			rope[0].height--
+			rope = ResolveTail(rope, &visitMap, maxHeight)
+		}
+		for incrementW := 1; incrementW < moveW; incrementW++ {
+			rope[0].width++
+			rope = ResolveTail(rope, &visitMap, maxHeight)
 		}
 
+		for incrementW := -1; incrementW > moveW; incrementW-- {
+			rope[0].width--
+			rope = ResolveTail(rope, &visitMap, maxHeight)
+		}
 	}
 	return utils.GetMarkedSpaces(&visitMap)
+}
+
+func ResolveTail(rope []Coordinate, visitMap *utils.BoolMap, maxHeight int) []Coordinate {
+	// for a rope greater than 2 points, this needs to be refactored into a loop
+	for knot := 1; knot < len(rope); knot++ {
+		positions := GetTailPositions(rope[knot], rope[knot-1])
+		if len(positions) != 0 {
+			rope[knot] = positions[0]
+		}
+		if knot == len(rope)-1 {
+			// if the tail (len(rope) - 1) has moved, mark all the remaining positions
+			for _, p := range positions {
+				MarkRopePosition(visitMap, maxHeight, p)
+			}
+		}
+	}
+	return rope
 }
 
 func GetTailPositions(tail Coordinate, head Coordinate) []Coordinate {
