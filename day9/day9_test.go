@@ -118,3 +118,22 @@ func TestUp(t *testing.T) {
 		}
 	}
 }
+
+func TestDiagonal(t *testing.T) {
+
+	tail := Coordinate{1, 1}
+
+	head := Coordinate{3, 3}
+
+	positions := GetTailPositions(tail, head)
+
+	if len(positions) != 1 {
+		t.Errorf("Not completed in 1 step")
+	}
+
+	// count back from head to tail to check our positions
+	expectedCoordinate := Coordinate{2, 2}
+	if positions[0] != expectedCoordinate {
+		t.Errorf("Diagonal move not calculated correctly - got (%d, %d)", positions[0].height, positions[0].width)
+	}
+}

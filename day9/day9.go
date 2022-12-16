@@ -1,6 +1,7 @@
 package day9
 
 import (
+	"fmt"
 	"localhost/advent22/utils"
 )
 
@@ -31,20 +32,19 @@ func ModelRopeMovement(filepath string, length int) int {
 		moveH, moveW := Decode(line)
 		for incrementH := 1; incrementH <= moveH; incrementH++ {
 			rope[0].height++
-			rope = ResolveTail(rope, &visitMap, maxHeight)
+			rope = ResolveRopeForStep(rope, &visitMap, maxHeight)
 		}
 		for incrementH := -1; incrementH >= moveH; incrementH-- {
 			rope[0].height--
-			rope = ResolveTail(rope, &visitMap, maxHeight)
+			rope = ResolveRopeForStep(rope, &visitMap, maxHeight)
 		}
 		for incrementW := 1; incrementW <= moveW; incrementW++ {
 			rope[0].width++
-			rope = ResolveTail(rope, &visitMap, maxHeight)
+			rope = ResolveRopeForStep(rope, &visitMap, maxHeight)
 		}
-
 		for incrementW := -1; incrementW >= moveW; incrementW-- {
 			rope[0].width--
-			rope = ResolveTail(rope, &visitMap, maxHeight)
+			rope = ResolveRopeForStep(rope, &visitMap, maxHeight)
 		}
 	}
 	return utils.GetMarkedSpaces(&visitMap)
@@ -62,6 +62,25 @@ func ResolveTail(rope []Coordinate, visitMap *utils.BoolMap, maxHeight int) []Co
 			for _, p := range positions {
 				MarkRopePosition(visitMap, maxHeight, p)
 			}
+		}
+	}
+	return rope
+}
+
+func ResolveRopeForStep(rope []Coordinate, visitMap *utils.BoolMap, maxHeight int) []Coordinate {
+	for knot := 1; knot < len(rope); knot++ {
+		positions := GetTailPositions(rope[knot], rope[knot-1])
+		switch len(positions) {
+		case 1:
+			rope[knot] = positions[0]
+			if knot == len(rope)-1 {
+				MarkRopePosition(visitMap, maxHeight, rope[knot])
+			}
+		case 0:
+			knot = len(rope)
+		default:
+			str := fmt.Sprintf("Too many steps for stepwise calculation %d (%d, %d) %d (%d, %d)", knot, rope[knot].height, rope[knot].width, knot-1, rope[knot-1].height, rope[knot-1].width)
+			panic(str)
 		}
 	}
 	return rope
