@@ -1,7 +1,6 @@
 package day9
 
 import (
-	"fmt"
 	"localhost/advent22/utils"
 )
 
@@ -69,18 +68,13 @@ func ResolveTail(rope []Coordinate, visitMap *utils.BoolMap, maxHeight int) []Co
 
 func ResolveRopeForStep(rope []Coordinate, visitMap *utils.BoolMap, maxHeight int) []Coordinate {
 	for knot := 1; knot < len(rope); knot++ {
-		positions := GetTailPositions(rope[knot], rope[knot-1])
-		switch len(positions) {
-		case 1:
-			rope[knot] = positions[0]
-			if knot == len(rope)-1 {
-				MarkRopePosition(visitMap, maxHeight, rope[knot])
-			}
-		case 0:
-			knot = len(rope)
-		default:
-			str := fmt.Sprintf("Too many steps for stepwise calculation %d (%d, %d) %d (%d, %d)", knot, rope[knot].height, rope[knot].width, knot-1, rope[knot-1].height, rope[knot-1].width)
-			panic(str)
+		position := GetSnapPosition(rope[knot], rope[knot-1])
+		if rope[knot] == position {
+			break
+		}
+		rope[knot] = position
+		if knot == len(rope)-1 {
+			MarkRopePosition(visitMap, maxHeight, rope[knot])
 		}
 	}
 	return rope
@@ -116,6 +110,42 @@ func GetTailPositions(tail Coordinate, head Coordinate) []Coordinate {
 	}
 
 	return positions
+}
+
+func GetSnapPosition(tail Coordinate, head Coordinate) Coordinate {
+	diffH := head.height - tail.height
+	diffW := head.width - tail.width
+
+	newTail := tail
+
+	stepH := getStepToClose(diffH)
+	stepW := getStepToClose(diffW)
+
+	if stepH != 0 && stepW != 0 {
+		newTail.height += stepH
+		newTail.width += stepW
+	} else if stepH != 0 {
+		newTail.height += stepH
+		newTail.width = head.width
+	} else if stepW != 0 {
+		newTail.width += stepH
+		newTail.height = head.height
+	}
+	return newTail
+}
+
+func getStepToClose(diff int) int {
+	step := diff
+	switch diff {
+	case 2, -2:
+		// little move
+		step = diff / 2
+	case 1, -1:
+		// only move if width stretches
+	default:
+		// already in line
+	}
+	return step
 }
 
 func MarkRopePosition(visitMap *utils.BoolMap, maxHeight int, p Coordinate) {
