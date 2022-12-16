@@ -24,9 +24,9 @@ func TestGetTailPositionsWithoutChange(t *testing.T) {
 
 	head := Coordinate{1, 2}
 
-	positions := GetTailPositions(tail, head)
-	if len(positions) != 0 {
-		t.Error()
+	position := GetSnapPosition(tail, head)
+	if position != tail {
+		t.Errorf("Tail should not have moved")
 	}
 
 }
@@ -35,22 +35,17 @@ func TestGetTailPositionsWithRightChange(t *testing.T) {
 
 	tail := Coordinate{1, 1}
 
-	head := Coordinate{1, 4}
+	head := Coordinate{1, 3}
 
-	positions := GetTailPositions(tail, head)
-
-	if len(positions) < 2 {
-		t.Errorf("Too few tail positions")
-	}
+	position := GetSnapPosition(tail, head)
 
 	// count back from head to tail to check our positions
 
-	for i, position := range positions {
-		expectedCoordinate := Coordinate{1, 3 - i}
-		if position != expectedCoordinate {
-			t.Errorf("Expected %q, got %q at %d", expectedCoordinate, position, i)
-		}
+	expectedCoordinate := Coordinate{1, 2}
+	if position != expectedCoordinate {
+		t.Errorf("Expected %q, got %q", expectedCoordinate, position)
 	}
+
 }
 
 func TestDiagonalTailPositionsChange(t *testing.T) {
@@ -59,19 +54,13 @@ func TestDiagonalTailPositionsChange(t *testing.T) {
 
 	head := Coordinate{4, 3}
 
-	positions := GetTailPositions(tail, head)
-
-	if len(positions) < 1 {
-		t.Errorf("Too few tail positions")
-	}
+	position := GetSnapPosition(tail, head)
 
 	// count back from head to tail to check our positions
 
-	for i, position := range positions {
-		expectedCoordinate := Coordinate{3 - i, 3}
-		if position != expectedCoordinate {
-			t.Errorf("Expected %q, got %q at %d", expectedCoordinate, position, i)
-		}
+	expectedCoordinate := Coordinate{3, 3}
+	if position != expectedCoordinate {
+		t.Errorf("Expected %q, got %q", expectedCoordinate, position)
 	}
 }
 
@@ -81,19 +70,13 @@ func TestBigNegativeDiagonalChange(t *testing.T) {
 
 	head := Coordinate{1, 3}
 
-	positions := GetTailPositions(tail, head)
-
-	if len(positions) < 2 {
-		t.Errorf("Too few tail positions")
-	}
+	position := GetSnapPosition(tail, head)
 
 	// count back from head to tail to check our positions
 
-	for i, position := range positions {
-		expectedCoordinate := Coordinate{2 + i, 3}
-		if position != expectedCoordinate {
-			t.Errorf("Expected %q, got %q at %d", expectedCoordinate, position, i)
-		}
+	expectedCoordinate := Coordinate{2, 3}
+	if position != expectedCoordinate {
+		t.Errorf("Expected %q, got %q", expectedCoordinate, position)
 	}
 }
 
@@ -101,22 +84,17 @@ func TestUp(t *testing.T) {
 
 	tail := Coordinate{1, 4}
 
-	head := Coordinate{5, 5}
+	head := Coordinate{5, 6}
 
-	positions := GetTailPositions(tail, head)
-
-	if len(positions) < 3 {
-		t.Errorf("Too few tail positions")
-	}
+	position := GetSnapPosition(tail, head)
 
 	// count back from head to tail to check our positions
 
-	for i, position := range positions {
-		expectedCoordinate := Coordinate{4 - i, 5}
-		if position != expectedCoordinate {
-			t.Errorf("Expected %q, got %q at %d", expectedCoordinate, position, i)
-		}
+	expectedCoordinate := Coordinate{4, 5}
+	if position != expectedCoordinate {
+		t.Errorf("Expected %q, got %q", expectedCoordinate, position)
 	}
+
 }
 
 func TestDiagonal(t *testing.T) {
