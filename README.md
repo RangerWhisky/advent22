@@ -21,3 +21,4 @@ There's a bit of duplicated code between each of the days - the flow is emerging
 Notes/warnings
 ==============
 * Day 5 - the answer is correct, the logic is fine, but the code is not "good".  It was written on a train trip when tired and if it were for a real job I would definitely not have submitted any of the patches as-is.  I'm leaving it in place as a note to self on what happens when you code over-tired or distracted!
+* Day 9 - simple enough problem made more difficult by some bad early assumptions.  Done over the course of a few very interrupted days
