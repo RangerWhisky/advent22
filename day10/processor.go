@@ -48,6 +48,9 @@ func ClockTick(proc *Processor) {
 		QueueNoop(proc)
 	}
 }
+func IsIdle(proc *Processor) bool {
+	return proc.commandQueue.ins == InstructionType(none)
+}
 
 func processInstruction(proc *Processor) {
 	switch proc.commandQueue.ins {

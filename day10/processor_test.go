@@ -59,3 +59,11 @@ func TestSignalStrength(t *testing.T) {
 		t.Errorf("Expected %d, got %d", 77, signal)
 	}
 }
+
+func TestIsIdle(t *testing.T) {
+	proc := CreateProcessor()
+
+	if !IsIdle(&proc) {
+		t.Error()
+	}
+}
