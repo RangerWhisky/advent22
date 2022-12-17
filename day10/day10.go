@@ -52,8 +52,8 @@ func ModelCrt(filepath string, cycleCount int) string {
 			instructionPointer++
 		}
 		register := proc.registerX
+		CrtString = CrtString + GetCrtOutput(clock-1, register)
 		_ = ClockTick(&proc)
-		CrtString = CrtString + GetCrtOutput(clock, register)
 	}
 	return CrtString
 }

@@ -29,7 +29,7 @@ func TestProcessorModelling220(t *testing.T) {
 func TestCrtModelling(t *testing.T) {
 	expectedOutput := "##..##..##..##..##..#"
 
-	solution := ModelCrt("./long_example.txt", 20)
+	solution := ModelCrt("./long_example.txt", 21)
 
 	if solution != expectedOutput {
 		t.Errorf("Expected %s, got %s", expectedOutput, solution)
