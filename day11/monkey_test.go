@@ -36,3 +36,13 @@ func TestGetTrueDestination(t *testing.T) {
 		t.Error()
 	}
 }
+
+func TestGetFalseDestination(t *testing.T) {
+	input := "    If false: throw to monkey 3"
+
+	monkey := GetThrowDestination(input)
+
+	if monkey != 3 {
+		t.Error()
+	}
+}
