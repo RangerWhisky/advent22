@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"localhost/advent22/day1"
+	"localhost/advent22/day10"
 	"localhost/advent22/day2"
 	"localhost/advent22/day3"
 	"localhost/advent22/day4"
@@ -50,6 +51,9 @@ func main() {
 	fmt.Println("\nDay 9")
 	fmt.Printf("Number of visited squares is %d\n", day9.PartOne("day9/input"))
 	fmt.Printf("Number of visited squares with 10 long rope is %d\n", day9.PartTwo("day9/input"))
+
+	fmt.Println("\nDay 10")
+	fmt.Printf("Signal strength at 220 is %d\n", day10.PartOne("day10/input"))
 
 	fmt.Println("\nDone!")
 }
