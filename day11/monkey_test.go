@@ -113,3 +113,21 @@ func TestInitMonkey(t *testing.T) {
 		t.Error()
 	}
 }
+
+func TestThrowTrue(t *testing.T) {
+	input := `Starting items: 79, 98
+	Operation: new = old * 19
+	Test: divisible by 23
+	  If true: throw to monkey 2
+	  If false: throw to monkey 3
+  `
+	monkey := InitMonkey(strings.Split(input, "\n"))
+
+	Inspect(&monkey, 0)
+
+	target := GetThrowTarget(&monkey, 0)
+
+	if target != 3 {
+		t.Error()
+	}
+}

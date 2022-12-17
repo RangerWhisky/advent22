@@ -39,6 +39,17 @@ func Inspect(monkey *Monkey, itemIndex int) {
 	monkey.items[itemIndex] = old
 }
 
+func GetThrowTarget(monkey *Monkey, itemIndex int) int {
+	remainder := monkey.items[itemIndex] % monkey.divisor
+
+	target := monkey.trueDest
+	if remainder != 0 {
+		target = monkey.falseDest
+	}
+
+	return target
+}
+
 func GetStartingItems(input string) []int {
 	var startingItems []int
 	inputParts := strings.Split(input, ": ")
