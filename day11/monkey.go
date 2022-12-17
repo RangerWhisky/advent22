@@ -8,11 +8,12 @@ import (
 const WorryDivisor int = 3
 
 type Monkey struct {
-	items     []int
-	op        Operation
-	divisor   int
-	trueDest  int
-	falseDest int
+	items          []int
+	op             Operation
+	divisor        int
+	trueDest       int
+	falseDest      int
+	itemsInspected int
 }
 
 type Pass struct {
@@ -40,6 +41,8 @@ func InitMonkey(input []string) Monkey {
 func TakeTurn(monkey *Monkey) []Pass {
 	var passList []Pass
 	var emptyList []int
+	//TODO - test this
+	monkey.itemsInspected += len(monkey.items)
 
 	for i := 0; i < len(monkey.items); i++ {
 		Inspect(monkey, i)
