@@ -39,7 +39,16 @@ func InitMonkey(input []string) Monkey {
 
 func TakeTurn(monkey *Monkey) []Pass {
 	var passList []Pass
+	var emptyList []int
 
+	for i := 0; i < len(monkey.items); i++ {
+		Inspect(monkey, i)
+		passInstruction := Pass{}
+		passInstruction.val = monkey.items[i]
+		passInstruction.target = GetThrowTarget(monkey, i)
+		passList = append(passList, passInstruction)
+	}
+	monkey.items = emptyList
 	return passList
 }
 

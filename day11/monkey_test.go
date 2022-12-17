@@ -164,4 +164,8 @@ func TestTakeTurn(t *testing.T) {
 	if len(passList) != 3 {
 		t.Error()
 	}
+
+	if len(monkey.items) != 0 {
+		t.Error()
+	}
 }
