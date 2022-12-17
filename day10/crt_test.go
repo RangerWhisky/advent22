@@ -45,3 +45,29 @@ func TestCrtLineTwo(t *testing.T) {
 		t.Error()
 	}
 }
+
+func TestCrtOutput(t *testing.T) {
+	cycle := 44
+	registerX := 3
+	if GetCrtOutput(cycle, registerX) != "#" {
+		t.Error()
+	}
+
+	registerX = 6
+	if GetCrtOutput(cycle, registerX) != "." {
+		t.Error()
+	}
+}
+
+func TestCrtOutputEol(t *testing.T) {
+	cycle := 40
+	registerX := 39
+	if GetCrtOutput(cycle, registerX) != "#\n" {
+		t.Error()
+	}
+
+	registerX = 6
+	if GetCrtOutput(cycle, registerX) != ".\n" {
+		t.Error()
+	}
+}
