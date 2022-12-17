@@ -15,6 +15,11 @@ type Monkey struct {
 	falseDest int
 }
 
+type Pass struct {
+	val    int
+	target int
+}
+
 type Operation struct {
 	operand string
 	val     int
@@ -30,6 +35,12 @@ func InitMonkey(input []string) Monkey {
 	monkey.falseDest = GetThrowDestination(input[4])
 
 	return monkey
+}
+
+func TakeTurn(monkey *Monkey) []Pass {
+	var passList []Pass
+
+	return passList
 }
 
 func Inspect(monkey *Monkey, itemIndex int) {

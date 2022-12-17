@@ -149,3 +149,19 @@ func TestThrowTrue(t *testing.T) {
 		t.Error()
 	}
 }
+
+func TestTakeTurn(t *testing.T) {
+	input := `	Starting items: 79, 60, 97
+	Operation: new = old * old
+	Test: divisible by 13
+	  If true: throw to monkey 1
+	  If false: throw to monkey 3
+  `
+	monkey := InitMonkey(strings.Split(input, "\n"))
+
+	passList := TakeTurn(&monkey)
+
+	if len(passList) != 3 {
+		t.Error()
+	}
+}
