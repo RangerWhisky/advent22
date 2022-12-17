@@ -22,3 +22,7 @@ func GetTestDivisor(input string) int {
 	val, _ := strconv.Atoi(inputParts[1])
 	return val
 }
+
+func GetThrowDestination(input string) int {
+	return 0
+}

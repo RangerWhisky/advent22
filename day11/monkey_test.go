@@ -26,3 +26,13 @@ func TestInitialiseTestDivisor(t *testing.T) {
 		t.Error()
 	}
 }
+
+func TestGetTrueDestination(t *testing.T) {
+	input := "    If true: throw to monkey 2"
+
+	monkey := GetThrowDestination(input)
+
+	if monkey != 2 {
+		t.Error()
+	}
+}
