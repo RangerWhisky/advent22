@@ -15,3 +15,16 @@ func SetupGame(filepath string) []Monkey {
 
 	return monkeyList
 }
+
+func TakeRound(monkeyList []Monkey) []Monkey {
+
+	for i := 0; i < len(monkeyList); i++ {
+		passList := TakeTurn(&monkeyList[i])
+		for _, pass := range passList {
+			// TODO should be a function in monkey class
+			monkeyList[pass.target].items = append(monkeyList[pass.target].items, pass.val)
+		}
+	}
+
+	return monkeyList
+}
