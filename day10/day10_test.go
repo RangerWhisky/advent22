@@ -35,3 +35,12 @@ func TestCrtModelling(t *testing.T) {
 		t.Errorf("Expected %s, got %s", expectedOutput, solution)
 	}
 }
+func TestFullCrtModelling(t *testing.T) {
+	expectedOutput := "##..##..##..##..##..##..##..##..##..##..\n###...###...###...###...###...###...###.\n####....####....####....####....####....\n#####.....#####.....#####.....#####.....\n######......######......######......####\n#######.......#######.......#######....."
+
+	solution := ModelCrt("./long_example.txt", 240)
+
+	if solution != expectedOutput {
+		t.Errorf("Expected\n%s \n got\n%s", expectedOutput, solution)
+	}
+}
