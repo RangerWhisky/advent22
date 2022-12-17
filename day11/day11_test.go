@@ -8,3 +8,10 @@ func TestPartOne(t *testing.T) {
 		t.Error()
 	}
 }
+
+func TestPartTwo(t *testing.T) {
+	monkeyBusiness := PartTwo("example.txt")
+	if monkeyBusiness != 2713310158 {
+		t.Error()
+	}
+}

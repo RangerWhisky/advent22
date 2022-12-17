@@ -3,7 +3,7 @@ package day11
 import "testing"
 
 func TestMoneyGameSetup(t *testing.T) {
-	monkeyList := SetupGame("./example.txt")
+	monkeyList := SetupGame("./example.txt", 3)
 
 	if len(monkeyList) != 4 {
 		t.Error()
@@ -11,7 +11,7 @@ func TestMoneyGameSetup(t *testing.T) {
 }
 
 func TestMoneyTurn(t *testing.T) {
-	monkeyList := SetupGame("./example.txt")
+	monkeyList := SetupGame("./example.txt", 3)
 
 	monkeyList = TakeRound(monkeyList)
 

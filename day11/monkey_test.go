@@ -105,7 +105,7 @@ func TestInitMonkey(t *testing.T) {
 	  If true: throw to monkey 2
 	  If false: throw to monkey 3
   `
-	monkey := InitMonkey(strings.Split(input, "\n"))
+	monkey := InitMonkey(strings.Split(input, "\n"), 3)
 
 	Inspect(&monkey, 0)
 
@@ -121,7 +121,7 @@ func TestThrowFalse(t *testing.T) {
 	  If true: throw to monkey 2
 	  If false: throw to monkey 3
   `
-	monkey := InitMonkey(strings.Split(input, "\n"))
+	monkey := InitMonkey(strings.Split(input, "\n"), 3)
 
 	Inspect(&monkey, 0)
 
@@ -139,7 +139,7 @@ func TestThrowTrue(t *testing.T) {
 	  If true: throw to monkey 1
 	  If false: throw to monkey 3
   `
-	monkey := InitMonkey(strings.Split(input, "\n"))
+	monkey := InitMonkey(strings.Split(input, "\n"), 3)
 
 	Inspect(&monkey, 0)
 
@@ -157,7 +157,7 @@ func TestTakeTurn(t *testing.T) {
 	  If true: throw to monkey 1
 	  If false: throw to monkey 3
   `
-	monkey := InitMonkey(strings.Split(input, "\n"))
+	monkey := InitMonkey(strings.Split(input, "\n"), 3)
 
 	passList := TakeTurn(&monkey)
 

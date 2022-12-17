@@ -14,6 +14,7 @@ type Monkey struct {
 	trueDest       int
 	falseDest      int
 	itemsInspected int
+	calmFactor     int
 }
 
 type Pass struct {
@@ -26,7 +27,7 @@ type Operation struct {
 	val     int
 }
 
-func InitMonkey(input []string) Monkey {
+func InitMonkey(input []string, calmFactor int) Monkey {
 	var monkey Monkey
 
 	monkey.items = GetStartingItems(input[0])
@@ -34,6 +35,7 @@ func InitMonkey(input []string) Monkey {
 	monkey.divisor = GetTestDivisor(input[2])
 	monkey.trueDest = GetThrowDestination(input[3])
 	monkey.falseDest = GetThrowDestination(input[4])
+	monkey.calmFactor = calmFactor
 
 	return monkey
 }
@@ -58,7 +60,7 @@ func TakeTurn(monkey *Monkey) []Pass {
 func Inspect(monkey *Monkey, itemIndex int) {
 	old := monkey.items[itemIndex]
 	old = PerformOperation(monkey.op, old)
-	old = old / WorryDivisor
+	old = old / monkey.calmFactor
 	monkey.items[itemIndex] = old
 }
 
