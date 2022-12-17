@@ -28,11 +28,13 @@ func CreateProcessor() Processor {
 func QueueNoop(proc *Processor) {
 	noop := Instruction{InstructionType(noop), 0}
 	proc.commandQueue = noop
+	proc.nextFreeCycle = proc.cycle + 1
 }
 
 func QueueAddx(proc *Processor, val int) {
 	addx := Instruction{InstructionType(addx), val}
 	proc.commandQueue = addx
+	proc.nextFreeCycle = proc.cycle + 2
 }
 
 func GetSignalStrength(proc *Processor) int {
@@ -42,8 +44,15 @@ func GetSignalStrength(proc *Processor) int {
 func ClockTick(proc *Processor) {
 	proc.cycle++
 	if proc.nextFreeCycle == proc.cycle {
-		//process instruction
+		processInstruction(proc)
 		QueueNoop(proc)
+	}
+}
+
+func processInstruction(proc *Processor) {
+	switch proc.commandQueue.ins {
+	case addx:
+		proc.registerX += proc.commandQueue.val
 	}
 }
 
