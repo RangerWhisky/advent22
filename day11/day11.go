@@ -1,34 +1,31 @@
 package day11
 
-import "sort"
+import (
+	"fmt"
+	"sort"
+)
 
 const NumRounds int = 20
+const PartTwoRounds int = 10000
 
 func PartOne(filepath string) int {
-	monkeyList := SetupGame(filepath, 3)
-
-	for i := 0; i < NumRounds; i++ {
-		monkeyList = TakeRound(monkeyList)
-	}
-
-	var itemPasses []int
-	for i := 0; i < len(monkeyList); i++ {
-		itemPasses = append(itemPasses, monkeyList[i].itemsInspected)
-	}
-	sort.Ints(itemPasses)
-
-	return GetMonkeyBusiness(itemPasses)
+	return RunGame(filepath, 3, NumRounds)
 }
 
 func PartTwo(filepath string) int {
-	monkeyList := SetupGame(filepath, 1)
+	return RunGame(filepath, 1, PartTwoRounds)
+}
 
-	for i := 0; i < NumRounds; i++ {
+func RunGame(filepath string, calmFactor int, rounds int) int {
+	monkeyList := SetupGame(filepath, calmFactor)
+
+	for i := 0; i < rounds; i++ {
 		monkeyList = TakeRound(monkeyList)
 	}
 
 	var itemPasses []int
 	for i := 0; i < len(monkeyList); i++ {
+		fmt.Printf("Monkey %d has %d passes\n", i, monkeyList[i].itemsInspected)
 		itemPasses = append(itemPasses, monkeyList[i].itemsInspected)
 	}
 	sort.Ints(itemPasses)
