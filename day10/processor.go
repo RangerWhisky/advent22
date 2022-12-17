@@ -37,6 +37,10 @@ func QueueAddx(proc *Processor, val int) {
 	proc.nextFreeCycle = proc.cycle + 2
 }
 
+func SetIdle(proc *Processor) {
+	proc.commandQueue = getBlankInstruction()
+}
+
 func GetSignalStrength(proc *Processor) int {
 	return proc.cycle * proc.registerX
 }
@@ -45,7 +49,7 @@ func ClockTick(proc *Processor) {
 	proc.cycle++
 	if proc.nextFreeCycle == proc.cycle {
 		processInstruction(proc)
-		QueueNoop(proc)
+		SetIdle(proc)
 	}
 }
 func IsIdle(proc *Processor) bool {

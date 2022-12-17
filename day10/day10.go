@@ -1,6 +1,7 @@
 package day10
 
 import (
+	"fmt"
 	utils "localhost/advent22/utils"
 	"strconv"
 	"strings"
@@ -9,6 +10,10 @@ import (
 const MaxCycle int = 220
 
 func PartOne(filepath string) int {
+	return ModelProcessor(filepath, MaxCycle)
+}
+
+func ModelProcessor(filepath string, cycleCount int) int {
 	instructionList := utils.Read_file(filepath)
 	instructionPointer := 0
 
@@ -16,13 +21,14 @@ func PartOne(filepath string) int {
 
 	proc := CreateProcessor()
 
-	for clock := 1; clock <= MaxCycle; clock++ {
+	for clock := 1; clock <= cycleCount; clock++ {
 		if IsIdle(&proc) {
 			SendInstruction(&proc, instructionList[instructionPointer])
 			instructionPointer++
 		}
 		ClockTick(&proc)
 		if NeedSignalStrengthReading(clock) {
+			fmt.Printf("model cycle %d, clock cycle %d, register %d\n", clock, proc.cycle, proc.registerX)
 			signalStrengthSum += GetSignalStrength(&proc)
 		}
 	}
