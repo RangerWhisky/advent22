@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"localhost/advent22/day1"
 	"localhost/advent22/day10"
+	"localhost/advent22/day11"
 	"localhost/advent22/day2"
 	"localhost/advent22/day3"
 	"localhost/advent22/day4"
@@ -55,6 +56,9 @@ func main() {
 	fmt.Println("\nDay 10")
 	fmt.Printf("Signal strength at 220 is %d\n", day10.PartOne("day10/input"))
 	fmt.Printf("Cipher is\n%s\n", day10.PartTwo("day10/input"))
+
+	fmt.Println("\nDay 11")
+	fmt.Printf("Monkey Business score is %d\n", day11.PartOne("day11/input"))
 
 	fmt.Println("\nDone!")
 }
