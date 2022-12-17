@@ -54,6 +54,7 @@ func main() {
 
 	fmt.Println("\nDay 10")
 	fmt.Printf("Signal strength at 220 is %d\n", day10.PartOne("day10/input"))
+	fmt.Printf("Cipher is\n%s\n", day10.PartTwo("day10/input"))
 
 	fmt.Println("\nDone!")
 }
