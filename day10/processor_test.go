@@ -66,4 +66,9 @@ func TestIsIdle(t *testing.T) {
 	if !IsIdle(&proc) {
 		t.Error()
 	}
+	QueueAddx(&proc, 5)
+
+	if IsIdle(&proc) {
+		t.Error()
+	}
 }
