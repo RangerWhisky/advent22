@@ -56,6 +56,13 @@ func PerformOperation(op Operation, val int) int {
 	switch op.operand {
 	case "+":
 		val += op.val
+	case "-":
+		val -= op.val
+	case "*":
+		val -= val * op.val
+	case "^":
+		val = val * val
 	}
+
 	return val
 }

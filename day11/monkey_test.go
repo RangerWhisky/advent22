@@ -58,3 +58,39 @@ func TestOperationInitiation(t *testing.T) {
 		t.Error()
 	}
 }
+
+func TestPower(t *testing.T) {
+	input := "	Operation: new = old * old"
+
+	operation := GetOperation(input)
+
+	example := PerformOperation(operation, 7)
+
+	if example != 49 {
+		t.Error()
+	}
+}
+
+func TestSubtract(t *testing.T) {
+	input := "	Operation: new = old - 4"
+
+	operation := GetOperation(input)
+
+	example := PerformOperation(operation, 7)
+
+	if example != 3 {
+		t.Error()
+	}
+}
+
+func TestMultiply(t *testing.T) {
+	input := "	Operation: new = old * 3"
+
+	operation := GetOperation(input)
+
+	example := PerformOperation(operation, 7)
+
+	if example != 21 {
+		t.Error()
+	}
+}
