@@ -46,3 +46,15 @@ func TestGetFalseDestination(t *testing.T) {
 		t.Error()
 	}
 }
+
+func TestOperationInitiation(t *testing.T) {
+	input := "	Operation: new = old + 6"
+
+	operation := GetOperation(input)
+
+	example := PerformOperation(operation, 7)
+
+	if example != 13 {
+		t.Error()
+	}
+}
