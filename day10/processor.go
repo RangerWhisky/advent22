@@ -34,6 +34,14 @@ func GetSignalStrength(proc *Processor) int {
 	return proc.cycle * proc.registerX
 }
 
+func ClockTick(proc *Processor) {
+	proc.cycle++
+	if proc.nextFreeCycle == proc.cycle {
+		//process instruction
+		QueueNoop(proc)
+	}
+}
+
 func getBlankInstruction() Instruction {
 	return Instruction{InstructionType(none), 0}
 }

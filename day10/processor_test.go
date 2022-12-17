@@ -19,7 +19,13 @@ func TestNoop(t *testing.T) {
 	proc := CreateProcessor()
 
 	QueueNoop(&proc)
-
+	if GetSignalStrength(&proc) != 0 {
+		t.Errorf("Noop impacted state when it shouldn't have")
+	}
+	ClockTick(&proc)
+	if GetSignalStrength(&proc) != 1 {
+		t.Errorf("Noop impacted register when it shouldn't have")
+	}
 }
 
 func TestSignalStrength(t *testing.T) {
