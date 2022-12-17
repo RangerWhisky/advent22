@@ -21,7 +21,6 @@ const (
 )
 
 func CreateProcessor() Processor {
-
 	proc := Processor{0, 1, 0, getBlankInstruction()}
 	return proc
 }
@@ -29,6 +28,10 @@ func CreateProcessor() Processor {
 func QueueNoop(proc *Processor) {
 	noop := Instruction{InstructionType(noop), 0}
 	proc.commandQueue = noop
+}
+
+func GetSignalStrength(proc *Processor) int {
+	return 0
 }
 
 func getBlankInstruction() Instruction {
