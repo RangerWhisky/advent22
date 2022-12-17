@@ -31,7 +31,7 @@ func QueueNoop(proc *Processor) {
 }
 
 func GetSignalStrength(proc *Processor) int {
-	return 0
+	return proc.cycle * proc.registerX
 }
 
 func getBlankInstruction() Instruction {
