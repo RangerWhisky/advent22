@@ -24,5 +24,7 @@ func GetTestDivisor(input string) int {
 }
 
 func GetThrowDestination(input string) int {
-	return 0
+	inputParts := strings.Split(input, " monkey ")
+	val, _ := strconv.Atoi(inputParts[1])
+	return val
 }
