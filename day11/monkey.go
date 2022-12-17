@@ -5,6 +5,8 @@ import (
 	"strings"
 )
 
+const WorryDivisor int = 3
+
 type Monkey struct {
 	items     []int
 	op        Operation
@@ -31,7 +33,10 @@ func InitMonkey(input []string) Monkey {
 }
 
 func Inspect(monkey *Monkey, itemIndex int) {
-
+	old := monkey.items[itemIndex]
+	old = PerformOperation(monkey.op, old)
+	old = old / WorryDivisor
+	monkey.items[itemIndex] = old
 }
 
 func GetStartingItems(input string) []int {
