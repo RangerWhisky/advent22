@@ -53,5 +53,9 @@ func GetOperation(input string) Operation {
 }
 
 func PerformOperation(op Operation, val int) int {
-	return 0
+	switch op.operand {
+	case "+":
+		val += op.val
+	}
+	return val
 }
