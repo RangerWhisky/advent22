@@ -45,12 +45,14 @@ func GetSignalStrength(proc *Processor) int {
 	return proc.cycle * proc.registerX
 }
 
-func ClockTick(proc *Processor) {
+func ClockTick(proc *Processor) int {
 	proc.cycle++
+	currentSignal := GetSignalStrength(proc)
 	if proc.nextFreeCycle == proc.cycle {
 		processInstruction(proc)
 		SetIdle(proc)
 	}
+	return currentSignal
 }
 func IsIdle(proc *Processor) bool {
 	return proc.commandQueue.ins == InstructionType(none)

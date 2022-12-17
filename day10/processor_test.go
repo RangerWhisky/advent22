@@ -60,6 +60,17 @@ func TestSignalStrength(t *testing.T) {
 	}
 }
 
+func TestSignalStrengthFromLongExample(t *testing.T) {
+	proc := CreateProcessor()
+
+	proc.cycle = 60
+	proc.registerX = 19
+	signal := GetSignalStrength(&proc)
+	if signal != 1140 {
+		t.Errorf("Expected %d, got %d", 1140, signal)
+	}
+}
+
 func TestIsIdle(t *testing.T) {
 	proc := CreateProcessor()
 

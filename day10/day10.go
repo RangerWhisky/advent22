@@ -1,7 +1,6 @@
 package day10
 
 import (
-	"fmt"
 	utils "localhost/advent22/utils"
 	"strconv"
 	"strings"
@@ -26,10 +25,9 @@ func ModelProcessor(filepath string, cycleCount int) int {
 			SendInstruction(&proc, instructionList[instructionPointer])
 			instructionPointer++
 		}
-		ClockTick(&proc)
+		signalStrength := ClockTick(&proc)
 		if NeedSignalStrengthReading(clock) {
-			fmt.Printf("model cycle %d, clock cycle %d, register %d\n", clock, proc.cycle, proc.registerX)
-			signalStrengthSum += GetSignalStrength(&proc)
+			signalStrengthSum += signalStrength
 		}
 	}
 	return signalStrengthSum
