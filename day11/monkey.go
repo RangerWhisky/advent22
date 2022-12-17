@@ -18,5 +18,7 @@ func GetStartingItems(input string) []int {
 }
 
 func GetTestDivisor(input string) int {
-	return 0
+	inputParts := strings.Split(input, " by ")
+	val, _ := strconv.Atoi(inputParts[1])
+	return val
 }
