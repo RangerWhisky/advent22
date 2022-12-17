@@ -5,9 +5,33 @@ import (
 	"strings"
 )
 
+type Monkey struct {
+	items     []int
+	op        Operation
+	divisor   int
+	trueDest  int
+	falseDest int
+}
+
 type Operation struct {
 	operand string
 	val     int
+}
+
+func InitMonkey(input []string) Monkey {
+	var monkey Monkey
+
+	monkey.items = GetStartingItems(input[0])
+	monkey.op = GetOperation(input[1])
+	monkey.divisor = GetTestDivisor(input[2])
+	monkey.trueDest = GetThrowDestination(input[3])
+	monkey.falseDest = GetThrowDestination(input[4])
+
+	return monkey
+}
+
+func Inspect(monkey *Monkey, itemIndex int) {
+
 }
 
 func GetStartingItems(input string) []int {
@@ -59,7 +83,7 @@ func PerformOperation(op Operation, val int) int {
 	case "-":
 		val -= op.val
 	case "*":
-		val -= val * op.val
+		val = val * op.val
 	case "^":
 		val = val * val
 	}

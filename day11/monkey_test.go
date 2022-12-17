@@ -1,6 +1,9 @@
 package day11
 
-import "testing"
+import (
+	"strings"
+	"testing"
+)
 
 func TestInitialiseStartingItems(t *testing.T) {
 	input := "	Starting items: 79, 98"
@@ -91,6 +94,22 @@ func TestMultiply(t *testing.T) {
 	example := PerformOperation(operation, 7)
 
 	if example != 21 {
+		t.Error()
+	}
+}
+
+func TestInitMonkey(t *testing.T) {
+	input := `Starting items: 79, 98
+	Operation: new = old * 19
+	Test: divisible by 23
+	  If true: throw to monkey 2
+	  If false: throw to monkey 3
+  `
+	monkey := InitMonkey(strings.Split(input, "\n"))
+
+	Inspect(&monkey, 0)
+
+	if monkey.items[0] != (79 * 19 / 3) {
 		t.Error()
 	}
 }
