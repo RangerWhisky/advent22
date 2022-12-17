@@ -17,3 +17,12 @@ func TestInitialiseStartingItems(t *testing.T) {
 		t.Error()
 	}
 }
+
+func TestInitialiseTestDivisor(t *testing.T) {
+	input := "  Test: divisible by 19"
+	divisor := GetTestDivisor(input)
+
+	if divisor != 19 {
+		t.Error()
+	}
+}

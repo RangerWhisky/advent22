@@ -16,3 +16,7 @@ func GetStartingItems(input string) []int {
 
 	return startingItems
 }
+
+func GetTestDivisor(input string) int {
+	return 0
+}
