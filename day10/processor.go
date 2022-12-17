@@ -30,6 +30,11 @@ func QueueNoop(proc *Processor) {
 	proc.commandQueue = noop
 }
 
+func QueueAddx(proc *Processor, val int) {
+	addx := Instruction{InstructionType(addx), val}
+	proc.commandQueue = addx
+}
+
 func GetSignalStrength(proc *Processor) int {
 	return proc.cycle * proc.registerX
 }

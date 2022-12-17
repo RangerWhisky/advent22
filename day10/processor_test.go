@@ -28,6 +28,27 @@ func TestNoop(t *testing.T) {
 	}
 }
 
+func TestAddx(t *testing.T) {
+	proc := CreateProcessor()
+
+	QueueAddx(&proc, 5)
+	if GetSignalStrength(&proc) != 0 {
+		t.Errorf("Addx impacted state before first tick")
+	}
+	ClockTick(&proc)
+	if GetSignalStrength(&proc) != 1 {
+		t.Errorf("Addx impacted register before second tick")
+	}
+	ClockTick(&proc)
+	if proc.registerX != 6 {
+		t.Errorf("Addx didn't execute after second tick")
+	}
+	ClockTick(&proc)
+	if proc.registerX != 6 {
+		t.Errorf("instruction didn't clear after execution")
+	}
+}
+
 func TestSignalStrength(t *testing.T) {
 	proc := CreateProcessor()
 
