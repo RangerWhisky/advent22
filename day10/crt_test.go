@@ -60,7 +60,7 @@ func TestCrtOutput(t *testing.T) {
 }
 
 func TestCrtOutputEol(t *testing.T) {
-	cycle := 40
+	cycle := 39
 	registerX := 39
 	if GetCrtOutput(cycle, registerX) != "#\n" {
 		t.Error()
@@ -68,6 +68,22 @@ func TestCrtOutputEol(t *testing.T) {
 
 	registerX = 6
 	if GetCrtOutput(cycle, registerX) != ".\n" {
+		t.Error()
+	}
+}
+
+func TestGetWidthFromPixel(t *testing.T) {
+	pixel := 40
+
+	if getWidthFromPixel(pixel) != 0 {
+		t.Error()
+	}
+
+	if getWidthFromPixel(pixel-1) != 39 {
+		t.Error()
+	}
+
+	if getWidthFromPixel(pixel+1) != 1 {
 		t.Error()
 	}
 }

@@ -46,13 +46,13 @@ func ModelCrt(filepath string, cycleCount int) string {
 
 	proc := CreateProcessor()
 
-	for clock := 1; clock <= cycleCount; clock++ {
+	for pixel := 0; pixel < cycleCount; pixel++ {
 		if IsIdle(&proc) {
 			SendInstruction(&proc, instructionList[instructionPointer])
 			instructionPointer++
 		}
 		register := proc.registerX
-		CrtString = CrtString + GetCrtOutput(clock-1, register)
+		CrtString = CrtString + GetCrtOutput(pixel, register)
 		_ = ClockTick(&proc)
 	}
 	return CrtString
