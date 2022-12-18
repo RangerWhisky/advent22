@@ -53,8 +53,8 @@ func TestNormalisationStep(t *testing.T) {
 		t.Error()
 	}
 
-	normalisedWorry = NormaliseWorryScore(&monkeyList[0], &monkeyList[1], (19*23 + 1))
-	if normalisedWorry != 1 {
+	normalisedWorry = NormaliseWorryScore(&monkeyList[0], &monkeyList[1], (2*19*23 + 1))
+	if normalisedWorry != (19*23 + 1) {
 		t.Error()
 	}
 }

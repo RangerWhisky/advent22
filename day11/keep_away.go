@@ -31,7 +31,11 @@ func TakeRound(monkeyList []Monkey) []Monkey {
 }
 
 func NormaliseWorryScore(source *Monkey, dest *Monkey, score int) int {
-	newScore := score % (source.divisor * dest.divisor)
+	lcm := source.divisor * dest.divisor
+	newScore := score
+	if score > lcm {
+		newScore = (score % lcm) + lcm
+	}
 
 	return newScore
 }
