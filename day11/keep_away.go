@@ -21,8 +21,8 @@ func TakeRound(monkeyList []Monkey) []Monkey {
 	for i := 0; i < len(monkeyList); i++ {
 		passList := TakeTurn(&monkeyList[i])
 		for _, pass := range passList {
-			value := pass.val
-			// value := NormaliseWorryScore(&monkeyList[i], &monkeyList[pass.target], pass.val)
+			// value := pass.val
+			value := NormaliseWorryScore(monkeyList, pass.val)
 			monkeyList[pass.target].items = append(monkeyList[pass.target].items, value)
 		}
 	}
@@ -30,11 +30,14 @@ func TakeRound(monkeyList []Monkey) []Monkey {
 	return monkeyList
 }
 
-func NormaliseWorryScore(source *Monkey, dest *Monkey, score int) int {
-	lcm := source.divisor * dest.divisor
+func NormaliseWorryScore(monkeys []Monkey, score int) int {
+	lcm := 1
 	newScore := score
+	for i := 0; i < len(monkeys); i++ {
+		lcm = lcm * monkeys[i].divisor
+	}
 	if score > lcm {
-		newScore = (score % lcm) + lcm
+		newScore = (score % lcm)
 	}
 
 	return newScore

@@ -1,7 +1,6 @@
 package day11
 
 import (
-	"fmt"
 	"sort"
 )
 
@@ -25,7 +24,6 @@ func RunGame(filepath string, calmFactor int, rounds int) int {
 
 	var itemPasses []int
 	for i := 0; i < len(monkeyList); i++ {
-		fmt.Printf("Monkey %d has %d passes\n", i, monkeyList[i].itemsInspected)
 		itemPasses = append(itemPasses, monkeyList[i].itemsInspected)
 	}
 	sort.Ints(itemPasses)
