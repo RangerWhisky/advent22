@@ -59,6 +59,7 @@ func main() {
 
 	fmt.Println("\nDay 11")
 	fmt.Printf("Monkey Business score is %d\n", day11.PartOne("day11/input"))
+	fmt.Printf("Monkey Business without calming measures is %d\n", day11.PartTwo("day11/input"))
 
 	fmt.Println("\nDone!")
 }
