@@ -16,7 +16,7 @@ func TestPartTwo(t *testing.T) {
 	}
 }
 
-func TestRunGame(t *testing.T) {
+func TestRunGameForPartTwo(t *testing.T) {
 	monkeyBusiness := RunGame("example.txt", 1, 20)
 	if monkeyBusiness != 99*103 {
 		t.Error()

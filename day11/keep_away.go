@@ -21,10 +21,17 @@ func TakeRound(monkeyList []Monkey) []Monkey {
 	for i := 0; i < len(monkeyList); i++ {
 		passList := TakeTurn(&monkeyList[i])
 		for _, pass := range passList {
-			// TODO should be a function in monkey class
-			monkeyList[pass.target].items = append(monkeyList[pass.target].items, pass.val)
+			value := pass.val
+			// value := NormaliseWorryScore(&monkeyList[i], &monkeyList[pass.target], pass.val)
+			monkeyList[pass.target].items = append(monkeyList[pass.target].items, value)
 		}
 	}
 
 	return monkeyList
+}
+
+func NormaliseWorryScore(source *Monkey, dest *Monkey, score int) int {
+	newScore := score % (source.divisor * dest.divisor)
+
+	return newScore
 }
